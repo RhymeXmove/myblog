@@ -1,0 +1,240 @@
+[
+  {
+    "code": "Anhui",
+    "cn": "安徽",
+    "en": "Anhui",
+    "lat": 32,
+    "lng": 117
+  },
+  {
+    "code": "Macao",
+    "cn": "澳门",
+    "en": "Macao",
+    "lat": 22.11,
+    "lng": 113.33
+  },
+  {
+    "code": "Beijing",
+    "cn": "北京",
+    "en": "Beijing",
+    "lat": 39.9075,
+    "lng": 116.39723
+  },
+  {
+    "code": "Chongqing",
+    "cn": "重庆",
+    "en": "Chongqing",
+    "lat": 29.56278,
+    "lng": 106.55278
+  },
+  {
+    "code": "Fujian",
+    "cn": "福建",
+    "en": "Fujian",
+    "lat": 26,
+    "lng": 119.3
+  },
+  {
+    "code": "Guangdong",
+    "cn": "广东",
+    "en": "Guangdong",
+    "lat": 23,
+    "lng": 113
+  },
+  {
+    "code": "Gansu",
+    "cn": "甘肃",
+    "en": "Gansu",
+    "lat": 38,
+    "lng": 102
+  },
+  {
+    "code": "Guangxi",
+    "cn": "广西",
+    "en": "Guangxi",
+    "lat": 24,
+    "lng": 109
+  },
+  {
+    "code": "Guizhou",
+    "cn": "贵州",
+    "en": "Guizhou",
+    "lat": 27,
+    "lng": 107
+  },
+  {
+    "code": "Hubei",
+    "cn": "湖北",
+    "en": "Hubei",
+    "lat": 31,
+    "lng": 112
+  },
+  {
+    "code": "Hebei",
+    "cn": "河北",
+    "en": "Hebei",
+    "lat": 39,
+    "lng": 116
+  },
+  {
+    "code": "Heilongjiang",
+    "cn": "黑龙江",
+    "en": "Heilongjiang",
+    "lat": 48,
+    "lng": 128
+  },
+  {
+    "code": "Hainan",
+    "cn": "海南",
+    "en": "Hainan",
+    "lat": 19.200001,
+    "lng": 109.599998
+  },
+  {
+    "code": "Hunan",
+    "cn": "湖南",
+    "en": "Hunan",
+    "lat": 28,
+    "lng": 112
+  },
+  {
+    "code": "Henan",
+    "cn": "河南",
+    "en": "Henan",
+    "lat": 34,
+    "lng": 114
+  },
+  {
+    "code": "Jilin",
+    "cn": "吉林",
+    "en": "Jilin",
+    "lat": 43,
+    "lng": 126
+  },
+  {
+    "code": "Jiangsu",
+    "cn": "江苏",
+    "en": "Jiangsu",
+    "lat": 33,
+    "lng": 120
+  },
+  {
+    "code": "Jiangxi",
+    "cn": "江西",
+    "en": "Jiangxi",
+    "lat": 28,
+    "lng": 116
+  },
+  {
+    "code": "Liaoning",
+    "cn": "辽宁",
+    "en": "Liaoning",
+    "lat": 41,
+    "lng": 123
+  },
+  {
+    "code": "Inner Mongolia",
+    "cn": "内蒙古",
+    "en": "Inner Mongolia",
+    "lat": 40.87,
+    "lng": 112
+  },
+  {
+    "code": "Ningxia",
+    "cn": "宁夏",
+    "en": "Ningxia",
+    "lat": 37,
+    "lng": 106
+  },
+  {
+    "code": "Qinghai",
+    "cn": "青海",
+    "en": "Qinghai",
+    "lat": 36,
+    "lng": 96
+  },
+  {
+    "code": "Sichuan",
+    "cn": "四川",
+    "en": "Sichuan",
+    "lat": 30.5,
+    "lng": 102.5
+  },
+  {
+    "code": "Shandong",
+    "cn": "山东",
+    "en": "Shandong",
+    "lat": 36,
+    "lng": 119
+  },
+  {
+    "code": "Shanghai",
+    "cn": "上海",
+    "en": "Shanghai",
+    "lat": 31.222219,
+    "lng": 121.458061
+  },
+  {
+    "code": "Shaanxi",
+    "cn": "陕西",
+    "en": "Shaanxi",
+    "lat": 36,
+    "lng": 109
+  },
+  {
+    "code": "Shanxi",
+    "cn": "山西",
+    "en": "Shanxi",
+    "lat": 37,
+    "lng": 112
+  },
+  {
+    "code": "Tianjin",
+    "cn": "天津",
+    "en": "Tianjin",
+    "lat": 39.14222,
+    "lng": 117.176666
+  },
+  {
+    "code": "Taiwan",
+    "cn": "台湾",
+    "en": "Taiwan",
+    "lat": 24,
+    "lng": 121
+  },
+  {
+    "code": "Hong Kong",
+    "cn": "香港",
+    "en": "Hong Kong",
+    "lat": 22.25,
+    "lng": 114.166672
+  },
+  {
+    "code": "Xinjiang",
+    "cn": "新疆",
+    "en": "Xinjiang",
+    "lat": 43.45,
+    "lng": 87.36
+  },
+  {
+    "code": "Tibet",
+    "cn": "西藏",
+    "en": "Tibet",
+    "lat": 32,
+    "lng": 90
+  },
+  {
+    "code": "Yunnan",
+    "cn": "云南",
+    "en": "Yunnan",
+    "lat": 25,
+    "lng": 102
+  },
+  {
+    "code": "Zhejiang",
+    "cn": "浙江",
+    "en": "Zhejiang",
+    "lat": 29,
+    "lng": 120
+  }
+]
