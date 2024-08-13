@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        博客搭建踩坑 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="blog搭建遇到的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客搭建踩坑">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/02/172ab8a53c56/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="blog搭建遇到的问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-01T17:20:13.000Z">
+<meta property="article:modified_time" content="2022-04-07T17:25:27.741Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="blog搭建">
+<meta name="twitter:card" content="summary">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924005">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#blog%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">blog搭建遇到的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%98%E5%8F%A0%E6%96%87%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">折叠文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">新建文章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E8%AE%BE%E7%BD%AEnew-post-name%E7%9A%84%E7%96%91%E9%97%AE"><span class="toc-number">3.1.</span> <span class="toc-text">hexo设置new_post_name的疑问</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-%E6%96%87%E7%AB%A0%E4%B8%AD%E5%9B%BE%E7%89%87%E5%BC%95%E5%85%A5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">hexo 文章中图片引入问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-%E5%85%B3%E9%94%AE%E5%AD%97%E5%BC%95%E8%B5%B7%E7%9A%84%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">hexo 关键字引起的渲染问题</span></a></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/fw658.gif" data-sizes="auto" alt="博客搭建踩坑" class="lazyload">
+            <h1>博客搭建踩坑</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月02日</a>
+    <a><i class="nexmoefont icon-areachart"></i>586 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+</div>
+
+    <h1 id="blog搭建遇到的问题"><a href="#blog搭建遇到的问题" class="headerlink" title="blog搭建遇到的问题"></a>blog搭建遇到的问题</h1><span id="more"></span>
+
+<p>Hexo 文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">https://hexo.io/zh-cn/docs/</a></p>
+<p>hexo-nexmoe 主题文档：<a target="_blank" rel="noopener" href="https://docs.nexmoe.com/hexo-nexmoe/start">https://docs.nexmoe.com/hexo-nexmoe/start</a></p>
+<p>大多数问题都可以通过看文档解决。</p>
+<h1 id="折叠文章"><a href="#折叠文章" class="headerlink" title="折叠文章"></a>折叠文章</h1><p>添加<code>&lt;!-- more --&gt;</code>，但不能放在头上，会被视为无效。</p>
+<h1 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h1><pre><code class="powershell">hexo new title // 文章
+
+hexo new post  &lt;title&gt; // 文章
+
+hexo new draft &lt;title&gt; // 草稿  
+
+hexo publish &lt;draft title&gt; // 发布草稿
+
+hexo new page &lt;title&gt; // 页面
+</code></pre>
+<h2 id="hexo设置new-post-name的疑问"><a href="#hexo设置new-post-name的疑问" class="headerlink" title="hexo设置new_post_name的疑问"></a>hexo设置<code>new_post_name</code>的疑问</h2><p>Hexo配置文件<code>hexo/_config.yml</code>中设定如下：</p>
+<pre><code class="powershell">new_post_name: :title-：year:month:day.md
+</code></pre>
+<pre><code class="powershell">$ hexo new post 举个栗子  
+
+结果：举个栗子-20210414.md
+</code></pre>
+<p>from：<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000008833637">https://segmentfault.com/q/1010000008833637</a></p>
+<h1 id="hexo-文章中图片引入问题"><a href="#hexo-文章中图片引入问题" class="headerlink" title="hexo 文章中图片引入问题"></a>hexo 文章中图片引入问题</h1><p>官方文档中提供的方法如下:</p>
+<p>文章资源文件夹 - 对于那些想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将 config.yml 文件中的 post_asset_folder 选项设为 true 来打开。</p>
+<pre><code class="powershell">_config.yml
+post_asset_folder: true
+</code></pre>
+<p>当资源文件管理功能打开后，Hexo将会在你每一次通过 <code>hexo new [layout] &lt;title&gt; </code>命令创建新文章时自动创建一个文件夹。这个资源文件夹将会有与这个文章文件一样的名字。将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过相对路径来引用它们，这样你就得到了一个更简单而且方便得多的工作流。</p>
+<p>但是这样的话，每创建一个文章就有一个对应的资源文件夹，有点乱，也不方便日后管理；</p>
+<p>所以这里选择将图片存入github仓库的方式，jsdelivr + github 实现cdn懒加载。</p>
+<p>首先创建一个GitHub仓库用来存图片；</p>
+<p>引用图片的链接为：<code>https://cdn.jsdelivr.net/gh/&lt;仓库名&gt;@&lt;版本号，可以写@latest,表示最新版本&gt;/&lt;仓库内相对路径&gt;/xxxx.png</code></p>
+<p>例如：</p>
+<p><code>https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png</code></p>
+<h1 id="hexo-关键字引起的渲染问题"><a href="#hexo-关键字引起的渲染问题" class="headerlink" title="hexo 关键字引起的渲染问题"></a><code>hexo</code> 关键字引起的渲染问题</h1><p>编写<code>markdown</code>文件时，<code>hexo</code> 关键字务必用反引号包裹，否则会引起页面渲染问题。</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/02/172ab8a53c56/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;02&#x2F;172ab8a53c56&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;02&#x2F;172ab8a53c56&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/blog%E6%90%AD%E5%BB%BA/">blog搭建</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/blog%E6%90%AD%E5%BB%BA/" rel="tag">blog搭建</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924006"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

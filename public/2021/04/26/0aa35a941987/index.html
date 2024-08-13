@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-JVM基础 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="JVM 探究">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-JVM基础">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="JVM 探究">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20190216114129109.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20191108105314115.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/2020121722082798.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang1.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang2.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang3.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426163943.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184103.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426183040.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426183748.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184359.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184621.png">
+<meta property="article:published_time" content="2021-04-26T14:00:37.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.810Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta property="article:tag" content="狂神说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/04/26/0aa35a941987/img/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20190216114129109.png">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559923996">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JVM-%E6%8E%A2%E7%A9%B6"><span class="toc-number">1.</span> <span class="toc-text">JVM 探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">常见面试问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JVM-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">JVM 体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.</span> <span class="toc-text">双亲委派机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E4%B8%BA%E5%85%B6%E4%BB%96%E8%B5%84%E6%96%99%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">以下为其他资料：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.</span> <span class="toc-text">沙箱安全机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Native"><span class="toc-number">1.5.</span> <span class="toc-text">Native</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Native-Method-Stack"><span class="toc-number">1.5.1.</span> <span class="toc-text">Native Method Stack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PC-%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.6.</span> <span class="toc-text">PC 寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="toc-number">1.7.</span> <span class="toc-text">方法区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%EF%BC%9A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.8.</span> <span class="toc-text">栈：数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B0%E8%BF%9B-HotSpot-%E5%92%8C%E5%A0%86"><span class="toc-number">1.9.</span> <span class="toc-text">走进 HotSpot 和堆</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E7%94%9F%E5%8C%BA"><span class="toc-number">1.9.1.</span> <span class="toc-text">新生区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B0%B8%E4%B9%85%E5%8C%BA"><span class="toc-number">1.9.2.</span> <span class="toc-text">永久区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GC-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="toc-number">1.10.</span> <span class="toc-text">GC: 垃圾回收</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-number">1.10.1.</span> <span class="toc-text">引用计数法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-number">1.10.2.</span> <span class="toc-text">复制算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-number">1.10.3.</span> <span class="toc-text">标记清除算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="toc-number">1.10.4.</span> <span class="toc-text">标记清除压缩算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.10.5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E6%B3%95"><span class="toc-number">1.10.6.</span> <span class="toc-text">分代收集法</span></a></li></ol></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-JVM基础" class="lazyload">
+            <h1>JAVA-JVM基础</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月26日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
+</div>
+
+    <h1 id="JVM-探究"><a href="#JVM-探究" class="headerlink" title="JVM 探究"></a>JVM 探究</h1><span id="more"></span>
+
+<h2 id="常见面试问题"><a href="#常见面试问题" class="headerlink" title="常见面试问题"></a>常见面试问题</h2><ul>
+<li>请谈谈对 JVM 的理解？java8 虚拟机和之前的变化更新？</li>
+<li>什么是 OOM - OutOfMemory，什么是栈溢出 StackOverFlowError?怎么分析？</li>
+<li>JVM 的常用调优参数有哪些?</li>
+<li>内存快照如何抓取，怎么分析 Dump 文件？</li>
+<li>谈谈 JVM 中，类加载器你的认识？</li>
+</ul>
+<ol>
+<li><p>jvm 的位置</p>
+</li>
+<li><p>jvm 的体系结构</p>
+</li>
+<li><p>类加载器</p>
+</li>
+<li><p>双亲委派机制</p>
+</li>
+<li><p>沙箱安全机制</p>
+</li>
+<li><p>Native</p>
+</li>
+<li><p>PC 寄存器</p>
+</li>
+<li><p>方法区</p>
+</li>
+<li><p>栈</p>
+</li>
+<li><p>三种 JVM</p>
+<p>java -version 查看 ：</p>
+<p><code> Java HotSpot(TM) 64-Bit Server VM (build 25.221-b11, mixed mode)</code></p>
+</li>
+<li><p>堆</p>
+</li>
+<li><p>新生区、老年区</p>
+</li>
+<li><p>永久区</p>
+</li>
+<li><p>堆内存调优</p>
+</li>
+<li><p>GC</p>
+<ol>
+<li>​ 常用算法</li>
+</ol>
+</li>
+<li><p>JMM</p>
+</li>
+</ol>
+<h2 id="JVM-体系结构"><a href="#JVM-体系结构" class="headerlink" title="JVM 体系结构"></a>JVM 体系结构</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20190216114129109.png" alt="JVM架构图" class="lazyload"></p>
+<h2 id="双亲委派机制"><a href="#双亲委派机制" class="headerlink" title="双亲委派机制"></a>双亲委派机制</h2><ol>
+<li>类加载器收到类加载的请求；</li>
+<li>将这个请求向上委托给父类加载器去完成，一直向上委托，直到启动类加载器；</li>
+<li>启动加载器检查是否能够加载当前这个类，能加载就结束，使用当前加载器，否则抛出异常，通知子加载器进行加载；</li>
+<li>重复上面步骤 3 次，仍然找不到，Class Not Found。</li>
+</ol>
+<h3 id="以下为其他资料："><a href="#以下为其他资料：" class="headerlink" title="以下为其他资料："></a>以下为其他资料：</h3><p>你得先知道<br>在介绍双亲委派机制的时候，不得不提 ClassLoader（类加载器）。说 ClassLoader 之前，我们得先了解下 Java 的基本知识。<br> Java 是运行在 Java 的虚拟机(JVM)中的，但是它是如何运行在 JVM 中了呢？我们在 IDE 中编写的 Java 源代码被编译器编译成.class 的字节码文件。然后由我们得 ClassLoader 负责将这些 class 文件给加载到 JVM 中去执行。<br> JVM 中提供了三层的 ClassLoader：</p>
+<p>Bootstrap classLoader:主要负责加载核心的类库(java.lang.*等)，构造 ExtClassLoader 和 APPClassLoader。</p>
+<p>ExtClassLoader：主要负责加载 jre/lib/ext 目录下的一些扩展的 jar。</p>
+<p>AppClassLoader：主要负责加载应用程序的主函数类</p>
+<p>那如果有一个我们写的 Hello.java 编译成的 Hello.class 文件，它是如何被加载到 JVM 中的呢？别着急，请继续往下看。</p>
+<p>双亲委派机制<br>搜索“ClassLoader”,然后打开“java.lang”包下的 ClassLoader 类。然后将代码翻到 loadClass 方法：</p>
+<pre><code class="java">public Class&lt;?&gt; loadClass(String name) throws ClassNotFoundException &#123;
+    return loadClass(name, false);
+&#125;
+//              -----??-----
+protected Class&lt;?&gt; loadClass(String name, boolean resolve)
+    throws ClassNotFoundException
+&#123;
+        // 首先，检查是否已经被类加载器加载过
+        Class&lt;?&gt; c = findLoadedClass(name);
+        if (c == null) &#123;
+            try &#123;
+                // 存在父加载器，递归的交由父加载器
+                if (parent != null) &#123;
+                    c = parent.loadClass(name, false);
+                &#125; else &#123;
+                    // 直到最上面的Bootstrap类加载器
+                    c = findBootstrapClassOrNull(name);
+                &#125;
+            &#125; catch (ClassNotFoundException e) &#123;
+                // ClassNotFoundException thrown if class not found
+                // from the non-null parent class loader
+            &#125;
+
+            if (c == null) &#123;
+                // If still not found, then invoke findClass in order
+                // to find the class.
+                c = findClass(name);
+            &#125;
+        &#125;
+        return c;
+&#125;
+</code></pre>
+<p>其实这段代码已经很好的解释了双亲委派机制，为了大家更容易理解，我做了一张图来描述一下上面这段代码的流程：</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20191108105314115.png" alt="20201217213314510" class="lazyload"></p>
+<p>从上图中我们就更容易理解了，当一个 Hello.class 这样的文件要被加载时。不考虑我们自定义类加载器，首先会在 AppClassLoader 中检查是否加载过，如果有那就无需再加载了。如果没有，那么会拿到父加载器，然后调用父加载器的 loadClass 方法。父类中同理也会先检查自己是否已经加载过，如果没有再往上。注意这个类似递归的过程，直到到达 Bootstrap classLoader 之前，都是在检查是否加载过，并不会选择自己去加载。直到 BootstrapClassLoader，已经没有父加载器了，这时候开始考虑自己是否能加载了，如果自己无法加载，会下沉到子加载器去加载，一直到最底层，如果没有任何加载器能加载，就会抛出 ClassNotFoundException。那么有人就有下面这种疑问了？</p>
+<p>为什么要设计这种机制<br>这种设计有个好处是，如果有人想替换系统级别的类：String.java。篡改它的实现，在这种机制下这些系统的类已经被 Bootstrap classLoader 加载过了（为什么？因为当一个类需要加载的时候，最先去尝试加载的就是 BootstrapClassLoader），所以其他类加载器并没有机会再去加载，从一定程度上防止了危险代码的植入。</p>
+<p>总结了一张脑图如下：</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/2020121722082798.png" alt="2020121722082798" class="lazyload"></p>
+<ul>
+<li>双亲委派模型是每次收到类加载请求时，先将请求委派给父类加载器完成，如果父类加载器无法完成加载，那么子类尝试自己加载。</li>
+<li>双亲委派机制可以避免加载子类自定义的 Object 类、String 类等一些跟 jdk 命名相同的类。使得加载的类都是同一个。这样才安全。</li>
+</ul>
+<p>当一个类收到了类加载请求，他首先不会尝试自己去加载这个类，而是把这个请求委派给父类去完成，每一个层次类加载器都是如此，因此所有的加载请求都应该传送到启动类加载其中，只有当父类加载器反馈自己无法完成这个请求的时候（在它的加载路径下没有找到所需加载的 Class），子类加载器才会尝试自己去加载。</p>
+<h2 id="沙箱安全机制"><a href="#沙箱安全机制" class="headerlink" title="沙箱安全机制"></a>沙箱安全机制</h2><p>java 安全模型的核心就是 java 沙箱（sandbox），什么是沙箱？沙箱是一个限制程序运行的环境。沙箱机制就是将 java 代码限定在虚拟机特定的运行范围中，并且严格限制代码对本地系统资源访问，通过这样的措施来保证对代码的有效隔离，防止对本地系统造成破坏，沙箱主要限制系统资源访问，那系统资源包括什么？CPU，内存，文件系统，网络。不同级别的沙箱对这些资源访问的限制也可以不一样。</p>
+<p>​ 所有的 java 程序运行都可以指定沙箱，可以定制安全策略。</p>
+<p>在 java 中将执行程序分为本地代码和远程代码两种，本地代码默认视为可信任的，而远程代码则被看作是不受信任的。对于授信的本地代码，可以访问一切本地资源，而对于非授信的代码远程在早期的 java 实现中，安全依赖于沙箱机制，如下图所示 JDK 1.0 安全模型：</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang1.png" alt="shaxiang1" class="lazyload"></p>
+<p>在 java 1.2 版本中，再次改进了安全机制，增加了代码签名。不论本地代码或是远程代码，都会按照用户的安全策略设定，由类加载到虚拟机中权限不同的运行空间，来实现差异化的代码执行权限控制，如下图所示：</p>
+<p>JDK 1.2 安全模型</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang2.png" alt="shaxiang1" class="lazyload"></p>
+<p>当前最新的安全机制实现，则引入了域（Domain）的概念，虚拟机会把所有代码加载到不同的系统域和应用域，系统域部分专门负责与关键资源进行交互，而各个应用域部分则通过系统域的部分代理来对各种需要的资源进行访问。虚拟机中不同的受保护域（Protected Domain）,对应不一样的权限（Permission)，存在于不同域中的类文件就有了当前域的全部权限，如下图所示 最新的安全模型（jdk 1.6）</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/shaxiang3.png" alt="shaxiang1" class="lazyload"></p>
+<p>组成沙箱的基本组件：</p>
+<ul>
+<li>字节码校验器（bytecode verifier）：确保 java 类文件遵循 java 语言规范，这样可以帮助 java 程序实现内存保护，但并不是所有的类文件都会经过字节码校验，比如核心类；</li>
+<li>类装载器（class loader）：其中类装载器在 3 个方面对 java 沙箱起作用；<ul>
+<li>他防止恶意代码去干涉善意的代码；</li>
+<li>他守护了被信任的类库边界；</li>
+<li>它将代码归入保护域，确定了代码可以进行哪些操作。</li>
+</ul>
+</li>
+</ul>
+<p>虚拟机为不同的类加载器载入的类提供不同的命名空间，命名空间由一系列唯一的名称组成，每一个被装载的类将有一个名字，这个命名空间是由 java 虚拟机为每一个类装载器维护的，他们互相之间甚至不可见。</p>
+<p>​ 类装载器采用的机制是双亲委派模式。</p>
+<ol>
+<li>从最内层 JVM 自带类加载器开始加载，外层恶意同名类得不到加载从而无法使用；</li>
+<li>由于严格通过包来区分了访问域，外层恶意的类通过内置代码也无法获得权限访问到内层类，破坏代码就自然无法生效。</li>
+<li>存取控制器 (access controller) : 存取控制器可以控制核心 API 对操作系统的存取权限, 而这个控制的策略设定,可以由用户指定。</li>
+<li>安全管理器（security manger）：是核心 API 和操作系统之间的主要接口，实现权限控制，比存取控制器优先级高。</li>
+<li>安全软件包（security package）：java.security 下的类和扩展包下的类，允许用户为自己的应用增加新的安全特性，包括：<ol>
+<li>安全提供者；</li>
+<li>消息摘要；</li>
+<li>数字签名； keytools</li>
+<li>加密；</li>
+<li>鉴别；</li>
+</ol>
+</li>
+</ol>
+<h2 id="Native"><a href="#Native" class="headerlink" title="Native"></a>Native</h2><ul>
+<li>native : 凡是带了 native 关键字的，说明 java 的作用域达不到了，会去调用底层 C 语言的库；</li>
+<li>会进入本地方法栈；</li>
+<li>调用本地方法接口 JNI；</li>
+<li>JNI 作用：扩展 java 的使用，融合不同 java 语言为 java 所用！ 最初：C, C++；</li>
+<li>java 诞生的时候 C, C++横行，想要立足，你需要有调用 C, C++ 的程序；</li>
+<li>它在内存区域中专门开辟了一块标记区域：Native Method Stack, 登记 Native 方法；</li>
+<li>JAVA 程序驱动打印机，管理系统！掌握即可，在企业应用中较为少见；</li>
+<li>调用其他接口：Socket WebService http</li>
+</ul>
+<h3 id="Native-Method-Stack"><a href="#Native-Method-Stack" class="headerlink" title="Native Method Stack"></a>Native Method Stack</h3><p>​ 他的具体做法是 Native Method Stack 中登记的 native 方法，在（Execution Engine）执行引擎执行的时候加载 Native Libraies。[本地库]</p>
+<h2 id="PC-寄存器"><a href="#PC-寄存器" class="headerlink" title="PC 寄存器"></a>PC 寄存器</h2><p>程序计数器：Program Counter Register</p>
+<p>​ 每个线程都有一个程序计数器，是线程私有的，就是一个指针，指向方法区中的方法字节码（用来存储指向像一条指令的地址，也即 将要执行的代码），在执行引擎读取下一条指令，是一个非常小的内存空间，几乎可以忽略不计；</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>Method Area 方法区</p>
+<p>​ 方法区是被所有线程共享，所有字段和方法字节码、以及一些特殊方法，如构造函数，接口代码中也在此定义，简单说，所有定义的方法的信息都保存在该区域，此区域属于共享空间；</p>
+<p>​ 静态变量，常量、类信息（构造方法、接口定义）、运行时的常量池存在方法区中，但是实例变量存在堆内存中，和方法区无关；</p>
+<p>方法区就存这些内容 static final Class 常量池</p>
+<h2 id="栈：数据结构"><a href="#栈：数据结构" class="headerlink" title="栈：数据结构"></a>栈：数据结构</h2><p>程序 = 数据结构 + 算法</p>
+<p>栈：先进后出，后进先出：类似桶</p>
+<p>队列：先进先出（FIFO:First Input First Output）</p>
+<p>为什么 main（）最先执行最后结束</p>
+<p>栈：栈内存，主管程序的运行，生命周期和线程同步；</p>
+<p>线程结束，栈内存也就是释放，对于栈来说，不存在垃圾回收问题；</p>
+<p>一旦线程结束，栈就 Over；</p>
+<p>栈 — 存储的内容：8 大基本类型 + 对象引用 + 实例的方法；</p>
+<p>站运行原理：栈帧</p>
+<p>栈满了：StackOverflowError</p>
+<p>栈 + 堆 + 方法区</p>
+<p>java 对象实例化的过程 — 百度</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426163943.png" alt="shaxiang1" class="lazyload"></p>
+<h2 id="走进-HotSpot-和堆"><a href="#走进-HotSpot-和堆" class="headerlink" title="走进 HotSpot 和堆"></a>走进 HotSpot 和堆</h2><p>Heap, 一个 JVM 只有一个堆内存，堆内存的大小是可以调节的。</p>
+<p>类加载器读取了类文件后，一般会把类，方法，常量，变量放入堆中，保存我们所有引用类型的真实对象；</p>
+<p>堆内存中还要细分为三个区域：</p>
+<ul>
+<li>新生区（伊甸园区） Young/New</li>
+<li>老年区 old</li>
+<li>永久区 Perm 1.8 取消了 永久区 perm ，变成了 元空间</li>
+</ul>
+<p>GC 垃圾回收，主要是在伊甸园区和养老区；</p>
+<p>​ 假设内存满了，OOM，堆内存不够！java.lang.OutOfMemoryError:java heap space</p>
+<p>在 JDK 8 以后，永久存储区改了个名字（元空间）；</p>
+<h3 id="新生区"><a href="#新生区" class="headerlink" title="新生区"></a>新生区</h3><ul>
+<li>类：诞生和成长的地方，甚至死亡；</li>
+<li>伊甸园，所有的对象都是在伊甸园区 new 出来的！</li>
+<li>幸存区 0 幸存区 1</li>
+</ul>
+<p>新生区 minor gc （轻 GC） 15 次还活着的，放入养老区，养老区满了时 full gc （重 GC）</p>
+<h3 id="永久区"><a href="#永久区" class="headerlink" title="永久区"></a>永久区</h3><p>这个区域常驻内存，用来存放 JDK 自身携带的 Class 对象，Interface 元数据，存储的是 JAVA 运行时的一些环境或类信息，这个区域不存在垃圾回收！关闭 JVM 虚拟机就会释放这个区域的内存；</p>
+<ul>
+<li><p>jdk1.6 之前：永久代，常量池在方法区；</p>
+</li>
+<li><p>jdk1.7： 永久代，但是慢慢地退化了，<code>去永久代</code>，常量池在堆中；</p>
+</li>
+<li><p>jdk1.8 之后：无永久代，常量池在元空间；</p>
+</li>
+</ul>
+<p>元空间是在逻辑上存在的，不占用 jvm 内存，而是占用计算机内存；</p>
+<p>OOM 故障：</p>
+<ul>
+<li>尝试扩大堆内存；</li>
+<li>通过专业工具分析内存 ；</li>
+</ul>
+<p>在一个项目中突然出现了 OOM 故障，那么该如何排除，研究为什么出错；</p>
+<ul>
+<li>能够看到代码第几行出错：内存快照分析工具，MAT，Jprofiler；</li>
+<li>Debug 按行分析代码；</li>
+</ul>
+<p>MAT，Jprofiler 作用：</p>
+<ul>
+<li>分析 Dump 内存文件，快速定位内存泄漏；</li>
+<li>获得堆中的数据；</li>
+<li>获得大的对象;</li>
+<li>………..</li>
+</ul>
+<p>通过命令参数运行 jar 包 Jprofiler</p>
+<p>-Xms 设置初始化内存分配大小 1/164</p>
+<p>-Xmx 设置最大分配内存，默认 1/4</p>
+<p>-XX:+PrintGCDetails 打印 GC 垃圾回收信息</p>
+<p>-XX:+HeapDumpOnOutOfMemoryError //oom Dump</p>
+<p>-Xms1m -Xmx8m -XX:+HeapDumpOnOutOfMemoryError</p>
+<h2 id="GC-垃圾回收"><a href="#GC-垃圾回收" class="headerlink" title="GC: 垃圾回收"></a>GC: 垃圾回收</h2><p>GC 的作用区域只有堆、元空间、方法区；</p>
+<p>jvm 再进行 GC 时，并不是对这三个区域统一回收，大部分时候，回收都是新生代：</p>
+<ul>
+<li>新生代</li>
+<li>幸存区</li>
+<li>老年区</li>
+</ul>
+<p>GC 两种类：轻 GC（普通的 GC），重 GC（全局 GC）</p>
+<p>题目：</p>
+<ul>
+<li>JVM 的内存模型和分区-详细到每个分区做什么？</li>
+<li>堆里面的分区有哪些？Eden,form to, 老年区，说说他们的特点！</li>
+<li>GC 的算法有哪些？标记清除法，标记压缩，复制算法，引用计数器;</li>
+<li>轻 GC，重 GC 分别在什么时候发生；</li>
+</ul>
+<h3 id="引用计数法"><a href="#引用计数法" class="headerlink" title="引用计数法"></a>引用计数法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184103.png" alt="shaxiang1" class="lazyload"></p>
+<h3 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426183040.png" alt="shaxiang1" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426183748.png" alt="shaxiang1" class="lazyload"></p>
+<ul>
+<li>好处：没有内存碎片；</li>
+<li>坏处：浪费了内存空间：多了一半空间永远是空 to，假设对象 100%存活（极端情况）</li>
+</ul>
+<p>复制算法最佳使用场景：对象存活度较低的时候；新生区；</p>
+<h3 id="标记清除算法"><a href="#标记清除算法" class="headerlink" title="标记清除算法"></a>标记清除算法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184359.png" alt="shaxiang1" class="lazyload"></p>
+<p>优点：不需要额外空间；</p>
+<p>缺点：两次扫描，严重浪费时间，会产生内存碎片。</p>
+<h3 id="标记清除压缩算法"><a href="#标记清除压缩算法" class="headerlink" title="标记清除压缩算法"></a>标记清除压缩算法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-JVM%E5%9F%BA%E7%A1%80-20210426/20210426184621.png" alt="shaxiang1" class="lazyload"></p>
+<p>多了一次扫描；</p>
+<p>一般会先多进行几次清除，内存碎片变多了，再进行压缩；</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>内存效率：复制算法 &gt; 标记清除算法 &gt; 标记压缩算法；</p>
+<p>时间复杂度：复制算法 &gt; 标记清除算法 &gt; 标记压缩算法；</p>
+<p>内存整齐度：复制算法 = 标记压缩算法 &gt; 标记清除算法；</p>
+<p>内存利用率：标记压缩算法 = 标记清除算法 &gt; 复制算法；</p>
+<h3 id="分代收集法"><a href="#分代收集法" class="headerlink" title="分代收集法"></a>分代收集法</h3><p>年轻代：存活率低，复制算法；</p>
+<p>老年代：区域大，存活率高， 标记清除算法 + 标记压缩算法 混合实现</p>
+<p>JVM 调优就是调整 程序计数次数（默认 15），加大老年代空间等；</p>
+<p>上面仅仅为 <strong>JVM 基础</strong></p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/26/0aa35a941987/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;26&#x2F;0aa35a941987&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;26&#x2F;0aa35a941987&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" rel="tag">狂神说</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559923997"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

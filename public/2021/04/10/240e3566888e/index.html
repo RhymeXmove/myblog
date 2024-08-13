@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-集合框架 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-集合框架">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/10/240e3566888e/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="集合">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/10/240e3566888e/img/article/JAVA-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-20210418/image-20210407105452970.png">
+<meta property="article:published_time" content="2021-04-09T17:38:17.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.341Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta property="article:tag" content="狂神说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/04/10/240e3566888e/img/article/JAVA-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-20210418/image-20210407105452970.png">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924002">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E5%90%88"><span class="toc-number">1.1.</span> <span class="toc-text">什么是集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">和数组的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">位置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#collection-%E4%BD%93%E7%B3%BB"><span class="toc-number">1.2.</span> <span class="toc-text">collection 体系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection-%E7%88%B6%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">Collection 父接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-%E5%AD%90%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">List 子接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List-%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">1.3.3.</span> <span class="toc-text">List 实现类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.4.</span> <span class="toc-text">ArrayList 的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vector-%E7%B1%BB"><span class="toc-number">1.3.5.</span> <span class="toc-text">Vector 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList"><span class="toc-number">1.3.6.</span> <span class="toc-text">LinkedList</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.4.2.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.3.</span> <span class="toc-text">泛型方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E9%9B%86%E5%90%88"><span class="toc-number">1.4.4.</span> <span class="toc-text">泛型集合</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-%E9%9B%86%E5%90%88"><span class="toc-number">1.5.</span> <span class="toc-text">Set 集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">1.5.1.</span> <span class="toc-text">Set 实现类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HashSet-%E9%87%8D%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">HashSet[重点]：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TreeSet"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">TreeSet:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map"><span class="toc-number">1.6.</span> <span class="toc-text">Map</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">1.6.1.</span> <span class="toc-text">Map 接口的使用：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap-%E9%87%8D%E7%82%B9"><span class="toc-number">1.6.2.</span> <span class="toc-text">HashMap[重点]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%9A"><span class="toc-number">1.6.3.</span> <span class="toc-text">HashMap 源码分析：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hashtable"><span class="toc-number">1.6.4.</span> <span class="toc-text">Hashtable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Properties"><span class="toc-number">1.6.5.</span> <span class="toc-text">Properties</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%92%8C%E6%B5%81%E6%9C%89%E5%85%B3%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.5.1.</span> <span class="toc-text">和流有关的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#store-%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.5.2.</span> <span class="toc-text">store 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#load-%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.5.3.</span> <span class="toc-text">load 方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap"><span class="toc-number">1.6.6.</span> <span class="toc-text">TreeMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection-%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">1.7.</span> <span class="toc-text">Collection 工具类</span></a></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-集合框架" class="lazyload">
+            <h1>JAVA-集合框架</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月10日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 22 分钟</a>
+</div>
+
+    <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><span id="more"></span>
+
+<h2 id="什么是集合"><a href="#什么是集合" class="headerlink" title="什么是集合"></a>什么是集合</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>​ 对象的容器，实现了对对象常用的操作</p>
+<h4 id="和数组的区别"><a href="#和数组的区别" class="headerlink" title="和数组的区别"></a>和数组的区别</h4><ol>
+<li>数组长度固定，集合长度不固定</li>
+<li>数组可以存储基本类型和引用类型，集合只能存储引用类型</li>
+</ol>
+<h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><p>​ java.util.*;包</p>
+<h2 id="collection-体系"><a href="#collection-体系" class="headerlink" title="collection 体系"></a>collection 体系</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-20210418/image-20210407105452970.png" alt="image-20210407105452970" class="lazyload"></p>
+<h2 id="Collection-父接口"><a href="#Collection-父接口" class="headerlink" title="Collection 父接口"></a>Collection 父接口</h2><p>特点：代表一组任意类型的对象，无序、无下标、不能重复。</p>
+<p>创建集合 <code>Collection collection = new ArrayList();</code></p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>collection.add(Object obj); 添加一个对象；</li>
+<li>adddAll(Collection c) ；//将一个集合中的所有对象添加到此集合中；</li>
+<li>void clear(); 清空此集合中的所有对象；</li>
+<li>contains(Object obj); //检查此集合中是否包含 o 对象；</li>
+<li>equals(Object obj); //比较此集合中是否包含 o 对象；</li>
+<li>isEmpty(); 判断此集合是否为空；</li>
+<li>remove(Object obj); //在此集合中移除 o 对象；</li>
+<li>int size(); //返回此集合中的元素个数；</li>
+<li>Object[] toArray(); //将此集合转换成数组 ；</li>
+</ol>
+<p>遍历元素（重点）</p>
+<ol>
+<li><p>增强 for（因为无下标）</p>
+<p> <code>or(Object object : collection)&#123; &#125;</code></p>
+</li>
+<li><p>使用迭代器</p>
+<pre><code class="java">//haNext(); 有没有下一个元素
+//next(); 获取下一个元素
+//remove(); 删除当前元素
+Iterator it = collection.iterator();
+while (it.hasNext()) &#123;
+    String s = (String) it.next();
+    System.out.println(s);
+    // 可以使用it.remove(); 进行移除元素
+    // collection.remove(); 不能用collection其他方法 会报并发修改异常
+</code></pre>
+</li>
+<li><p>列表迭代器</p>
+<pre><code class="java"> List list = new ArrayList();
+        list.add(&quot;aaa&quot;);
+        list.add(&quot;bbb&quot;);
+        list.add(&quot;ccc&quot;);
+        ListIterator li = list.listIterator();
+        while(li.hasNext())&#123;
+            System.out.println(li.nextIndex() + &quot;:&quot; + li.next()); //从前往后遍历
+        &#125;
+
+        while(li.hasPrevious())&#123;
+            System.out.println(li.previousIndex() + &quot;:&quot; + li.previous()); //从后往前遍历
+        &#125;
+</code></pre>
+</li>
+</ol>
+<h3 id="List-子接口"><a href="#List-子接口" class="headerlink" title="List 子接口"></a>List 子接口</h3><ol>
+<li>特点：有序，有下标，元素可以重复；</li>
+<li>方法：<ol>
+<li>list.add(int index, Object o) //在 index 位置插入对象 o</li>
+<li>list.addAll(int index, Collection c) //将一个集合中的元素添加到此集合中的 index 位置</li>
+<li>list.get(int index) //返回集合中指定位置的元素</li>
+<li>list.remove(Object o) list.remove(index) //删除集合中指定元素或指定位置的元素</li>
+<li>list,isEmpty() //判断是否为空</li>
+<li>list.subList(int fromIndex, int toIndex) //返回 fromindex 和 toindex 之间的集合元素，含头不含尾</li>
+</ol>
+</li>
+</ol>
+<pre><code class="java">public static void main(String[] args) &#123;
+        List list = new ArrayList&lt;&gt;();
+
+        list.add(&quot;apple&quot;);
+        list.add(&quot;xiaomi&quot;);
+        list.add(&quot;huawei&quot;);
+        System.out.println(&quot;元素个数:&quot;+ list.size());
+        System.out.println(list.toString());
+
+//        list.remove(&quot;xiaomi&quot;);
+//        System.out.println(&quot;元素个数:&quot;+ list.size());
+//        list.remove(0);
+//        System.out.println(&quot;元素个数:&quot;+ list.size());
+
+        System.out.println(&quot;----------------for遍历-------------------&quot;);
+        for (int i = 0; i &lt; list.size(); i++) &#123;
+            System.out.println(list.get(i));
+        &#125;
+        System.out.println(&quot;----------------增强for-------------------&quot;);
+        for (Object o : list) &#123;
+            System.out.println(o);
+        &#125;
+        System.out.println(&quot;----------------使用迭代器进行遍历-------------------&quot;);
+        Iterator it1 = list.iterator();
+        while (it1.hasNext())&#123;
+            System.out.println(it1.next());
+        &#125;
+        System.out.println(&quot;----------------使用列表迭代器进行正序遍历-------------------&quot;);
+        ListIterator it2 = list.listIterator();
+        while (it2.hasNext())&#123;
+            System.out.println(it2.next());
+        &#125;
+
+        //从后向前
+        System.out.println(&quot;----------------使用列表迭代器进行逆序遍历-------------------&quot;);
+        while (it2.hasPrevious())&#123;
+            System.out.println(it2.previous());
+        &#125;
+
+        System.out.println(&quot;-----------------------------------------------------------&quot;);
+        //判断是否存在
+        System.out.println(list.contains(&quot;xiaomi&quot;));
+        //判断是否为空
+        System.out.println(list.isEmpty());
+    System.out.println(&quot;-----------------------------------------------------------&quot;);
+        //指定位置输出,含头不含尾
+        System.out.println(list.subList(1,2));
+
+    &#125;
+</code></pre>
+<h3 id="List-实现类"><a href="#List-实现类" class="headerlink" title="List 实现类"></a>List 实现类</h3><ol>
+<li><p>ArrayLsit [重点]：</p>
+<ol>
+<li>数组结构实现，查询快，增删慢；</li>
+<li>JDK1.2 版本，运行效率快，线程不安全。</li>
+</ol>
+</li>
+<li><p>Vector:</p>
+<ol>
+<li>数组结构实现，查询快，增删慢；</li>
+<li>JDK1.0 版本，运行效率慢，线程安全。</li>
+</ol>
+</li>
+<li><p>LinkedList：</p>
+<ol>
+<li>链表结构实现，增删快，查询慢。</li>
+</ol>
+</li>
+</ol>
+<h3 id="ArrayList-的使用"><a href="#ArrayList-的使用" class="headerlink" title="ArrayList 的使用"></a>ArrayList 的使用</h3><p>创建集合 <code>ArrayList arrayList = new ArrayList&lt;&gt;();</code></p>
+<ol>
+<li><p>添加元素 <code>arrayList.add();</code></p>
+</li>
+<li><p>删除元素 <code>arrayList.remove(new Student(&quot;name&quot;, 10));</code></p>
+<p>这里重写了 equals(this == obj) 方法</p>
+</li>
+</ol>
+<pre><code class="java"> @Override
+    public boolean equals(Object obj) &#123;
+        if (this == obj) &#123;
+            return true;
+        &#125;
+        if (obj == null) &#123;
+            return false;
+        &#125;
+        if(obj instanceof Student)&#123;
+            Student s = (Student)obj;
+            //4 比较属性
+            return this.name.equals(s.getName()) &amp;&amp; this.age == s.getAge();
+        &#125;
+        return false;
+    &#125;
+</code></pre>
+<ol start="3">
+<li><p>遍历元素【重点】</p>
+<ol>
+<li>迭代器</li>
+</ol>
+<pre><code class="java">Iterator it = arrayList.iterator();
+while(it.hasNext())&#123;
+  Student s = (Student)it.next(); //强转
+&#125;
+</code></pre>
+<ol start="2">
+<li>列表迭代器</li>
+</ol>
+<pre><code class="java">ListIterator li = arrayList.listIterator();
+while(li.hasNext())&#123;
+  Student s = (Student)li.next(); //从前往后遍历
+&#125;
+
+while(li.hasPrevious())&#123;
+  Student s = (Student)li.previous();//从后往前遍历
+&#125;
+</code></pre>
+</li>
+<li><p>ArrayList 源码分析</p>
+<ol>
+<li><p><code>private static final int DEFAULT_CAPACITY = 10;</code> //默认容量 10；</p>
+<p>注意：如果没有向集合中添加任何元素时，容量 0，添加一个后，容量为 10；</p>
+<p>每次扩容是原来的 1.5 倍；</p>
+</li>
+<li><p><code>private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</code> 存放元素的数组；</p>
+</li>
+<li><p><code>private int size;</code> 实际元素个数，一定小于容量；</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Vector-类"><a href="#Vector-类" class="headerlink" title="Vector 类"></a>Vector 类</h3><ol>
+<li>创建集合 <code>Vector vector = new Vector&lt;&gt;();</code></li>
+<li>增加、删除、判断同上与 list 相同</li>
+<li>遍历中枚举器遍历</li>
+</ol>
+<pre><code class="java">Enumeration en = vector.elements();
+while(en.hasMoreElements())&#123;
+  String o = (String)en.nextElement();
+  sout(o);
+&#125;
+</code></pre>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><ol>
+<li><p>ArrayLsit [重点]：</p>
+<ol>
+<li>数组结构实现，查询快，增删慢；</li>
+<li>JDK1.2 版本，运行效率快，线程不安全。</li>
+</ol>
+</li>
+<li><p>Vector:</p>
+<ol>
+<li>数组结构实现，查询快，增删慢；</li>
+<li>JDK1.0 版本，运行效率慢，线程安全。</li>
+</ol>
+</li>
+<li><p>LinkedList：</p>
+<ol>
+<li>链表结构实现，增删快，查询慢。</li>
+</ol>
+</li>
+<li><pre><code class="java">LinkedList linkedList = new LinkedList();
+</code></pre>
+</li>
+<li><p>主要方法与 ArrayList()相同；遍历方法，for, Iterator;</p>
+</li>
+</ol>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ol>
+<li>本质是参数化类型，把类型作为参数传递</li>
+<li>常见形式有泛型类、泛型接口、泛型方法</li>
+<li>语法<T> &lt;T, V&gt; T 成为类型占位符，表示一种引用类型，可以写多个逗号隔开</li>
+<li>好处<ol>
+<li>提高代码重用性</li>
+<li>防止类型转换异常，提高代码安全性</li>
+</ol>
+</li>
+</ol>
+<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><pre><code class="java">/**
+ * 泛型类
+ * T是类型占位符，表示一种引用类型，如果编写多个使用逗号隔开
+ */
+public class MyGeneric&lt;T&gt; &#123;
+    T t;
+    public void show(T t) &#123;
+        System .out.println(t);
+    &#125;
+    public T getT() &#123;
+        return t;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">        MyGeneric&lt;String&gt; myGeneric = new MyGeneric&lt;String&gt;();
+        myGeneric.t = &quot;hello&quot;;
+        myGeneric.show(&quot;大家好，加油&quot;);
+        String str = myGeneric.getT();
+        System.out.println(str);
+
+        MyGeneric&lt;Integer&gt; myGeneric2 = new MyGeneric&lt;&gt;();
+        myGeneric2.t = 100;
+        myGeneric2.show(200);
+        Integer integer = myGeneric2.getT();
+        System.out.println(integer);
+</code></pre>
+<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><pre><code class="java">/**
+ * 泛型接口
+ * 语法, 接口名&lt;T&gt;
+ * 注意，不能泛型静态常量
+ */
+public interface MyInterface&lt;T&gt; &#123;
+    String name = &quot;张三&quot;;
+
+    T server(T t);
+&#125;
+</code></pre>
+<pre><code class="java">public class MyInterfaceImpl implements MyInterface&lt;String&gt; &#123;
+
+    @Override
+    public String server(String t) &#123;
+        System.out.println(t);
+        return t;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class MyInterfanceImpl2&lt;T&gt; implements MyInterface&lt;T&gt; &#123;
+
+    @Override
+    public T server(T t) &#123;
+        System.out.println(t);
+        return t;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">        //myinterface
+        MyInterfaceImpl impl = new MyInterfaceImpl();
+        impl.server(&quot;xxxxxxxxxx&quot;);
+
+        //myinterfaceimpl2
+        MyInterfanceImpl2&lt;Integer&gt; impl2 = new MyInterfanceImpl2&lt;&gt;();
+        impl2.server(1000);
+        MyInterfanceImpl2&lt;String&gt; impl3 = new MyInterfanceImpl2&lt;&gt;();
+        impl3.server(&quot;ccccccccccc&quot;);
+</code></pre>
+<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><pre><code class="java">/**
+ * 泛型方法
+ * 语法： &lt;T&gt; 返回值类型
+ */
+
+public class MyGenericMethod &#123;
+    public &lt;T&gt; T show(T t) &#123;
+        System.out.println(&quot;泛型方法&quot; + t);
+        return t;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">        //泛型方法
+        MyGenericMethod myGenericMethod = new MyGenericMethod();
+        myGenericMethod.show(&quot;bbbb&quot;);
+        myGenericMethod.show(200);
+        myGenericMethod.show(1.23);
+</code></pre>
+<h3 id="泛型集合"><a href="#泛型集合" class="headerlink" title="泛型集合"></a>泛型集合</h3><p>概念：参数化类型、类型安全的集合，强制集合元素的类型必须一致</p>
+<p>特点：</p>
+<ol>
+<li>编译时即可检查，而非运行时抛出异常</li>
+<li>访问时，不必类型转换（拆箱）</li>
+<li>不同泛型之间应用不能相互赋值，泛型不存在多态</li>
+</ol>
+<pre><code class="java">        ArrayList&lt;String&gt; arrayList = new ArrayList&lt;String&gt;();
+        arrayList.add(&quot;xxx&quot;);
+        arrayList.add(&quot;yyy&quot;);
+
+        for (String s : arrayList) &#123;
+            System.out.println(s.toString());
+        &#125;
+
+        ArrayList&lt;Student&gt; arrayList2 = new ArrayList&lt;&gt;();
+        Student s1 = new Student(&quot;刘德华&quot;, 20);
+        Student s2 = new Student(&quot;郭富城&quot;, 21);
+        Student s3 = new Student(&quot;梁朝伟&quot;, 22);
+        arrayList2.add(s1);
+        arrayList2.add(s2);
+        arrayList2.add(s3);
+
+        Iterator iterator = arrayList2.listIterator();
+        while (iterator.hasNext()) &#123;
+            System.out.println(iterator.next());
+        &#125;
+</code></pre>
+<h2 id="Set-集合"><a href="#Set-集合" class="headerlink" title="Set 集合"></a>Set 集合</h2><ol>
+<li>特点：无序，无下标、元素不可重复；</li>
+<li>方法：全部继承自 Collection 中的方法；</li>
+<li>增、删、遍历、判断与 collection 相同；</li>
+</ol>
+<pre><code class="java">        Set&lt;String&gt; set = new HashSet&lt;&gt;();
+        //1. 添加数据
+        set.add(&quot;小米&quot;);
+        set.add(&quot;华为&quot;);
+        set.add(&quot;苹果&quot;);
+        System.out.println(&quot;数据个数:&quot; + set.size());
+        System.out.println(set.toString());
+        //2 删除数据
+        //set.remove(&quot;小米&quot;);
+        System.out.println(&quot;----------------增强for--------------&quot;);
+        for (String s : set) &#123;
+            System.out.println(s);
+        &#125;
+        System.out.println(&quot;----------------迭代器--------------&quot;);
+        Iterator&lt;String&gt; iterator = set.iterator();
+        while (iterator.hasNext()) &#123;
+            System.out.println(iterator.next());
+        &#125;
+
+        while (iterator.hasNext()) &#123;
+            System.out.println(iterator.next());
+        &#125;
+</code></pre>
+<h3 id="Set-实现类"><a href="#Set-实现类" class="headerlink" title="Set 实现类"></a>Set 实现类</h3><h4 id="HashSet-重点-："><a href="#HashSet-重点-：" class="headerlink" title="HashSet[重点]："></a>HashSet[重点]：</h4><ol>
+<li>无序，基于 HashCode 实现元素不重复；</li>
+<li>当存入元素的哈希码相同时，会调用 equals 进行确认，如结果为 true，则拒绝后者存入；</li>
+</ol>
+<p>存储结构：哈希表（数组+链表+红黑树）</p>
+<p>存储过程（重复依据）</p>
+<ol>
+<li><p>根据 hashCode 计算保存的位置，如果位置为空，直接保存，若不为空，进行第二步</p>
+</li>
+<li><p>再执行 equals 方法，如果 equals 为 true，则认为是重复，否则形成链表</p>
+<p>基于 HashCode 计算元素存放位置</p>
+<ol>
+<li><p>利用 31 这个质数，减少散列冲突</p>
+<p>31 提高执行效率 <code>31 * i = (i &lt;&lt; 5) - i</code> 转为移位操作</p>
+</li>
+<li><p>当存入元素的哈希码相同时，会调用 equals 进行确认，如果结果为 true，则拒绝后者存入</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code class="java"> public static void main(String[] args) &#123;
+        HashSet&lt;String&gt; hashSet = new HashSet&lt;&gt;();
+
+        hashSet.add(&quot;刘德华&quot;);
+        hashSet.add(&quot;郭富城&quot;);
+        hashSet.add(&quot;梁朝伟&quot;);
+
+        System.out.println(&quot;元素个数：&quot; + hashSet.size());
+        System.out.println(hashSet.toString());
+        //删除元素
+//        hashSet.remove(&quot;刘德华&quot;);
+        //增强for
+        System.out.println(&quot;---------------增强for-----------------&quot;);
+        for (String s : hashSet) &#123;
+            System.out.println(s);
+        &#125;
+
+        System.out.println(&quot;---------------迭代器-----------------&quot;);
+        Iterator it= hashSet.iterator();
+        while (it.hasNext()) &#123;
+            System.out.println(it.next());
+        &#125;
+    &#125;
+</code></pre>
+<pre><code class="java">//重写equals + hashCode
+     @Override
+    public boolean equals(Object o) &#123;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &amp;&amp;
+                name.equals(person.name);
+    &#125;
+
+   @Override
+    public int hashCode() &#123;
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + age;
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        return result;
+    &#125;
+</code></pre>
+<h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet:"></a>TreeSet:</h4><ol>
+<li><p>基于排列顺序实现元素不重复；</p>
+</li>
+<li><p>实现了 sortedset 接口，对集合元素自动排序；</p>
+</li>
+<li><p>元素对象的类型必须实现，Comparable 接口，指定排序规则；</p>
+</li>
+<li><p>通过 CompareTo 方法确定是否为重复元素；</p>
+</li>
+<li><p>存储结构：红黑树</p>
+</li>
+<li><p>创建集合 <code>TreeSet&lt;String&gt; treeSet = new TreeSet&lt;&gt;()</code></p>
+<p>添加元素 <code>treeSet.add();</code></p>
+<p>删除元素 <code>treeSet.remove();</code></p>
+<p>遍历 1. 增强 for 2. 迭代器</p>
+<p>判断 <code>treeSet.contains();</code></p>
+</li>
+<li><p>补充： TreeSet 集合的使用</p>
+<ol>
+<li>Comparator 实现定制比较（比较器）</li>
+<li>Comparable 可比较的</li>
+</ol>
+<pre><code class="java">TreeSet&lt;Person&gt; persons = new TreeSet&lt;&gt;(new Comparator&lt;Person&gt;() &#123;
+            @Override
+            public int compare(Person o1, Person o2) &#123;
+                int n1 = o1.getAge() - o2.getAge();
+                int n2 = o1.getName().compareTo(o2.getName());
+                return n1 == 0 ? n2 : n1;
+            &#125;
+        &#125;);
+</code></pre>
+</li>
+<li><p>TreeSet 案例:</p>
+<ul>
+<li>要求使用 TreeSet 集合实现字符串按照长度进行排序；</li>
+<li>实现方法：重写 Comparator 的 compare 方法</li>
+</ul>
+</li>
+</ol>
+<pre><code class="java"> /**
+     * 要求使用TreeSet 集合实现字符串按照长度进行排序；
+     * helloWord  zhang  lisi  wangwu  beijing  xian  nanjing
+     * @authoe sx
+     */
+    public static void main(String[] args) &#123;
+        TreeSet treeSet = new TreeSet&lt;&gt;(new Comparator&lt;String&gt;() &#123;
+            @Override
+            public int compare(String o1, String o2) &#123;
+                int n1 = o1.length()-o2.length();
+                int n2 = o1.compareTo(o2);
+                return n1==0?n2:n1;
+            &#125;
+        &#125;);
+        //添加数据
+        treeSet.add(&quot;helloWord&quot;);
+        treeSet.add(&quot;zhang&quot;);
+        treeSet.add(&quot;lisi&quot;);
+        treeSet.add(&quot;wangwu&quot;);
+        treeSet.add(&quot;beijing&quot;);
+        treeSet.add(&quot;xian&quot;);
+        treeSet.add(&quot;nanjing&quot;);
+        System.out.println(treeSet.toString());
+
+    &#125;
+
+[lisi, xian, zhang, wangwu, beijing, nanjing, helloWord]
+</code></pre>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ol>
+<li>特点：存储一对数据（Key, Value），无序、无下标，键不可以重复，值可重复；</li>
+<li>方法：<ol>
+<li>V put(K key, V value) 将对象存到集合中，关联键值 ;</li>
+<li>Object get(Object key) 根据键获得对应的值 ;</li>
+<li>Set<K> 返回所有的 Key;</li>
+<li>Collection<V> values() 返回包含所有值的 Collection 集合;</li>
+<li>Set&lt;Map.Entry&lt;K, V&gt;&gt; 键值匹配的 Set 集合;</li>
+</ol>
+</li>
+</ol>
+<h3 id="Map-接口的使用："><a href="#Map-接口的使用：" class="headerlink" title="Map 接口的使用："></a>Map 接口的使用：</h3><p>两种遍历方法：</p>
+<ol>
+<li>keySet()把 map 中的 key 存在 set 集合中；entrySet()把（key，value）封装成一个 entry 类型（映射对）；</li>
+<li>entrySet()效率高于 keySet()方法；因为 entrySet 一次性把 key，value 取出。</li>
+</ol>
+<pre><code class="java">public static void main(String[] args) &#123;
+        //创建Map集合
+        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();
+
+        map.put(&quot;cn&quot;, &quot;中国&quot;);
+        map.put(&quot;uk&quot;, &quot;英国&quot;);
+        map.put(&quot;fc&quot;, &quot;法国&quot;);
+        map.put(&quot;gm&quot;, &quot;德国&quot;);
+
+        System.out.println(&quot;元素个数：&quot; + map.size());
+        System.out.println(map.toString());
+
+        //删除
+//        map.remove(&quot;fc&quot;);
+//        System.out.println(map.toString());
+
+        //遍历
+        //使用keySet()方法
+        System.out.println(&quot;----------keySet---------------&quot;);
+        Set&lt;String&gt; keySet = map.keySet();
+        for (String key : keySet) &#123;
+            System.out.println(key + &quot;:&quot; + map.get(key));
+        &#125;
+        System.out.println(&quot;----------entrySet---------------&quot;);
+//        使用entrySet方法
+        Set&lt;Map.Entry&lt;String, String&gt;&gt; entries = map.entrySet();
+        for (Map.Entry&lt;String, String&gt; entry : entries) &#123;
+            System.out.println(entry.getKey() + &quot;:&quot; + entry.getValue());
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="HashMap-重点"><a href="#HashMap-重点" class="headerlink" title="HashMap[重点]"></a>HashMap[重点]</h3><p>JDK1.2 版本，线程不安全，运行效率快，允许用 null 作为 key 或是 value。</p>
+<p>存储结构：哈希表（数组+链表+红黑树）</p>
+<p>使用 key 可使 hashcode 和 equals 作为重复</p>
+<p>增、删、遍历、判断与上述一致</p>
+<p>HashMap 常用方法：alt + insert 重写 equals 和 hashcode 去掉重复项；</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+        //创建集合
+        HashMap&lt;Student, String&gt; students = new HashMap&lt;&gt;();
+        //添加元素
+        Student s1 = new Student(&quot;孙悟空&quot;, 100);
+        Student s2 = new Student(&quot;猪八戒&quot;, 101);
+        Student s3 = new Student(&quot;沙和尚&quot;, 102);
+        students.put(s1, &quot;花果山&quot;);
+        students.put(s2, &quot;黑风洞&quot;);
+        students.put(s3, &quot;流沙河&quot;);
+        students.put(s3, &quot;流沙河&quot;);
+        students.put(new Student(&quot;沙和尚&quot;, 102), &quot;流沙河&quot;);
+        System.out.println(students.size());
+        System.out.println(students.toString());
+
+        //删除元素
+//        students.remove(s1);
+//        System.out.println(&quot;删除之后：&quot; + students.size());
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //遍历
+        for (Student key : students.keySet()) &#123;
+            System.out.println(key.toString() + &quot;:&quot; + students.get(key));
+        &#125;
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //使用entrySet()
+        for (Map.Entry&lt;Student, String&gt; studentStringEntry : students.entrySet()) &#123;
+            System.out.println(studentStringEntry.getKey() + &quot;:&quot; + studentStringEntry.getValue());
+        &#125;
+
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //判断
+        System.out.println(students.containsKey(s1));
+        System.out.println(students.containsValue(&quot;流沙河&quot;));
+    &#125;
+</code></pre>
+<h3 id="HashMap-源码分析："><a href="#HashMap-源码分析：" class="headerlink" title="HashMap 源码分析："></a>HashMap 源码分析：</h3><ol>
+<li><p><code>static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4;</code> //默认初始容量大小</p>
+<p>1 左移 4 位 = 2^4 = 16，底层移位计算最快；</p>
+</li>
+<li><p><code>static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;</code> //最大容量大小；</p>
+</li>
+<li><p><code>DEFAULT_LOAD_FACTOR</code> //默认加载因子；</p>
+</li>
+<li><p><code>static final int TREEIFY_THRESHOLD = 8;</code></p>
+<p><code>static final int MIN_TREEIFY_CAPACITY = 64;</code> //链表长度大于 8，数组长度大于 64 时存储结构改为红黑树；</p>
+</li>
+<li><p><code>static final int UNTREEIFY_THRESHOLD = 6;</code> //链表长度小于 6，变回链表结构</p>
+</li>
+</ol>
+<p><strong>源码分析总结</strong>：</p>
+<ol>
+<li>HashMap 刚创建时，table 是 null，节省空间，当添加第一个元素时，table 容量调整为 16</li>
+<li>当元素个数大于阈值 75%（16*0.75 = 12）时，会进行扩容，扩容后的大小为原来的两倍，目的是减少调整元素的个数</li>
+<li>jdk1.8 当每个链表长度 &gt;8 ，并且数组元素个数 ≥64 时，会调整成红黑树，目的是提高效率</li>
+<li>jdk1.8 当链表长度 &lt;6 时 调整成链表</li>
+<li>jdk1.8 以前，链表是头插入，之后为尾插入</li>
+</ol>
+<h3 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h3><p>​ JDK1.0 版本，线程安全，运行效率慢，不允许 NULL 作为 key 或是 value。</p>
+<p>​ 基本不用。</p>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>​ Hashtable 的子类，需要 key 和 value 都是 String。在流中使用较多，通常用于配置文件的读取。在流的学习中进行使用。</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+        //创建集合
+        Properties properties = new Properties();
+        //添加数据
+        properties.setProperty(&quot;username&quot;, &quot;zhangsan&quot;);
+        properties.setProperty(&quot;age&quot;, &quot;20&quot;);
+        System.out.println(properties);
+
+        //遍历
+        //keyset
+        for (Object o : properties.keySet()) &#123;
+            System.out.println(o);
+        &#125;
+
+        //entrySet
+        for (Map.Entry&lt;Object, Object&gt; objectObjectEntry : properties.entrySet()) &#123;
+            System.out.println(objectObjectEntry);
+        &#125;
+
+        //stringPropertyName
+        for (String stringPropertyName : properties.stringPropertyNames()) &#123;
+            System.out.println(stringPropertyName + &quot;:&quot; + properties.getProperty(stringPropertyName));
+        &#125;
+    &#125;
+</code></pre>
+<h4 id="和流有关的方法"><a href="#和流有关的方法" class="headerlink" title="和流有关的方法"></a>和流有关的方法</h4><pre><code class="java">//和流有关的方法
+        PrintWriter pw = new PrintWriter(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\集合框架\\src\\com\\shan\\collection\\properties\\print.properties&quot;);
+        properties.list(pw);
+        pw.close();
+</code></pre>
+<h4 id="store-方法"><a href="#store-方法" class="headerlink" title="store 方法"></a>store 方法</h4><pre><code class="java">FileOutputStream fos = new FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\集合框架\\src\\com\\shan\\collection\\properties\\print.properties&quot;);
+        properties.store(fos, &quot;注释&quot;);
+        fos.close();
+
+结果：
+#\u6CE8\u91CA    properties文件不允许中文
+#Sat Apr 10 01:08:21 CST 2021
+age=20
+username=zhangsan
+</code></pre>
+<h4 id="load-方法"><a href="#load-方法" class="headerlink" title="load 方法"></a>load 方法</h4><pre><code class="java">//        load方法
+        Properties properties2 = new Properties();
+        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\集合框架\\src\\com\\shan\\collection\\properties\\\\print.properties&quot;);
+        properties2.load(fis);
+        fis.close();
+        System.out.println(properties2.toString());
+</code></pre>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>​ 实现了 SortedMap 接口（是 map 的子接口），可以对 key 自动排序</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+        TreeMap&lt;Student, String&gt; students = new TreeMap&lt;&gt;();
+        Student s1 = new Student(&quot;孙悟空&quot;, 103);
+        Student s2 = new Student(&quot;猪八戒&quot;, 101);
+        Student s3 = new Student(&quot;沙和尚&quot;, 102);
+        students.put(s1, &quot;花果山&quot;);
+        students.put(s2, &quot;黑风洞&quot;);
+        students.put(s3, &quot;流沙河&quot;);
+        students.put(s3, &quot;流沙河&quot;);
+        students.put(new Student(&quot;沙和尚&quot;, 102), &quot;流沙河&quot;);
+        System.out.println(students.size());
+        System.out.println(students.toString());
+        //删除元素
+//        students.remove(s1);
+//        System.out.println(&quot;删除之后：&quot; + students.size());
+
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //遍历
+        for (Student key : students.keySet()) &#123;
+            System.out.println(key.toString() + &quot;:&quot; + students.get(key));
+        &#125;
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //使用entrySet()
+        for (Map.Entry&lt;Student, String&gt; studentStringEntry : students.entrySet()) &#123;
+            System.out.println(studentStringEntry.getKey() + &quot;:&quot; + studentStringEntry.getValue());
+        &#125;
+
+        System.out.println(&quot;+++++++++++++++++++++++++++++++++++++++&quot;);
+        //判断
+        System.out.println(students.containsKey(s1));
+        System.out.println(students.containsValue(&quot;流沙河&quot;));
+
+    &#125;
+</code></pre>
+<p>定制比较器：重写 compare 方法:</p>
+<p>可以自定义规则</p>
+<pre><code class="java">TreeMap&lt;Student, String&gt; students = new TreeMap(new Comparator&lt;Student&gt;() &#123;
+            @Override
+            public int compare(Student o1, Student o2) &#123;
+                int n1 = o1.getAge() - o2.getAge();
+                int n2 = o1.getName().compareTo(o2.getName());
+                return n1 == 0 ? n2 : n1;
+            &#125;
+        &#125;);
+</code></pre>
+<h2 id="Collection-工具类"><a href="#Collection-工具类" class="headerlink" title="Collection 工具类"></a>Collection 工具类</h2><p>​ 概念：集合工具类，定义了除了存取以外的集合常用方法；</p>
+<p>​ 1. 排序 <code>Collections.sort()</code></p>
+<p>​ 2. 直接二分查找<code>int i = Collections.binarySearch(list, x);</code> 成功返回索引；</p>
+<p>​ 其他方法 ：</p>
+<p>复制<code>Collections.copy(dest, list);</code></p>
+<p>​ 反转<code>Collections.reverse(list);</code></p>
+<p>​ 打乱<code>ollections.shuffle(list);</code></p>
+<pre><code class="java">public static void main(String[] args) &#123;
+        List&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        list.add(20);
+        list.add(3);
+        list.add(14);
+        list.add(50);
+        list.add(36);
+        //排序
+        System.out.println(&quot;排序之前---&quot; + list.toString());
+        Collections.sort(list);
+        System.out.println(&quot;排序之后---&quot; + list.toString());
+
+        int i = Collections.binarySearch(list, 3);
+        System.out.println(&quot;第&quot; + i + &quot;位&quot;);
+
+        List&lt;Integer&gt; dest = new ArrayList&lt;&gt;();
+        //开辟空间，否则dest为空，无法直接copy放入
+        for (int j = 0; j &lt; list.size(); j++) &#123;
+            dest.add(0);
+        &#125;
+        Collections.copy(dest, list);
+        System.out.println(dest.toString());
+
+        //翻转
+        Collections.reverse(list);
+        System.out.println(list);
+
+        //打乱
+        Collections.shuffle(list);
+        System.out.println(list);
+    &#125;
+</code></pre>
+<p>​ 补充：</p>
+<pre><code class="java">// list转成数组
+Integer[] arr = list.toArray(new Integer[10]);
+sout(arr.length);
+sout(Array.toString(arr));
+
+// 数组转成集合
+// 此时为受限集合，不能 添加和删除！
+String[] name = &#123;&quot;张三&quot;,&quot;李四&quot;,&quot;王五&quot;&#125;;
+List&lt;String&gt; list2 = Arrays.asList(names);
+
+// 把基本类型数组转为集合时，需要修改为包装类
+Integer[] nums = &#123;100, 200, 300, 400, 500&#125;;
+List&lt;Integer&gt; list3 = Arrays.asList(nums);
+</code></pre>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/10/240e3566888e/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;10&#x2F;240e3566888e&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;10&#x2F;240e3566888e&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" rel="tag">狂神说</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924003"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        PostGis数据类型 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="整理自官方文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostGis数据类型">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/08/08/425fb9b156c6/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="整理自官方文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-08T08:38:55.000Z">
+<meta property="article:modified_time" content="2022-04-07T17:25:27.702Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="GIS">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559923986">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PostGIS%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">PostGIS空间数据库，数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%A0%E4%BD%95%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">几何类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#point-%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">point(点)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-%E7%BA%BF"><span class="toc-number">1.1.2.</span> <span class="toc-text">line(线):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lseg-%E7%BA%BF%E6%AE%B5"><span class="toc-number">1.1.3.</span> <span class="toc-text">lseg(线段):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#box-%E7%9F%A9%E5%BD%A2"><span class="toc-number">1.1.4.</span> <span class="toc-text">box (矩形):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#path-%E8%B7%AF%E5%BE%84-%EF%BC%9A"><span class="toc-number">1.1.5.</span> <span class="toc-text">path(路径)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#polygon-%E5%A4%9A%E8%BE%B9%E5%BD%A2-%EF%BC%9A"><span class="toc-number">1.1.6.</span> <span class="toc-text">polygon(多边形)：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#circle-%E5%9C%86-%EF%BC%9A"><span class="toc-number">1.1.7.</span> <span class="toc-text">circle(圆)：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B-%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">数字类型 ：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#numeric"><span class="toc-number">1.2.1.</span> <span class="toc-text">numeric:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#float4-float8"><span class="toc-number">1.2.2.</span> <span class="toc-text">float4 &#x2F; float8:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#int2-int4-int8"><span class="toc-number">1.2.3.</span> <span class="toc-text">int2 &#x2F; int4 &#x2F; int8:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#serial2-serial4-serial8%EF%BC%9A"><span class="toc-number">1.2.4.</span> <span class="toc-text">serial2  &#x2F;   serial4  &#x2F; serial8：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">字符型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#char"><span class="toc-number">1.3.1.</span> <span class="toc-text">char:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#varchar"><span class="toc-number">1.3.2.</span> <span class="toc-text">varchar:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#text"><span class="toc-number">1.3.3.</span> <span class="toc-text">text:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">布尔类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bool"><span class="toc-number">1.4.1.</span> <span class="toc-text">bool:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">二进制数据类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bytea"><span class="toc-number">1.5.1.</span> <span class="toc-text">bytea:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">位串类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bit"><span class="toc-number">1.6.1.</span> <span class="toc-text">bit:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#varbit"><span class="toc-number">1.6.2.</span> <span class="toc-text">varbit:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.7.</span> <span class="toc-text">日期类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#date"><span class="toc-number">1.7.1.</span> <span class="toc-text">date:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interval"><span class="toc-number">1.7.2.</span> <span class="toc-text">interval:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#time%EF%BC%9A"><span class="toc-number">1.7.3.</span> <span class="toc-text">time：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timetz"><span class="toc-number">1.7.4.</span> <span class="toc-text">timetz:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timestamp"><span class="toc-number">1.7.5.</span> <span class="toc-text">timestamp:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timestamptz"><span class="toc-number">1.7.6.</span> <span class="toc-text">timestamptz:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.8.</span> <span class="toc-text">JSON 类型:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#json-jsonb"><span class="toc-number">1.8.1.</span> <span class="toc-text">json  &#x2F;  jsonb:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.9.</span> <span class="toc-text">复合类型 :</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88Type%EF%BC%89"><span class="toc-number">1.9.1.</span> <span class="toc-text">（Type）:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%EF%BC%9A"><span class="toc-number">1.10.</span> <span class="toc-text">域：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#domain%EF%BC%9A"><span class="toc-number">1.10.1.</span> <span class="toc-text">domain：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.11.</span> <span class="toc-text">网络地址类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cidr-inet"><span class="toc-number">1.11.1.</span> <span class="toc-text">cidr &#x2F; inet:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macaddr%EF%BC%9A"><span class="toc-number">1.11.2.</span> <span class="toc-text">macaddr：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macaddr8%EF%BC%9A"><span class="toc-number">1.11.3.</span> <span class="toc-text">macaddr8：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A7%E5%B8%81%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.12.</span> <span class="toc-text">货币类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#money"><span class="toc-number">1.12.1.</span> <span class="toc-text">money:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%90%9C%E7%B4%A2%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.13.</span> <span class="toc-text">文本搜索类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tsquery"><span class="toc-number">1.13.1.</span> <span class="toc-text">tsquery:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tsvector"><span class="toc-number">1.13.2.</span> <span class="toc-text">tsvector:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UUID%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="toc-number">1.14.</span> <span class="toc-text">UUID类型：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XML%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.14.1.</span> <span class="toc-text">XML类型:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%BF%AB%E7%85%A7%EF%BC%9A"><span class="toc-number">1.15.</span> <span class="toc-text">事务快照：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#txid-snapshot"><span class="toc-number">1.15.1.</span> <span class="toc-text">txid_snapshot</span></a></li></ol></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/postgre.jpeg" data-sizes="auto" alt="PostGis数据类型" class="lazyload">
+            <h1>PostGis数据类型</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年08月08日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 17 分钟</a>
+</div>
+
+    <p>整理自官方文档</p>
+<span id="more"></span>
+
+
+
+<h1 id="PostGIS空间数据库，数据类型"><a href="#PostGIS空间数据库，数据类型" class="headerlink" title="PostGIS空间数据库，数据类型"></a>PostGIS空间数据库，数据类型</h1><h2 id="几何类型："><a href="#几何类型：" class="headerlink" title="几何类型："></a>几何类型：</h2><h3 id="point-点-："><a href="#point-点-：" class="headerlink" title="point(点)："></a>point(点)：</h3><p>点是几何类型的基本二维构建块。point使用以下任一语法指定类型的值：</p>
+<pre><code>（x，y）   x，y
+</code></pre>
+<p>其中<em>x</em>和<em>y</em>是相应的坐标，作为浮点数。</p>
+<p>使用第一种语法输出点。</p>
+<h3 id="line-线"><a href="#line-线" class="headerlink" title="line(线):"></a>line(线):</h3><p>线由线性方程<code>*A*</code>x + <code>*B*</code>y + <code>*C*</code>= 0表示，其中<code>*A*</code>和<code>*B*</code>不都为零。类型的值 <code>line</code>以下列形式输入和输出：</p>
+<pre><code>&#123; A，B，C&#125;
+</code></pre>
+<p>或者，可以使用以下任何形式进行输入：</p>
+<pre><code>[ ( x1 , y1 ) , ( x2 , y2 ) ]( ( x1 , y1 ) , ( x2 , y2 ) )  ( x1 , y1 ) , ( x2 , y2 )    x1 , y1   ,   x2 , y2
+</code></pre>
+<p>其中（x1，y1）和（x2，y2）是线上的两个不同点。</p>
+<h3 id="lseg-线段"><a href="#lseg-线段" class="headerlink" title="lseg(线段):"></a>lseg(线段):</h3><p>线段由成对的点表示，这些点是段的端点。<code>lseg</code>类型的值使用下列语法中的任何一种来指定：</p>
+<pre><code>[ ( x1 , y1 ) , ( x2 , y2 ) ]( ( x1 , y1 ) , ( x2 , y2 ) )  ( x1 , y1 ) , ( x2 , y2 )    x1 , y1   ,   x2 , y2
+</code></pre>
+<p>其中（x1，y1）和（x2，y2）是线段的端点。</p>
+<p>使用第一种语法输出线段。</p>
+<h3 id="box-矩形"><a href="#box-矩形" class="headerlink" title="box (矩形):"></a>box (矩形):</h3><p>矩形是由矩形的对角线的点对来表示的。box 使用下列语法中的任何一种来指定类型的值：</p>
+<p>( ( x1 , y1 ) , ( x2 , y2 ) )<br>  ( x1 , y1 ) , ( x2 , y2 )<br>    x1 , y1   ,   x2 , y2</p>
+<p>其中（x1，y1）和（x2，y2）是矩形的任意两个相对的角。</p>
+<p>使用第二种语法输出矩形。</p>
+<p>可以在输入时提供任意两个相对的角，但是值将根据需要重新排序，以便按顺序存储右上角和左下角。</p>
+<p>所以建议在输入时提供右上角和左下角。</p>
+<h3 id="path-路径-："><a href="#path-路径-：" class="headerlink" title="path(路径)："></a>path(路径)：</h3><p>路径由连接点列表表示。路径可以是<strong>开放</strong>的（其中列表中的第一和最后一个点被认为是未连接的），或者是<strong>闭合</strong>的（其中第一和最后一个点被认为是连接的）。</p>
+<p><code>path</code>使用以下任何语法指定类型的值：</p>
+<pre><code>[ ( x1 , y1 ) , ... , ( xn , yn ) ]( ( x1 , y1 ) , ... , ( xn , yn ) )  ( x1 , y1 ) , ... , ( xn , yn )  ( x1 , y1   , ... ,   xn , yn )    x1 , y1   , ... ,   xn , yn
+</code></pre>
+<p>其中点是包括路径的线段的端点。方括号（<code>[]</code>）表示开放路径，而圆括号（<code>()</code>）表示闭合路径。当省略最外面的括号时，如在第三到第五语法中，假设闭合路径。</p>
+<p>其中点是包括路径的线段的端点。方括号（[]）表示开放路径，而小括号（（））表示闭合路径。当最外括号被省略时，如在第三到第五语法中，表示默认为一条闭合路径。</p>
+<p>根据需要，建议使用第一或第二语法输出路径。</p>
+<h3 id="polygon-多边形-："><a href="#polygon-多边形-：" class="headerlink" title="polygon(多边形)："></a>polygon(多边形)：</h3><p>多边形由点列表（多边形的顶点）表示。多边形与闭合路径非常相似，但存储方式不同，并且具有自己的一组支持程序。</p>
+<p><code>polygon</code>使用以下任何一种语法指定类型的值：</p>
+<pre><code>( ( x1 , y1 ) , ... , ( xn , yn ) )  ( x1 , y1 ) , ... , ( xn , yn )  ( x1 , y1   , ... ,   xn , yn )    x1 , y1   , ... ,   xn , yn
+</code></pre>
+<p>其中点是包括多边形边界的线段的端点。</p>
+<p>建议使用第一种语法输出多边形。</p>
+<h3 id="circle-圆-："><a href="#circle-圆-：" class="headerlink" title="circle(圆)："></a>circle(圆)：</h3><p>圆由中心点和半径表示。<code>circle</code>使用以下任何一种语法指定类型的值：</p>
+<pre><code>&lt; ( x , y ) , r &gt;( ( x , y ) , r )  ( x , y ) , r    x , y   , r
+</code></pre>
+<p>其中（x，y）是中心点，r是圆的半径。</p>
+<p>建议使用第一种语法输出圆。</p>
+<h2 id="数字类型-："><a href="#数字类型-：" class="headerlink" title="数字类型 ："></a>数字类型 ：</h2><h3 id="numeric"><a href="#numeric" class="headerlink" title="numeric:"></a>numeric:</h3><p> numeric [ (p , s ) ]等同于decimal [ (p , s ) ]    可选精度的准确数字，p代表整数位加小数位的总位数（不算小数点），s代表小数位的位数。 </p>
+<h3 id="float4-float8"><a href="#float4-float8" class="headerlink" title="float4 / float8:"></a>float4 / float8:</h3><p> 对于<code>float8</code>值，此值最多使用 17 个有效十进制数字，对于<code>float4</code>值，最多使用9个数字。 </p>
+<p> 为了与PostgreSQL的较旧版本生成的输出兼容，并允许降低输出精度，可以使用<a target="_blank" rel="noopener" href="http://www.postgres.cn/docs/12/runtime-config-client.html#GUC-EXTRA-FLOAT-DIGITS">extra_float_digits</a>参数选择四舍五入的十进制输出。 将值设置为0将恢复以前的默认值，即将值四舍五入为6（对于<code>float4</code>）或15（对于<code>float8</code>）个有效的十进制数字。 设置负值会进一步减少位数。 例如-2会将输出分别舍入到4或13位数字。</p>
+<h3 id="int2-int4-int8"><a href="#int2-int4-int8" class="headerlink" title="int2 / int4 / int8:"></a>int2 / int4 / int8:</h3><p>int2 = smallint；</p>
+<p> int4 = integer ；</p>
+<p>int8 = bigint；</p>
+<p><strong><code>int2</code></strong>    2字节小范围整数-32768 to +32767；</p>
+<p><strong><code>int4</code></strong>    4字节整数的典型选择-2147483648 to +2147483647；</p>
+<p><strong><code>int8</code></strong>  8字节  大范围整数  -9223372036854775808 to +9223372036854775807</p>
+<h3 id="serial2-serial4-serial8："><a href="#serial2-serial4-serial8：" class="headerlink" title="serial2  /   serial4  / serial8："></a>serial2  /   serial4  / serial8：</h3><p>自增整数</p>
+<h2 id="字符型："><a href="#字符型：" class="headerlink" title="字符型："></a>字符型：</h2><h3 id="char"><a href="#char" class="headerlink" title="char:"></a>char:</h3><p> 定长字符串 , postgre 内 char类型数据不够填满长度时，会以空格的形式自动补长，取数据的时候，char类型的要用trim()去掉多余的空格，最大255个字符。</p>
+<h3 id="varchar"><a href="#varchar" class="headerlink" title="varchar:"></a>varchar:</h3><p>变长字符串，输入长度不够，变为输入字符长度，最大65535个字节 。</p>
+<h3 id="text"><a href="#text" class="headerlink" title="text:"></a>text:</h3><p>无限变长</p>
+<h2 id="布尔类型："><a href="#布尔类型：" class="headerlink" title="布尔类型："></a>布尔类型：</h2><h3 id="bool"><a href="#bool" class="headerlink" title="bool:"></a>bool:</h3><p>布尔值， f/ t</p>
+<p>输入true或1默认保存为’t’</p>
+<p>输入false或0默认保存为’f’</p>
+<p>可为空(NULL)</p>
+<h2 id="二进制数据类型："><a href="#二进制数据类型：" class="headerlink" title="二进制数据类型："></a>二进制数据类型：</h2><h3 id="bytea"><a href="#bytea" class="headerlink" title="bytea:"></a>bytea:</h3><p> bytea类型是PostgreSQL特有的存储二进制数据的字段类型，与SQL标准中的BLOB和BINARY LARGE OBJECT类型相同。</p>
+<h2 id="位串类型："><a href="#位串类型：" class="headerlink" title="位串类型："></a>位串类型：</h2><h3 id="bit"><a href="#bit" class="headerlink" title="bit:"></a>bit:</h3><p>BIT 是一种可以存储值 0 或 1 的整数类型。</p>
+<p>缺省情况下，BIT 数据类型不允许 NULL。</p>
+<p>一个 BIT 值需要 1 个存储字节。</p>
+<p>在将字符串转换为 BIT 时，前导空格和尾随空格会被删除。如果前导字符是 +，则其将被忽略。如果前导字符是 -，则后面的位会被解释为负数。前导的 0 字符将跳过，其余字符将转换为整数值。如果值不为 0 或 1，则返回错误。</p>
+<h3 id="varbit"><a href="#varbit" class="headerlink" title="varbit:"></a>varbit:</h3><p> <code>varbit(n)</code> 数据是最长*<code>n</code>*的变长类型，更长的串会被拒绝 。</p>
+<h2 id="日期类型："><a href="#日期类型：" class="headerlink" title="日期类型："></a>日期类型：</h2><h3 id="date"><a href="#date" class="headerlink" title="date:"></a>date:</h3><p> 日历日期（年，月，日） </p>
+<h3 id="interval"><a href="#interval" class="headerlink" title="interval:"></a>interval:</h3><p>interval [ fields ] [ (p) ]    16字节    时间间隔    -178000000年    178000000年</p>
+<table>
+<thead>
+<tr>
+<th>例子</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1-2</td>
+<td>SQL标准格式：1年2个月</td>
+</tr>
+<tr>
+<td>3 4:05:06</td>
+<td>SQL标准格式：3日4小时5分钟6秒</td>
+</tr>
+<tr>
+<td>1 year 2 months 3 days 4 hours 5 minutes 6 seconds</td>
+<td>传统Postgres格式：1年2个月3日4小时5分钟6秒钟</td>
+</tr>
+<tr>
+<td>P1Y2M3DT4H5M6S</td>
+<td>“带标志符的”ISO 8601 格式：含义同上</td>
+</tr>
+<tr>
+<td>P0001-02-03T04:05:06</td>
+<td>ISO 8601 的“替代格式”：含义同上</td>
+</tr>
+</tbody></table>
+<h3 id="time："><a href="#time：" class="headerlink" title="time："></a>time：</h3><p>time [ (<em>p</em>) ] without time zone</p>
+<p>一天中的时间</p>
+<h3 id="timetz"><a href="#timetz" class="headerlink" title="timetz:"></a>timetz:</h3><p>time [ (<em>p</em>) ] with time zone</p>
+<p>一天里的时间，包括时区</p>
+<h3 id="timestamp"><a href="#timestamp" class="headerlink" title="timestamp:"></a>timestamp:</h3><p>timestamp [ (<em>p</em>) ] without time zone</p>
+<p>日期和时间</p>
+<h3 id="timestamptz"><a href="#timestamptz" class="headerlink" title="timestamptz:"></a>timestamptz:</h3><p>timestamp [ (<em>p</em>) ] with time zone</p>
+<p>日期和时间，包括时区</p>
+<h2 id="JSON-类型"><a href="#JSON-类型" class="headerlink" title="JSON 类型:"></a>JSON 类型:</h2><h3 id="json-jsonb"><a href="#json-jsonb" class="headerlink" title="json  /  jsonb:"></a>json  /  jsonb:</h3><p>json 和 jsonb数据类型接受几乎完全相同的值集合作为输入。 主要的实际区别之一是效率。json数据类型存储输入文本的精准拷贝，处理函数必须在每 次执行时必须重新解析该数据。而jsonb数据被存储在一种分解好的 二进制格式中，它在输入时要稍慢一些，因为需要做附加的转换。但是 jsonb在处理时要快很多，因为不需要解析。jsonb也支 持索引，这也是一个令人瞩目的优势。</p>
+<p><strong>JSON 基本类型和相应的PostgreSQL类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>JSON 基本类型</th>
+<th>PostgreSQL类型</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>string</code></td>
+<td><code>text</code></td>
+<td>不允许<code>\u0000</code>，如果数据库编码不是 UTF8，非 ASCII Unicode 转义也是这样</td>
+</tr>
+<tr>
+<td><code>number</code></td>
+<td><code>numeric</code></td>
+<td>不允许<code>NaN</code> 和 <code>infinity</code>值</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>boolean</code></td>
+<td>只接受小写<code>true</code>和<code>false</code>拼写</td>
+</tr>
+<tr>
+<td><code>null</code></td>
+<td>(无)</td>
+<td>SQL <code>NULL</code>是一个不同的概念</td>
+</tr>
+</tbody></table>
+<h2 id="复合类型"><a href="#复合类型" class="headerlink" title="复合类型 :"></a><strong>复合类型</strong> :</h2><h3 id="（Type）"><a href="#（Type）" class="headerlink" title="（Type）:"></a>（Type）:</h3><p> PostgreSQL中复合类型有些类似于C语言中的结构体，也可以被视为Oracle中的记录类型，但是还是感觉复合类型这个命名比较贴切。它实际上只是一个字段名和它们的数据类型的列表。PostgreSQL允许像简单数据类型那样使用复合类型。比如，表字段可以声明为一个复合类型。<br>   \1. 声明复合类型:<br>   下面是两个简单的声明示例：</p>
+<pre><code class="sql">  **CREATE TYPE** complex **AS** (
+     r double,
+     i double
+   ); 
+   **CREATE TYPE** inventory_item **AS** (
+     name      text,
+     supplier_id  integer,
+     price      numeric
+   );
+</code></pre>
+<p>   和声明一个数据表相比，声明类型时需要加AS关键字，同时在声明TYPE时不能定义任何约束。下面我们看一下如何在表中指定复合类型的字段，如：</p>
+<p>   和声明一个数据表相比，声明类型时需要加AS关键字，同时在声明TYPE时不能定义任何约束。下面我们看一下如何在表中指定复合类型的字段，如：</p>
+<pre><code class="sql"> CREATE TABLE on_hand (
+     item   **inventory_item**,
+     count  integer
+   );
+</code></pre>
+<p>   最后需要指出的是，在创建表的时候，PostgreSQL也会自动创建一个与该表对应的复合类型，名字与表字相同，即表示该表的复合类型。</p>
+<p>   最后需要指出的是，在创建表的时候，PostgreSQL也会自动创建一个与该表对应的复合类型，名字与表字相同，即表示该表的复合类型。</p>
+<p>   \2. 复合类型值输入：<br>   我们可以使用文本常量的方式表示复合类型值，即在圆括号里包围字段值并且用逗号分隔它们。你也可以将任何字段值用双引号括起，如果值本身包含逗号或者圆括号，那么就用双引号括起，对于上面的inventory_item复合类型的输入如下：<br>   ‘(“fuzzy dice”,42,1.99)’<br>   如果希望类型中的某个字段为NULL，只需在其对应的位置不予输入即可，如下面的输入中price字段的值为NULL，<br>   ‘(“fuzzy dice”,42,)’<br>   如果只是需要一个空字串，而非NULL，写一对双引号，如：<br>   ‘(“”,42,)’<br>   在更多的场合中PostgreSQL推荐使用ROW表达式来构建复合类型值，使用该种方式相对简单，无需考虑更多标识字符问题，如：<br>   <strong>ROW</strong>(‘fuzzy dice’, 42, 1.99)<br>   <strong>ROW</strong>(‘’, 42, NULL)<br>   注：对于ROW表达式，如果里面的字段数量超过1个，那么关键字ROW就可以省略，因此以上形式可以简化为：<br>   (‘fuzzy dice’, 42, 1.99)<br>   (‘’, 42, NULL)</p>
+<p>   \3. 访问复合类型：<br>   访问复合类型中的字段和访问数据表中的字段在形式上极为相似，只是为了对二者加以区分，PostgreSQL设定在访问复合类型中的字段时，类型部分需要用圆括号括起，以避免混淆，如：<br>  SELECT (item).name FROM on_hand WHERE (item).price &gt; 9.99;<br>   如果在查询中也需要用到表名，那么表名和类型名都需要被圆括号括起，如：</p>
+<pre><code class="sql">   SELECT (on_hand.item).name FROM on_hand WHERE (on_hand.item).price &gt; 9.99;
+</code></pre>
+<p>   \4. 修改复合类型：<br>   见如下几个示例：<br>   <em>–直接插入复合类型的数据，这里是通过ROW表达式来完成的。</em></p>
+<pre><code class="sql">  INSERT INTO on_hand(item) VALUES(ROW(&quot;fuzzy dice&quot;,42,1.99));
+</code></pre>
+<p>   <em>–在更新操作中，也是可以通过ROW表达式来完成。</em></p>
+<p>   <em>–在更新操作中，也是可以通过ROW表达式来完成。</em></p>
+<pre><code class="sql">UPDATE on_hand SET item = ROW(&quot;fuzzy dice&quot;,42,1.99) WHERE count = 0;
+</code></pre>
+<p>  <em>–在更新复合类型中的一个字段时，我们不能在SET后面出现的字段名周围加圆括号，</em><br>   <em>–但是在等号右边的表达式里引用同一个字段时却需要圆括号。</em></p>
+<p>  <em>–在更新复合类型中的一个字段时，我们不能在SET后面出现的字段名周围加圆括号，</em><br>   <em>–但是在等号右边的表达式里引用同一个字段时却需要圆括号。</em></p>
+<pre><code class="sql">  UPDATE on_hand SET item.price = (item).price + 1 WHERE count = 0;
+</code></pre>
+<p>   <em>–可以在插入中，直接插入复合类型中字段。</em></p>
+<p>   <em>–可以在插入中，直接插入复合类型中字段。</em></p>
+<pre><code class="sql"> INSERT INTO on_hand (item.supplier_id, item.price) VALUES(100, 2.2); 
+</code></pre>
+<h2 id="域："><a href="#域：" class="headerlink" title="域："></a>域：</h2><h3 id="domain："><a href="#domain：" class="headerlink" title="domain："></a>domain：</h3><p>pg中的CREATE DOMAIN表示创建一个新的域，这一功能在oracle中是不支持的。域本质上是一种带有可选约束(在允许的值集合上的 限制)的数据类型。 定义一个域的用户将成为它的拥有者。<br>如果给定一个模式名(例如CREATE DOMAIN myschema.mydomain …)，那么域将被创建在 该指定的模式中。 否则它会被创建在当前模式中。域的名称在其模式中的类型和域之间 必 须保持唯一。<br>要创建一个域，你必须在其底层类型上拥有USAGE特权。</p>
+<p><strong>语法：</strong></p>
+<pre><code class="sql">Command:     CREATE DOMAIN
+Description: define a new domain
+Syntax:
+CREATE DOMAIN name [ AS ] data_type
+    [ COLLATE collation ]
+    [ DEFAULT expression ]
+    [ constraint [ ... ] ]
+
+where constraint is:
+
+[ CONSTRAINT constraint_name ]
+&#123; NOT NULL | NULL | CHECK (expression) &#125;
+123456789101112
+</code></pre>
+<p><strong>例子：</strong><br>–创建domain<br>创建一个domain表示用来存放小于0的整数</p>
+<pre><code class="sql">bill=# create domain d1 as int check(value &lt; 0);
+CREATE DOMAIN
+12
+</code></pre>
+<p>–使用domain建表</p>
+<pre><code class="sql">bill=# create table t_domain(id d1);
+CREATE TABLE
+12
+</code></pre>
+<p>–插入数据测试<br>插入大于0的数便会报错</p>
+<pre><code class="sql">bill=# insert into t_domain values(1);
+ERROR:  value for domain d1 violates check constraint &quot;d1_check&quot;
+bill=# insert into t_domain values(-1);
+INSERT 0 1
+</code></pre>
+<h2 id="网络地址类型"><a href="#网络地址类型" class="headerlink" title="网络地址类型"></a>网络地址类型</h2><h3 id="cidr-inet"><a href="#cidr-inet" class="headerlink" title="cidr / inet:"></a>cidr / inet:</h3><p> IPv4 或 IPv6 网络地址 。</p>
+<p> <code>inet</code>和<code>cidr</code>类型之间的本质区别是<code>inet</code>接受右边有非零位的网络掩码， 而<code>cidr</code>不接受。例如，<code>192.168.0.1/24</code>对<code>inet</code>是有效的，但对<code>cidr</code>是无效的。 </p>
+<h3 id="macaddr："><a href="#macaddr：" class="headerlink" title="macaddr："></a>macaddr：</h3><p><code>macaddr</code>类型存储 MAC 地址，也就是以太网卡硬件地址 （尽管 MAC 地址还用于其它用途）。可以接受下列格式的输入：</p>
+<p>‘08:00:2b:01:02:03’<br>‘08-00-2b-01-02-03’<br>‘08002b:010203’<br>‘08002b-010203’<br>‘0800.2b01.0203’<br>‘0800-2b01-0203’<br>‘08002b010203’</p>
+<h3 id="macaddr8："><a href="#macaddr8：" class="headerlink" title="macaddr8："></a>macaddr8：</h3><p> <code>macaddr8</code>类型以EUI-64格式存储MAC地址，例如以太网卡的硬件地址（尽管MAC地址也被用于其他目的）。这种类型可以接受6字节和8字节长度的MAC地址，并且将它们存储为8字节长度的格式。 </p>
+<h2 id="货币类型："><a href="#货币类型：" class="headerlink" title="货币类型："></a>货币类型：</h2><h3 id="money"><a href="#money" class="headerlink" title="money:"></a>money:</h3><table>
+<thead>
+<tr>
+<th>名字</th>
+<th>存储尺寸</th>
+<th>描述</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>money</code></td>
+<td>8 bytes</td>
+<td>货币额</td>
+<td>-92233720368547758.08到+92233720368547758.07</td>
+</tr>
+</tbody></table>
+<h2 id="文本搜索类型："><a href="#文本搜索类型：" class="headerlink" title="文本搜索类型："></a>文本搜索类型：</h2><h3 id="tsquery"><a href="#tsquery" class="headerlink" title="tsquery:"></a>tsquery:</h3><p>一个<code>tsquery</code>值存储要用于搜索的词位，并且使用布尔操作符<code>&amp;</code>（AND）、<code>|</code>（OR）和<code>!</code>（NOT）来组合它们，还有短语搜索操作符<code>&lt;-&gt;</code>（FOLLOWED BY）。也有一种 FOLLOWED BY 操作符的变体<code>&lt;*</code>N<code>*&gt;</code>，其中*<code>N</code>*是一个整数常量，它指定要搜索的两个词位之间的距离。<code>&lt;-&gt;</code>等效于<code>&lt;1&gt;</code>。</p>
+<p>圆括号可以被用来强制对操作符分组。如果没有圆括号，<code>!</code>（NOT）的优先级最高，其次是<code>&lt;-&gt;</code>（FOLLOWED BY），然后是<code>&amp;</code>（AND），最后是<code>|</code>（OR）。</p>
+<h3 id="tsvector"><a href="#tsvector" class="headerlink" title="tsvector:"></a>tsvector:</h3><p> 一个<code>tsvector</code>值是一个排序的可区分词位的列表，<em>词位</em>是被<em>正规化</em>合并了同一个词的不同变种的词 </p>
+<h2 id="UUID类型："><a href="#UUID类型：" class="headerlink" title="UUID类型："></a>UUID类型：</h2><p>数据类型<code>uuid</code>存储由RFC 4122、ISO/IEC 9834-8:2005以及相关标准定义的通用唯一标识符（UUID）（某些系统将这种数据类型引用为全局唯一标识符GUID）。这种标识符是一个128位的量，它由一个精心选择的算法产生，该算法能保证在已知空间中任何其他使用相同算法的人能够产生同一个标识符的可能性非常非常小。因此，对于分布式系统，这些标识符相比序列生成器而言提供了一种很好的唯一性保障，序列生成器只能在一个数据库中保证唯一。</p>
+<p>一个UUID被写成一个小写十六进制位的序列，该序列被连字符分隔成多个组：首先是一个8位组，接下来是三个4位组，最后是一个12位组。总共的32位（十六进制位）表示了128个二进制位。一个标准形式的UUID类似于：</p>
+<pre><code>a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11
+</code></pre>
+<p>PostgreSQL也接受另一种输入形式： 使用大写位、标准格式被花括号包围、忽略某些或者全部连字符、在任意4位组后面增加一个连字符。例如：</p>
+<pre><code>A0EEBC99-9C0B-4EF8-BB6D-6BB9BD380A11
+&#123;a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11&#125;
+a0eebc999c0b4ef8bb6d6bb9bd380a11
+a0ee-bc99-9c0b-4ef8-bb6d-6bb9-bd38-0a11
+&#123;a0eebc99-9c0b4ef8-bb6d6bb9-bd380a11&#125;
+</code></pre>
+<p>输出总是采用标准形式。</p>
+<h3 id="XML类型"><a href="#XML类型" class="headerlink" title="XML类型:"></a>XML类型:</h3><p> <code>xml</code>数据类型可以被用来存储XML数据。它比直接在一个<code>text</code>域中存储XML数据的优势在于，它会检查输入值的结构是不是良好，并且有支持函数用于在其上执行类型安全的操作 </p>
+<h2 id="事务快照："><a href="#事务快照：" class="headerlink" title="事务快照："></a>事务快照：</h2><h3 id="txid-snapshot"><a href="#txid-snapshot" class="headerlink" title="txid_snapshot"></a>txid_snapshot</h3><p>没看到~</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/08/08/425fb9b156c6/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;08&#x2F;08&#x2F;425fb9b156c6&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;08&#x2F;08&#x2F;425fb9b156c6&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/DB/">DB</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GIS/" rel="tag">GIS</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559923987"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

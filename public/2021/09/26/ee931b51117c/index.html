@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        什么是计算机图形学？ -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="转：什么是计算机图形学？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是计算机图形学？">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="转：什么是计算机图形学？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image002.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image004.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image006.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image008.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image010.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image012.gif">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image014.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image016.jpg">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image018.jpg">
+<meta property="article:published_time" content="2021-09-26T07:35:15.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.349Z">
+<meta property="article:author" content="shanX">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/09/26/ee931b51117c/img/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image002.jpg">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559923981">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AC%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">转：什么是计算机图形学？</span></a></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: 50%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg" data-sizes="auto" alt="什么是计算机图形学？" class="lazyload">
+            <h1>什么是计算机图形学？</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月26日</a>
+    <a><i class="nexmoefont icon-areachart"></i>9.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 40 分钟</a>
+</div>
+
+    <h1 id="转：什么是计算机图形学？"><a href="#转：什么是计算机图形学？" class="headerlink" title="转：什么是计算机图形学？"></a>转：什么是计算机图形学？</h1> <span id="more"></span>
+
+<p>原文地址：<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm">http://staff.ustc.edu.cn/~lgliu/Resources/CG/What_is_CG.htm</a></p>
+<p><strong><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/SummerSchool/USTC-summer-school.html">什么是计算机图形学?</a></strong></p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu">刘利刚</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ustc.edu.cn/">中国科学技术大学</a> <a target="_blank" rel="noopener" href="http://gcl.ustc.edu.cn/">图形与几何计算实验室</a></p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu">http://staff.ustc.edu.cn/~lgliu</a></p>
+<hr>
+<p>【注】 由于时常有本科学生来向笔者询问计算机图形学是做什么的，为了使得学生能够快速了解计算机图形学，有利于他们在选择研究生方向做出适合自己的选择，特撰写此文。本文仅仅为笔者对计算机图形学浅薄的理解，不涉及对概念的定义，是非学术性的。因此，笔者尽量尝试用通俗的语言介绍一下计算机图形学的内容及其应用，以帮助还未接触计算机图形学领域的学生来了解该学科方向。笔者对其中的有些内容的理解也是很有限的，值得进一步的学习和交流。有不当之处，还请读者谅解指正。</p>
+<hr>
+<p><strong>一、什么是计算机图形学？</strong></p>
+<p>什么是计算机图形学？计算机图形学(Computer Graphics，简称 CG)的内容比较丰富，与很多学科都有交叉，因此笔者认为是无法严格定义的。</p>
+<p>在“Wiki 百科”和“百度百科”上，对“计算机图形学”的解释为：计算机图形学是一种使用数学算法将二维或三维图形转化为计算机显示器的栅格形式的科学。简单地说，计算机图形学的主要研究内容就是研究如何在计算机中表示图形、以及利用计算机进行图形的计算、处理和显示的相关原理与算法。虽然通常认为 CG 是指三维图形的处理，事实上也包括了二维图形及图像的处理。</p>
+<p>狭义地理解，计算机图形学是数字图象处理或计算机视觉的逆过程：计算机图形学是用计算机来画图像的学科，数字图象处理是把外界获得的图象用计算机进行处理的学科，计算机视觉是根据获取的图像来理解和识别其中的物体的三维信息及其他信息。</p>
+<p>注意，这些都是不确切的定义，实际上，计算机图形学、数字图象处理和计算机视觉在很多地方的区别不是非常清晰，很多概念是相通的，而且随着研究的深入，这些学科方向不断的交叉融入，形成一个更大的学科方向，可称之为“可视计算”(Visual Computing)。这是后话，此处不详述。</p>
+<p><strong>二、计算机图形学的主要内容</strong></p>
+<p>在学科开创之初，计算机图形学要解决的是如何在计算机中表示三维几何图形,以及如何利用计算机进行图形的生成、处理和显示的相关原理与算法，产生令人赏心悦目的真实感图像。这是狭义的计算机图形学的范畴。随着近 40 年的发展，计算机图形学的内容已经远远不止这些了。广义的计算机图形学的研究内容非常广泛，如图形硬件、图形标准、图形交互技术、光栅图形生成算法、曲线曲面造型、实体造型、真实感图形计算与显示算法，以及科学计算可视化、计算机动画、自然景物仿真、虚拟现实等。</p>
+<p>根据笔者的理解，计算机图形学主要包含四大部分的内容：建模(Modeling)、渲染(Rendering)、动画(Animation)和人机交互(Human–computer Interaction, HCI)。</p>
+<p><strong>1、 建模(Modeling)</strong></p>
+<p>要在计算机中表示一个三维物体，首先要有它的几何模型表达。因此，三维模型的建模是计算机图形学的基础，是其他内容的前提。表达一个几何物体可以是用数学上的样条函数或隐式函数来表达；也可以是用光滑曲面上的采样点及其连接关系所表达的三角网格来表达（即连续曲面的分片线性逼近），如下图所示。</p>
+<p>三维建模方法主要包含如下的一些方法：</p>
+<p>l 计算机辅助设计(CAD)中的主流方法是采用 NURBS（非均匀有理 B-样条、Bezier 曲线曲面）方法（已成为 CAD 工业领域的标准），这也是计算机辅助几何设计(CAGD)所研究的主要内容。此类表达方法有一些难点问题仍未解决，比如非正规情况下的曲面光滑拼合，复杂曲面表达等。这部分涉及的数学比较多，国内做这块的学者比较多些。</p>
+<p>l 细分曲面(Subdivision surface)造型方法，作为一种离散迭代的曲面构造方法，由于其构造过程朴素简单以及实现容易，是一个方兴未艾的研究热点。经过十多年的研究发展，细分曲面造型取得了较大的进展，包括奇异点处的连续性构造方法以及与 GPU 图形硬件相结合的曲面处理方法。</p>
+<p>l 利用软件的直接手工建模。现在主流的商业化的三维建模软件有 Autodesk 3D Max 和 Maya。其他还有面向特定领域的商业化软件，比如面向建筑模型造型的 Google Sketchup，面向 CAD/CAM/CAE 的 CATIA 和 AutoCAD，面向机械设计的 SolidWorks，面向造船行业的 Rhino 等。这些软件需要建模人员有较强的专业知识，而且需要一定时期的培训才能掌握，建模效率低而学习门槛高，不易于普及和让非专业用户使用。</p>
+<p>l 基于笔划或草图交互方式的三维建模方法。草图交互方式由于其符合人类原有日常生活中的思考习惯，交互方式直观简单，是最近几年研究的热点建模方法。其难点是根据具体的应用场合，如何正确地理解和识别用户的交互所表达的语义，构造出用户所希望的模型。</p>
+<p>l 基于语法及规则的过程式建模方法。特别适合具有重复特征和结构化的几何物体与场景，比如建筑、树木等。最近几年有较多的论文及较大的发展。</p>
+<p>l 基于图像或视频的建模方法。这是传统的计算机视觉所要解决的基本问题。在计算机图形学领域，这方面的发展也很迅速。有一些商业化软件或云服务(比如 Autodesk 的 123D)，已经能从若干张照片重建出所拍摄物体的三维模型。该方法的问题是需要物体本身已经存在，而且重建的三维模型的精度有限。</p>
+<p>l 基于扫描点云（深度图像如 Kinect、结构光扫描、激光扫描、LiDAR 扫描等）的建模(Reconstruction)方法。随着深度相机的出现及扫描仪的价格迅速下降，人们采集三维数据变得容易，从采集到的三维点云来重建三维模型的工作在最近几年的 Siggraph(Asia)上能常见到。但是，单纯的重建方式存在精度低、稳定性差和运算量大等不足，远未能满足实际的需求。</p>
+<p>l 基于现有模型来合成建模的方法。随着三维模型的逐渐增多，可以利用现有的三维模型通过简单的操作，比如 cut and paste，或者分析及变形等手段，来拼接或合成新的三维模型。这种通过“学习”模型数据库的知识来进行建模的手段在近 3-5 年里研究得非常热门。从某方面来讲，就是“大数据时代”背景下计算机图形学领域中的一个具体的表现。</p>
+<p>除了上述的这些建模方法，还有其他的一些建模方法，在此不再一一列举。</p>
+<p>在对三维几何模型的构建过程中，还会涉及到很多需要处理的几何问题，比如数据去噪(denoising or smoothing)、补洞(repairing)、简化(simplification)、层次细节(level of detail)、参数化(parameterization)、变形(deformation or editing)、分割(segmentation)、形状分析及检索(shape analysis and retrieval)等。这些问题构成“数字几何处理”的主要研究内容。笔者自 2005 年起开设了多年的《数字几何处理》的研究生课程：</p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Courses/DGP_2012_spring-summer/default.htm">http://staff.ustc.edu.cn/~lgliu/Courses/DGP_2012_spring-summer/default.htm</a></p>
+<p>虽然有上述所提到的这么多的三维建模方式，但是至今为止，仍没有适合一般家庭用户的轻松简单的建模工具。现有的电子设备（比如相机，手机等）能够帮助人们轻松获得图像和视频，但是，不是人人都有能力来构建三维几何模型。如何让大众能够像获取图像那样能够随时随地地获取或者构建三维模型，仍然是计算机图形学的任重道远的主要任务之一！今天，计算机图形学仍未进入“大数据时代”。只有让大众能够轻松进行三维建模，并上载分享他们所构建的模型数据，计算机图形学才可能进入大数据时代。</p>
+<p>另外，随着三维打印(3D printing)的新兴技术的逐渐普及，人们对三维模型的需求也日益增加。笔者个人认为，几何建模和三维打印的未来是共呼吸，同命运的：也只有当人人都能轻松建模时，三维打印才有可能走向千家万户。</p>
+<p>三维几何建模的任务仍然任重道远，大家仍需共同努力！</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image002.jpg" alt="img" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image004.jpg" alt="img" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image006.jpg" alt="img" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image008.jpg" alt="img" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image010.jpg" alt="img" class="lazyload"></p>
+<p><strong>2、 渲染(Rendering)</strong></p>
+<p>有了三维模型或场景，怎么把这些三维几何模型画出来，产生令人赏心悦目的真实感图像？这就是传统的计算机图形学的核心任务，在计算机辅助设计，影视动漫以及各类可视化应用中都对图形渲染结果的高真实感提出了很高的要求。</p>
+<p>上个世纪 80-90 年代研究的比较多些，包含了大量的渲染模型，包括局部光照模型(Local Illumination Model)、光线跟踪算法(Ray Tracing)、辐射度(Radiosity)等，以及到后面的更为复杂、真实、快速的渲染技术，比如全局光照模型(Global Illumination Model)、Photo mapping、BTF、BRDF、以及基于 GPU 的渲染技术等。</p>
+<p>现在的渲染技术已经能够将各种物体，包括皮肤、树木、花草、水、烟雾、毛发等渲染得非常逼真。一些商业化软件（比如 Maya, Blender, Pov Ray 等）也提供了强大的真实感渲染功能，在计算机图形学研究论文中作图中要经常用到这些工具来渲染漂亮的展示图或结果图。</p>
+<p>然而，已知的渲染实现方法，仍无法实现复杂的视觉特效，离实时的高真实感渲染还有很大差距，比如完整地实现适于<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2382.htm">电影</a>渲染（高真实感、高分辨率）制作的 RenderMan 标准，以及其他各类基于物理真实感的实时渲染算法等。因此，如何充分利用 GPU 的计算特性，结合分布式的集群技术，从而来构造低功耗的渲染服务是发展趋势之一。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image012.gif"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image014.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image016.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/20210926-%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/image018.jpg"></p>
+<p><strong>3、 动画(Animation)</strong></p>
+<p>动画是采用连续播放静止图像的方法产生物体运动的效果。计算机动画借助于编程或动画制作软件生成一系列的景物画面，是计算机图形学的研究热点之一。研究方向包括：物理仿真(simulation)，人体动画，关节动画，运动动画，脚本动画，具有人的意识的虚拟角色的动画系统等。另外，高度物理真实感的动态模拟，包括对各种形变、水、气、云、烟雾、燃烧、爆炸、撕裂、老化等物理现象的真实模拟，也是动画领域的主要问题。这些技术是各类动态仿真应用的核心技术，可以极大地提高虚拟现实系统的沉浸感 （其中的本质是数值求解各种偏微分方程）。计算机动画的应用领域广泛，比如动画片制作，广告、 电影特技，训练模拟，游戏等。</p>
+<p>网上的一些 3D 动画的视频：</p>
+<p>Larva 虫虫: <a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XMzAzMzkxMTY0.html">http://v.youku.com/v_show/id_XMzAzMzkxMTY0.html</a></p>
+<p>The Killer Bean: <a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XMjI5ODE2MTEy.html">http://v.youku.com/v_show/id_XMjI5ODE2MTEy.html</a></p>
+<p>爱与孝: <a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTU0OTUxNjUy.html">http://v.youku.com/v_show/id_XNTU0OTUxNjUy.html</a></p>
+<p>房地产动画广告宣传片: <a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTc1OTE4MDMy.html">http://v.youku.com/v_show/id_XNTc1OTE4MDMy.html</a></p>
+<p><strong>4、 人机交互(Human–Computer Interaction, HCI)</strong></p>
+<p>人机交互（Human-Computer Interaction, 简写 HCI）是指人与计算机之间以一定的交互方式或交互界面，来完成确定任务的人与计算机之间的信息交换过程。简单来讲，就是人如何通过一定的交互方式告诉计算机来完成他所希望完成的任务。</p>
+<p>计算机图形学的顶级会议 ACM SIGGRAPH 是“ACM Special Interest Group on GRAPHics and Interactive Techniques”的缩写，缩写中只包含了 Graphics，而忽略了 Interactive Techniques，在长时间没有得到计算机图形学研究的重视。最近，包括在 SIGGRAPH 会议上，以及人机交互的顶级会议 SIGCHI 上，陆续出现了许多新兴的人机交互技术及研究论文。大家逐渐重视起来。</p>
+<p>在早期（上个世纪 60-70 年代），只有以键盘输入的字符界面；到了 80 年代，以 WIMP(窗口、图符、菜单、鼠标)为基础的图形用户界面(GUI)逐渐成为当今计算机用户界面的主流。</p>
+<p>近年来，以用户为中心的系统设计思想，增进人机交互的自然性，提高人机交互的效率是用户界面的主要研究方向。陆续提出了多通道用户界面的思想，它包括语言、姿势输入、头部跟踪、视觉跟踪、立体显示、三维交互技术、感觉反馈及自然语言界面等。</p>
+<p>事实上，人体的表面本身就是人机界面。人体的任何部分（姿势，手势，语言，眼睛，肌肉电波，脑波等）都可以成为人机对话的通道。比如 2010 年微软出的 Kinect 就是一种无需任何操纵杆的基于体感的人机界面，用户本身就是控制器。Kinect 在微软的 Xbox 游戏上取得了极大的成功，之后在其他方面也得到了很多的应用。</p>
+<p>特别是到了今年（2013 年），人机交互设备有了巨大的发展，各种自然的交互手段层出不穷，极大地丰富了用户与机器交互的体验，方便了用户的操作，轻松表达了用户的交互意图。可以说，</p>
+<p><strong>我们正处在图形与交互技术极速发展的浪尖！</strong></p>
+<p>以下是最近几年（特别是今年）出现的一些值得关注的新兴的人机交互设备：</p>
+<p>l Microsoft Kinect：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTc2ODY0MTA4.html">http://v.youku.com/v_show/id_XNTc2ODY0MTA4.html</a></p>
+<ol>
+<li><p> Kinect 由微软于 2010 年推出的对 XBOX360 体感外设，它不需要使用任何控制器，仅依靠相机捕捉三维空间中玩家的运动，同时它导入了即时动态捕捉、影像辨识、麦克风输入、语音辨识、社群互动等功能。Kinect 彻底颠覆了游戏的单一操作。使人机互动的理念更加彻底的展现出来。之后，基于 Kinect 的各种应用像雨后春笋般的冒出来，包括人机交互，手势识别，几何建模等。</p>
+</li>
+<li><p> 在 2013 年 5 月 28 日的 Xbox One 发布会上，微软展示了新一代 Kinect 2.0，新 Kinect 能感知的语音、手势和玩家感觉信息，将给玩家带来前所未有的互动性体验：</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTIyODU0NDky.html">http://v.youku.com/v_show/id_XNTIyODU0NDky.html</a></p>
+<p>l Leap Motion：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTAwMzg0MTQw.html">http://v.youku.com/v_show/id_XNTAwMzg0MTQw.html</a></p>
+<p>Leap Motion 为放在键盘和显示器之间的小小金属棒，就能让任何一位用户通过简单的手势完成人机交互。Leap Motion 的响应惊人的准确，对各种自然而简洁的手势都能识别。不必站起来或者摆动手臂，Leap Motion 是简单而毫不费力的交互方式。我们在 4 月份就预订了一台，到现在还未到货，估计要到下个月到货。到货后我们会对其进行评测。</p>
+<p>l MYO：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTYzNzg3MDA0.html">http://v.youku.com/v_show/id_XNTYzNzg3MDA0.html</a></p>
+<p>MYO 是一款能在用户挥动并指向屏幕时测量各种肌肉产生的电活动来完成交互的腕带。MYO 超越 Leap Motion 的一点是，MYO 对用户的位置没有限制。尽管 MYO 只听令于身体的一个部分（手臂），但是其应用的场合还是很多的。期望未来会有更多的听令于身体的其他部分的交互设备。</p>
+<p>l Google Glass：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTYzNzk1NjIw.html">http://v.youku.com/v_show/id_XNTYzNzk1NjIw.html</a></p>
+<p>Google Glass 为 Google 公司在 2012 的 I/O 开发者大会上正式公布的，在看起来普普通通的眼镜上配置强大的计算机和显示器。这款设备小巧而不显眼，可以在任何时间地点使用，即用户想要专注于周围环境时不会碍事。不过对其未来的发展各有说法，让我们拭目以待。</p>
+<p>l 3D Printer：这个就不用笔者详细说了，这两年太火了。正如上面所提到的观点，笔者觉得 3D 打印的出现带给了我们从事计算机图形学研究的工作者许多的机会。挑战和机会并存！我们应该要抓住这次机会！</p>
+<p>l 3Doodler：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTE2MjM5NzUy.html">http://v.youku.com/v_show/id_XNTE2MjM5NzUy.html</a></p>
+<p>3Doodler 是玩具和机器人公司 Wobble Works 开发的全球首款“3D 打印笔”，可以帮助人们在半空中创造出三维结构的模型。今后人们可以在三维空间中来“画图”交流和表达想法了。</p>
+<p>l Apple iWatch：<a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_XNTIwODk0MzM2.html">http://v.youku.com/v_show/id_XNTIwODk0MzM2.html</a></p>
+<p>iWatch 由苹果公司推出的一款智能手表。现在仍是概念产品，面世时间未定。其界面看看视频就知道有多酷。但是其技术上的实现笔者也没有完全想通，呵呵。</p>
+<p>除了上述介绍的外，最近还有其他很多新的人机交互类的电子科技产品，比如透明手机，可折叠的屏幕，具有气味和触感反馈的头盔等，就不一一介绍了。</p>
+<p>由此可见，以前在科幻电影里出现的“神器”逐渐被实现，计算机图形学及相关技术在其中发挥了重要的作用。同时，这些设备的出现，也带给了计算机图形学领域更多的探索和机会。</p>
+<p><strong>5、 其他内容</strong></p>
+<p>上述所提到的只是计算机图形学的主要的四个内容。事实上，与计算机图形学相关的学科还有很多，以下仅介绍几个最为相关的研究方向：</p>
+<p>l 虚拟现实(Virtual Reality)：利用计算机图形产生器，位置跟踪器，多功能传感器和控制器等有效地模拟实际场景和情形，从而能够使观察者产生一种真实的身临其境的感觉。虚拟现实技术主要研究用计算机模拟（构造）三维图形空间，并使用户能够自然地与该空间进行交互。对三维图形处理技术的要求特别高。简单的虚拟现实系统早在 70 年代便被应用于军事领域，训练驾驶员。80 年代后随着计算机软硬件技术的提高，它也得到重视并迅速发展。它已在航空航天、医学、教育、艺术、建筑等领域得到初步的应用。</p>
+<p>l 可视化(Visualization)：利用计算机图形学和图像处理技术，将数据转换成图形或图像在屏幕上显示出来，并进行交互处理的理论、方法和技术。现已成为研究数据表示、数据处理、决策分析等一系列问题的综合技术。上面提到的虚拟现实技术也是以图形图像的可视化技术为依托的。在现在的大数据时代的背景下，可视化的内容除了传统的科学可视化外，现在还有信息可视化，可视分析等方面。</p>
+<p>l 可视媒体计算与处理(Visual Media Processing)：几何数据，被认为是继声音、图像、视频之后的新一代数字媒体，是计算机图形学的研究重点。最近几年，计算机图形学与图像视频处理技术相结合的研究与技术日益增多。正如笔者在上面所提及的，图像和视频的大数据处理能带给计算机图形学很多处理手段上的更新。另一方面，随着而计算机图形学技术，恰可以与这些图像处理，视觉方法相交叉融合，来直接地生成风格化的画面，实现基于图像三维建模，以及直接基于视频和图像数据来生成动画序列。当计算机图形学正向地图像生成方法和计算机视觉中逆向地从图像中恢复各种信息方法相结合，可以带来无可限量的想象空间，构造出很多视觉特效来，最终用于增强现实、数字地图、虚拟博物馆展示等多种应用中去。因此，在很多方面，计算机图形学与图像处理、视频处理、多媒体处理、计算机视觉等学科逐渐融合在一起，有成为一个更大的学科的趋势。</p>
+<p>l 医学图像处理(Medical Imaging)：随着医学成像技术的发展与进步，图像处理在医学研究与临床医学中的应用越来越广泛。与一般意义上的图像处理比较，医学图像处理有其特殊性和不同的侧重点。医学图像处理由生物医学成像(X 射线、CT、MRI)和生物医学图像处理两部分组成，在生命科学研究、医学诊断、临床治疗等方面起着重要的作用。医学图像分析中涉及的两个最为重要的内容为图像分割与图像配准。</p>
+<p>l 计算机艺术(Computational Arts)：计算机图形学的发展也提供给了艺术家发挥和实现想象的丰富的技术手段。计算机艺术的发展速度远远超出了人们的想象，在代表计算机图形研究最高水平的历届 SIGGRAPH 年会上，精彩的计算机艺术作品层出不穷。在计算机图形学领域，还有几个关于计算艺术方面的会议，包括非真实性图形学(Non-Photorealistic Graphics)和 Computational Aesthetics(计算美学)等。吸引了计算机工作者、艺术家、建筑师、设计师等方面的人员在一起，通过头脑风暴和交流讨论的方式进行一些有创意的技术研究。</p>
+<p><strong>三、 学习计算机图形学需要哪些基础？</strong></p>
+<p>计算机图形学是一门与很多学科都交叉的学科方向。因此，要学好计算机图形学和做好计算机图形学方面的研究，除了计算机图形学的基础知识以外，你还需要有其他方面的一些知识。当然你懂得越多当然会越好。</p>
+<p><strong>1、 数学</strong></p>
+<p>计算机图形学进入我国大概在上个世纪 70 年代末和 80 年代初，那时国内还没有计算机学科。于是，开始学习和研究计算机图形学的大部分都是搞数学的一些学者和教授。由此可见，计算机图形学是需要数学知识较多的一门计算机应用技术学科，在我国也是应用数学的一个重要分支（国内的很多高校和科研院所的数学专业都有计算机图形学方向）。</p>
+<p>计算机图形学里面用到的数学比较多，列举一些常用的，包括：微积分、线性代数、矩阵计算、微分几何、数值计算和分析、计算方法、偏微分方程、微分方程数值解、最优化、概率、统计、计算几何等。</p>
+<p>计算机图形学领域的一位优秀学者 Greg Turk 教授在 1997 年曾写过一篇“计算机图形学中的数学”(Mathematics for Computer Graphics)的帖子，详细可见：</p>
+<p><a target="_blank" rel="noopener" href="http://www.cc.gatech.edu/~turk/math_gr.html">http://www.cc.gatech.edu/~turk/math_gr.html</a></p>
+<p>其中文翻译版本可见：</p>
+<p><a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/Math_for_CG_Turk_CN.htm">http://staff.ustc.edu.cn/~lgliu/Resources/CG/Math_for_CG_Turk_CN.htm</a></p>
+<p>笔者在多年从事计算机图形学研究中对数学的体会是：“数学不是没有用，而是不够用！”。对数学的学习和应用将是“活到老，学到老”。重要的是，从以前看似枯燥的数学到看到它的实际应用的过程中，你会更容易享受数学的美妙。在你不断进行计算机图形学的研究的过程中，你会感觉到你的数学知识越来越不够用，从而真正理解其中的数学思想和数学方法。</p>
+<p>另一方面，想成为一名计算机图形学的研究者也不必精通各门数学！在大学里，你所学的那些数学看起来都很抽象，枯燥无味，这是因为你并不知道它们的用处，甚至连讲课的老师也不知道，而你们的目的只是记住那些定理和公式，考个好分数。与大学学习数学不一样的是，你在计算机图形学的学习和研究过程中会感受到数学的用处和美妙，这时你学习数学的目的将更加明确，兴趣将更加浓厚，学习方法将更加有效。因为你是在使用数学的过程中在学习数学！想想看你是如何学会中文说话的？以上提到的常用的数学课程你不必都要熟悉，许多研究工作者从不需要考虑其中提到的某些数学知识，成功的研究者总是将某一方面的数学知识和数学工具用到极致！</p>
+<p>总之，关于计算机图形学与数学的关系，归纳起来就是以下几个原则：</p>
+<p>l 计算机图形学的研究需要用到较多的数学知识，有较好数学功底的学生从事计算机图形学有一定优势；</p>
+<p>l 即使没有学太多的数学也不要紧。数学的知识不需要都学会了再去做问题，在解决问题的过程中去学习数学是最快的学习方法。即，研究过程中若遇到什么数学知识再去学相关的知识，学习起来会更有兴趣，掌握起来会更快更扎实；</p>
+<p>l 学习数学要结合图形，即“数形结合”，需要有图形的想象能力；数学公式不重要，是“纸老虎”，重要的是背后的思想及其所表达的概念，公式只是它们的一个抽象表达；</p>
+<p>l 活到老，学到老。要不断学习新的知识和技术，使自己不断进步和增长功力，才是王道。</p>
+<p><strong>2、 编程</strong></p>
+<p>在计算机图形学中，大部分的想法都要通过实际例子来验证的，再好的理论也要拿实际例子来得到验证和应用。因此，利用编程语言来实现想法或算法是必须要有的能力。C/C++是计算机图形学最常用的编程语言。</p>
+<p>笔者要求学生必须掌握 C++编程语言和面向对象编程思想，这是大家通用的“语言”。网上的大部分的资源、类库、算法代码基本上都是 C++写的，因此，你若需要利用这些资源，必须掌握甚至精通 C++语言。</p>
+<p>关于计算机图形学所需要的编程能力的几点看法：</p>
+<p>l 从事计算机图形学和图像处理的研究需要有较强的编程能力，要对编程有极大的兴趣和热情；</p>
+<p>l 如果你对编程比较“感冒”或“厌恶”，则建议你不要选择计算机图形学方向；</p>
+<p>l 不太会编程不要紧，任何人都是从不会到会的！只要你对编程有兴趣，觉得编程“好玩”，您完全可以在很短的时间内极大地提高您的编程水平。笔者在长期的教学实验和科研过程中，摸索和发展出一套有效的方法，能够在最短的时间内，帮助学生（包括数学专业的学生）快速提高编程的能力。</p>
+<p><strong>3、 其他</strong></p>
+<p>l 英语基础要好，因为需要大量阅读英文文献和进行英文论文的写作；英文的听说能力也要好些，因为要跟国际学者交流讨论；</p>
+<p>l 计算机图形学中的很多算法是真实物理世界的模拟，因此，如果你要进行基于物理的建模和仿真，一些物理知识和理论也需要的，比如力学（动力学，运动学，流体力学）和光学等；</p>
+<p>l 其他学科的知识，根据具体研究的需要去学习即可，不必刻意去提前学多少。</p>
+<p><strong>4、 计算机图形学的教材</strong></p>
+<p>上面列举的只是在你从事计算机图形学的学习和研究中可能要用到的东西，不必所有的都学会才能开始计算机图形学的学习和研究。一门知识点不懂不要紧，重要的是要能尽快学习新知识的能力和速度！事实上，最好的学习方法就是在使用中学习。因此，计算机图形学的学习和研究提供了你学习其他相关知识的好的过程。</p>
+<p>现在市面上的计算机图形学的教材有很多，但是很多教材的内容仅仅是计算机图形学的基本知识，知识点也比较陈旧。不能指望通过一本或几本教材就能学会计算机图形学。计算机图形学的内容远比教材中或你想象中的内容多得多。正如笔者上面所述，计算机图形学作为一门技术科学，特别是在当前的互联网、移动互联网、大数据时代及第三次工业革命的时代背景下，最近几年的发展日新月异！务必要通过跟着老师做相关研究来了解计算机图形学最新的发展和趋势。除了阅读最新的最新的科研论文外，还需要不断关注信息科技及电子科技的一些前沿发展。要相信，计算机图形学是好玩的，是有用的，更是有未来的！充满热情和激情，才能做好计算机图形学方面的研究。</p>
+<p><strong>四、SIGGRAPH 简介</strong></p>
+<p>说到计算机图形学，不能不提 SIGGRAPH。</p>
+<p>ACM SIGGRAPH 是“ACM Special Interest Group on GRAPHics and Interactive Techniques”（<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8D%8F%E4%BC%9A">美国计算机协会</a>计算机图形专业组）的缩写，成立于 1967 年，致力于推广和发展计算机绘图和动画制作的软硬件技术。从 1974 年开始，ACM SIGGRAPH 每年都会举办一次年会（也称为 SIGGRAPH），至今年已经举办了 40 次。SIGGRAPH 是计算机图形学顶级年度会议，代表着世界级水平的研究，能在 SIGGRAPH 上发表论文是许多从事计算机图形学研究的工作者的梦想。</p>
+<p>SIGGRAPH 每年 7 月底或 8 月初在美国召开（2011 年在加拿大温哥华召开，是 SIGGRAPH 首次在美国以外的城市举行）。事实上，SIGGRAPH 是世界上影响最广、规模最大，同时也是最权威的一个集科学、艺术、商业于一身的 CG 展示、学术研讨会，参会人数众多，一般有 2–4 万人。绝大部分计算机图技术软硬件厂商每年都会将最新研究成果拿到 SIGGRAPH 年会上发布，大部分游戏的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/217213.htm">电脑动画</a>创作者也将他们本年度最杰出的艺术作品集中在 SIGGRAPH 上展示。因此，SIGGRAPH 在图形图像技术，计算机软硬件以及 CG 等方面都有着相当的影响力。</p>
+<p>从 2008 年开始，Siggraph 来到亚洲，每年冬天（11 或 12 月）在亚洲的一个城市（2008，新加坡；2009，日本<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/72581.htm">横滨</a>；2010，韩国<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/4005.htm">首尔</a>；2011，中国香港；2012，新加坡）召开，称为 SIGGRAPH Asia。今年的 Siggraph Asia 将在 2013 年 11 月 19-22 号于中国香港召开。</p>
+<p>与 SIGGRAPH 一样，发表者 SIGGRAPH Asia 上的研究论文也代表着计算机图形学领域的最前沿和最高水准，所有研究论文都发表在 ACM Transactions on Graphics 期刊上，这是计算机图形学领域唯一的一个 Top (I 区)的学术期刊。可以形象地将 SIGGRAPH 和 SIGGRAPH Asia 分别比喻为计算机图形学领域的“夏季奥运会”和“冬季奥运会”。</p>
+<p>在 SIGGRAPH 会议上，除了研究论文外，还有很多其他内容，比如课程、短文、海报、CG 企业展示、电子剧场、动画节、新型科技展示、艺术画廊、教育等，比你想象得要多得多。很多活动都是并行的，因此你需要每天提前计划好所参加的活动。视觉中国网站的“Siggraph 2007 会议报道”有详尽的关于 Siggraph 2007 年的报道：</p>
+<p><a target="_blank" rel="noopener" href="http://static.chinavisual.com/storage/topics/39942/index.shtml">http://static.chinavisual.com/storage/topics/39942/index.shtml</a></p>
+<p>虽然这是 6 年前的 Siggraph 介绍，但上述链接的内容仍然是对 SIGGRAPH 比较全面的介绍。其中有很多视频和材料，详细介绍了 Siggraph 盛会的情况，而且有对计算机图形学的历史发展的介绍。建议详细查看。</p>
+<p><strong>五、其他问题</strong></p>
+<p>1、 如何选择适合自己的工作（研究方向）？</p>
+<p>A: 就两点：兴趣 + 擅长！</p>
+<p>兴趣是第一位的，是否擅长需要尝试和不断学习成长！将学会将自己的天赋发挥到极致！</p>
+<p>2、 自己是否适合学习和从事计算机图形学的研究？</p>
+<p>A: 看看自己是否满足以下两个条件：</p>
+<ol>
+<li><p> 对计算机图形学或图像处理具有强烈的兴趣和激情；</p>
+</li>
+<li><p> 喜欢算法设计和编程。</p>
+</li>
+</ol>
+<p>若上述两个条件都满足（觉得好玩！），则可以尝试选择计算机图形学作为自己的研究方向。</p>
+<p>3、 从事研究工作需要哪些品质？</p>
+<p>A: 激情、好奇心、努力！</p>
+<p>4、 为何选择从事研究工作？</p>
+<p>A: <a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/ForMyStudents/GCL-WhyResearch.rar">http://staff.ustc.edu.cn/~lgliu/Resources/ForMyStudents/GCL-WhyResearch.rar</a></p>
+<p>5、 如何在研究生期间取得成功？</p>
+<p>A: <a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/ForMyStudents/HowToSucceedAtGCL.rar">http://staff.ustc.edu.cn/~lgliu/Resources/ForMyStudents/HowToSucceedAtGCL.rar</a></p>
+<p><strong>六、更多参考材料</strong></p>
+<p>l 有关更多地了解计算机图形的知识和内容，可搜索并参考 Internet 上的丰富的资源介绍，比如<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/13769.htm">百度百科</a>，<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6">维基百科</a>等。本文的写作过程中也参考了网上的许多资源。</p>
+<p>l 国外和国内有很多有关《计算机图形学》的课程网站，可以通过查看相关视频和课件更多地了解计算机图形学的内容。</p>
+<p>l 国内外有很多从事计算机图形学研究的教授学者的网站，会列出他们所做的有关计算机图形学方面的研究，可以更为深入了解计算机图形学领域所研究的东西。</p>
+<p>l 与计算机其他学科一样，每年都有计算机图形学方面的很多会议。这些会议会有该领域的最新进展和研究工作，是了解计算机图形学发展及趋势的重要手段。在计算机图形学方面，可以通过以下链接来获得各个会议的信息<a target="_blank" rel="noopener" href="http://kesen.realtimerendering.com/">http://kesen.realtimerendering.com/</a> 建议加该链接为你的浏览器的标签。</p>
+<p>l Internet 上经常会有计算机图形学相关的科技信息，要有意识经常关注，随时了解该学科方向的动态、发展和未来。</p>
+<p>l 计算机图形学及相关学科在近些年来得到迅速的发展，特别是 2013 年出现的各种交互人机交互技术的出现，我们正处在技术极速发展的浪尖！计算机图形学前景诱人，形势逼人。相对于美国等西方国家，我国的计算机图形学相关产业还相对落后，但这正是留给我们这代人的机会！相信通过我们的努力，是可以逐渐缩短差距的，也带来了巨大的挑战和机会。</p>
+<p>l 最后，要相信，计算机图形学是很好玩的，是有用的，更是有未来的。“相信是成功的开始”。祝各位能够感受计算机图形的美妙，能够在计算机图形学的海洋中享受快乐和成功！J</p>
+<p>祝您健康、快乐、成功！</p>
+<p>刘利刚</p>
+<p>中国科学技术大学图形与几何计算实验室(<a target="_blank" rel="noopener" href="http://gcl.ustc.edu.cn/">http://gcl.ustc.edu.cn</a>)</p>
+<p>个人主页：<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu">http://staff.ustc.edu.cn/~lgliu</a></p>
+<p>电子邮箱：<a href="mailto:lgliu@ustc.edu.cn">lgliu@ustc.edu.cn</a></p>
+<p>2013 年 8 月 8 日</p>
+<hr>
+<p>【2016 年 9 月 9 日添加】刘永进. 中国计算机图形学研究进展[J]. 科技导报, 2016, 34(14): 76-85. [<a target="_blank" rel="noopener" href="http://www.kjdb.org/CN/10.3981/j.issn.1000-7857.2016.14.009">link</a>] [<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/download/201609_ProgressCG-China.pdf">PDF, 5.1M</a>]</p>
+<p>【2018 年 8 月 16 日添加】AMiner. 计算机图形学研究报告. [<a target="_blank" rel="noopener" href="https://www.aminer.cn/">link</a>] [<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/download/201808_Aminer-CGSurvey.pdf">PDF, 3.5M</a>][<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Resources/CG/download/201808_Aminer-CGSurvey-PPT.pdf">PPT, 2.3M</a>]</p>
+<p>【2020 年 7 月 14 日添加】GAMES：计算机图形学的在线学习和交流平台，其中有大量的课程、报告（均有 PPT 和录频等）。[<a target="_blank" rel="noopener" href="http://games-cn.org/">link</a>]</p>
+<p>计算机图形学基础课程推荐（含课程录频和 PPT 等）：</p>
+<ul>
+<li>GAMES 101（闫令琪）[<a target="_blank" rel="noopener" href="https://sites.cs.ucsb.edu/~lingqi/teaching/games101.html">link</a>]</li>
+<li>中国科学技术大学《计算机图形学》本科课程-2020 年（刘利刚）[<a target="_blank" rel="noopener" href="http://staff.ustc.edu.cn/~lgliu/Courses/ComputerGraphics_2020_spring-summer/default.htm">link</a>]</li>
+</ul>
+<hr>
+<p>版权所有@刘利刚</p>
+
+  </article>
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559923982"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

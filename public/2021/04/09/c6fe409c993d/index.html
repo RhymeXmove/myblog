@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-IO流 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="IO 流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-IO流">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/09/c6fe409c993d/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="IO 流">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/09/c6fe409c993d/img/article/JAVA-IO%E6%B5%81-20210417/image-20210409191717082.png">
+<meta property="article:published_time" content="2021-04-08T16:53:58.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.756Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/04/09/c6fe409c993d/img/article/JAVA-IO%E6%B5%81-20210417/image-20210409191717082.png">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924003">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IO-%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">IO 流</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">流的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">流的分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%96%B9%E5%90%91%E3%80%90%E9%87%8D%E7%82%B9%E3%80%91"><span class="toc-number">1.2.1.</span> <span class="toc-text">按方向【重点】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%8D%95%E4%BD%8D"><span class="toc-number">1.2.2.</span> <span class="toc-text">按单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.</span> <span class="toc-text">按功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-number">1.2.4.</span> <span class="toc-text">字节流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E6%B5%81%E7%9A%84%E7%88%B6%E7%B1%BB%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%EF%BC%89%EF%BC%9A"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">字节流的父类（抽象类）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">文件字节流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%A4%8D%E5%88%B6%E6%A1%88%E4%BE%8B"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">图片复制案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">字节缓冲流</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B5%81"><span class="toc-number">1.2.5.</span> <span class="toc-text">对象流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">反序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9A"><span class="toc-number">1.2.5.3.</span> <span class="toc-text">注意事项：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-number">1.2.6.</span> <span class="toc-text">字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%B5%81%E7%9A%84%E7%88%B6%E7%B1%BB"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">字符流的父类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#reader-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E6%B5%81"><span class="toc-number">1.2.6.1.1.</span> <span class="toc-text">reader 字符输入流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Writer-%E5%AD%97%E7%AC%A6%E8%BE%93%E5%87%BA%E6%B5%81"><span class="toc-number">1.2.6.1.2.</span> <span class="toc-text">Writer 字符输出流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%88%E4%BD%BF%E7%94%A8%E4%B8%8A%E8%BF%B0%E6%96%B9%E6%B3%95%E8%BF%9B%E8%A1%8C%E6%96%87%E6%9C%AC%E5%A4%8D%E5%88%B6%EF%BC%89"><span class="toc-number">1.2.6.1.3.</span> <span class="toc-text">案例（使用上述方法进行文本复制）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">字符缓冲流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PrintWriter"><span class="toc-number">1.2.6.3.</span> <span class="toc-text">PrintWriter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-number">1.2.6.4.</span> <span class="toc-text">转换流</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File-%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">File 类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%9A%94%E7%AC%A6"><span class="toc-number">1.3.1.</span> <span class="toc-text">分隔符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.2.</span> <span class="toc-text">文件操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.3.</span> <span class="toc-text">文件夹操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FileFilter"><span class="toc-number">1.3.4.</span> <span class="toc-text">FileFilter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.3.5.</span> <span class="toc-text">递归遍历文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.3.6.</span> <span class="toc-text">递归删除文件夹</span></a></li></ol></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-IO流" class="lazyload">
+            <h1>JAVA-IO流</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月09日</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
+</div>
+
+    <h1 id="IO-流"><a href="#IO-流" class="headerlink" title="IO 流"></a>IO 流</h1><span id="more"></span>
+
+<h2 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a>流的概念</h2><p>内存与存储设备之间传输数据的通道</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-IO%E6%B5%81-20210417/image-20210409191717082.png" alt="image-20210409191717082" class="lazyload"></p>
+<h2 id="流的分类"><a href="#流的分类" class="headerlink" title="流的分类"></a>流的分类</h2><h3 id="按方向【重点】"><a href="#按方向【重点】" class="headerlink" title="按方向【重点】"></a>按方向【重点】</h3><ol>
+<li><p>输入流：将&lt;存储设备&gt;中的内容读到&lt;内存&gt;中；</p>
+</li>
+<li><p>输出流：将&lt;内存&gt;中的内容写到&lt;存储设备&gt;中；</p>
+<p>文件 ———输入流———–&gt; 程序 ———输出流———–&gt;文件</p>
+</li>
+</ol>
+<h3 id="按单位"><a href="#按单位" class="headerlink" title="按单位"></a>按单位</h3><ol>
+<li>字节流：以字节流为单位，可以读写所有数据；</li>
+<li>字符流：以字符为单位，只能读写文本数据；</li>
+</ol>
+<h3 id="按功能"><a href="#按功能" class="headerlink" title="按功能"></a>按功能</h3><ol>
+<li>节点流：具有实际传输数据的读写功能；</li>
+<li>过滤流：在节点流的基础之上增强功能；</li>
+</ol>
+<h3 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h3><h4 id="字节流的父类（抽象类）："><a href="#字节流的父类（抽象类）：" class="headerlink" title="字节流的父类（抽象类）："></a>字节流的父类（抽象类）：</h4><ol>
+<li><p>InputStream 字节输入流</p>
+<pre><code class="java">//InputStream 字节输入流
+public int read()&#123;&#125;
+public int read(byte[] b)&#123;&#125;
+public int read(byte[] b, int off, int len)&#123;&#125;
+</code></pre>
+</li>
+<li><p>OutStream 字节输出流</p>
+<pre><code class="java">// OutputStream 字节输出流
+public void write(int n)&#123;&#125;
+public void write(byte[] b)&#123;&#125;
+public void write(byte[] b, int off, int len)&#123;&#125;
+</code></pre>
+</li>
+</ol>
+<h4 id="文件字节流"><a href="#文件字节流" class="headerlink" title="文件字节流"></a>文件字节流</h4><p>输入流：</p>
+<pre><code class="java">        // 创建文件输出流对象
+        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-    workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+</code></pre>
+<pre><code class="java">
+        // 单个字节读取文件
+        int data = 0;
+        while ((data=fis.read()) != -1) &#123;
+            System.out.print((char) data);
+        &#125;
+</code></pre>
+<pre><code class="java">        // 指定读取个数，每次三个
+        byte[] buf = new byte[3];
+        int count = fis.read(buf);
+        System.out.println(new String(buf));
+        System.out.println(count);
+
+        int count2 = fis.read(buf);
+        System.out.println(new String(buf));
+        System.out.println(count2);
+</code></pre>
+<pre><code class="java">        // 循环读取
+        byte[] buf = new byte[1024];
+        int count = 0;
+        while ((count=fis.read(buf))!=-1) &#123;
+            System.out.println(new String(buf, 0, count));
+        &#125;
+</code></pre>
+<pre><code class="java">        //关闭
+        fis.close();
+</code></pre>
+<p>输出流：</p>
+<pre><code class="java">        //创建文件输出流对象;
+        FileOutputStream fos = new FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\bbb.txt&quot;);
+</code></pre>
+<pre><code class="java">        //写入文件
+        fos.write(97);
+        fos.write(&#39;b&#39;);
+        fos.write(&#39;c&#39;);
+</code></pre>
+<pre><code class="java">         //写入字符串
+        String str = &quot;helloworld&quot;;
+        fos.write(str.getBytes());
+</code></pre>
+<pre><code class="java">        fos.close();
+</code></pre>
+<h4 id="图片复制案例"><a href="#图片复制案例" class="headerlink" title="图片复制案例"></a>图片复制案例</h4><pre><code class="java">        //创建流
+        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.jpg&quot;);
+        FileOutputStream fos = new FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\ccc.jpg&quot;);
+
+        ////边读边写
+        byte[] b = new byte[1024];
+        int count = 0;
+        while ((count = fis.read(b)) != -1) &#123;
+            fos.write(b, 0, count);
+        &#125;
+
+        //关闭
+        fis.close();
+        fos.close();
+</code></pre>
+<h4 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h4><p>缓冲流：<code>BufferedInputStream/ BufferedOutputStream</code></p>
+<p>提高 IO 效率，减少访问磁盘次数；</p>
+<p>数据存储在缓冲区中，flush 是将缓冲区的内容写入文件中，也可以直接 close</p>
+<pre><code class="java">        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        //创建缓冲流对象
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        //读取
+        int data = 0;
+        while ((data=bis.read())!=-1)&#123;
+            System.out.print((char) data);
+        &#125;
+
+        //关闭
+        bis.close();
+        fis.close();
+</code></pre>
+<p>缓冲流读文件：</p>
+<pre><code class="java">        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        //创建缓冲流对象
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        //读取
+//        int data = 0;
+//        while ((data=bis.read())!=-1)&#123;
+//            System.out.print((char) data);
+//        &#125;
+        byte[] buf = new byte[1024];
+        int count = 0;
+        while ((count = bis.read(buf))!=-1) &#123;
+            System.out.print(new String(buf, 0, count));
+        &#125;
+
+        //关闭
+        bis.close();
+        fis.close();
+</code></pre>
+<p>缓冲流写文件：</p>
+<pre><code class="java">        //创建缓冲流对象
+        FileOutputStream fos = new FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\ddd.txt&quot;);
+        BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+        //写入文件
+        for (int i = 0; i &lt; 5; i++) &#123;
+            bos.write(&quot;theworllllld\n&quot;.getBytes()); //写入缓冲区,缓冲区默认大小为8k
+            bos.flush(); // 刷新到硬盘
+        &#125;
+
+        //关闭,bos.close();会自动调用 bos.flush(), 但异常中断的话会写入失败
+        bos.close();
+</code></pre>
+<h3 id="对象流"><a href="#对象流" class="headerlink" title="对象流"></a>对象流</h3><p><code>ObjectOutputStream / ObjectInputStream</code></p>
+<ol>
+<li>增强了缓冲区功能</li>
+<li>增强了读写 8 种基本数据类型和字符串的功能</li>
+<li>增强了读写对象的功能<ol>
+<li><code>readObject()</code> 从流中读取一个对象</li>
+<li><code>writeObject(Object obj)</code> 向流中写入一个对象</li>
+</ol>
+</li>
+</ol>
+<p>使用流传输对象的过程称为序列化(写入)、反序列化(读取)</p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><pre><code class="java">        // 1. 创建对象流
+        FileOutputStream fos = new     FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\st.bin&quot;);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        // 2. 序列化（写入操作）
+        Student zhangsan = new Student(&quot;zs&quot;, 20);
+        oos.writeObject(zhangsan);
+        // 3. 关闭
+        oos.close();
+</code></pre>
+<h4 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h4><pre><code class="java">        // 1. 创建对象流
+        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\st.bin&quot;);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        // 2. 读取文件（反序列化）
+        Student s = (Student)ois.readObject();
+        // 3. 关闭
+        ois.close();
+</code></pre>
+<h4 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h4><ol>
+<li>某个类要想序列化必须实现 Serializable 接口；</li>
+<li>序列化类中对象属性要求实现 Serializable 接口；</li>
+<li>序列化版本号 ID<code>例如 ：private static final long serialVersionUID = -8318741215394696905L;</code>，保证序列化的类和反序列化的类是同一个类；</li>
+<li>使用 transient 修饰属性，这个属性就不能序列化；</li>
+<li>静态属性不能序列化；</li>
+<li>序列化多个对象，可以借助集合来实现；</li>
+</ol>
+<h3 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h3><pre><code class="java">// 传统字节流读取
+    public static void main(String[] args) throws Exception &#123;
+            // 1. 创建FileInputStream对象
+            FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+            // 2. 读取
+            int data = 0;
+            while((data = fis.read()) != -1)&#123;
+                System.out.print(((char)data));
+            &#125;
+            // 3. 关闭
+            fis.close();
+    &#125;
+</code></pre>
+<h4 id="字符流的父类"><a href="#字符流的父类" class="headerlink" title="字符流的父类"></a>字符流的父类</h4><h5 id="reader-字符输入流"><a href="#reader-字符输入流" class="headerlink" title="reader 字符输入流"></a><code>reader</code> 字符输入流</h5><ol>
+<li><code>public int read()&#123;&#125;</code></li>
+<li><code>public int read(char[] c)&#123;&#125;</code></li>
+<li><code>public int read(char[] b, int off, int len)&#123;&#125;</code></li>
+</ol>
+<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+        // 1. 创建FileReader 文件字符输入流
+        FileReader fr = new FileReader(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        // 2. 读取
+        // 2.1 单个字符读取
+        int data = 0;
+        while((data = fr.read()) != -1)&#123;
+            System.out.print((char)data);// 读取一个字符
+        &#125;
+
+        char[] buf = new char[2];// 字符缓冲区读取
+        int count = 0;
+        while((count = fr.read(buf)) != -1)&#123;
+            System.out.print(new String(buf, 0, count));
+        &#125;
+
+        // 3. 关闭
+        fr.close();
+    &#125;
+</code></pre>
+<h5 id="Writer-字符输出流"><a href="#Writer-字符输出流" class="headerlink" title="Writer 字符输出流"></a><code>Writer</code> 字符输出流</h5><ol>
+<li><code>public void write(int n)&#123;&#125;</code></li>
+<li><code>public void write(String str)&#123;&#125;</code></li>
+<li><code>public void write(char[] c)&#123;&#125;</code></li>
+</ol>
+<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+        // 1. 创建FileWriter对象
+        FileWriter fw = new FileWriter(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        // 2. 写入
+        for(int i = 0; i &lt; 10; i ++)&#123;
+            fw.write(&quot;写入的内容&quot;);
+            fw.flush();
+        &#125;
+        // 3. 关闭
+        fw.close();
+        System.out.println(&quot;执行完毕&quot;);
+    &#125;
+</code></pre>
+<h5 id="案例（使用上述方法进行文本复制）"><a href="#案例（使用上述方法进行文本复制）" class="headerlink" title="案例（使用上述方法进行文本复制）"></a>案例（使用上述方法进行文本复制）</h5><p>不能复制图片或二进制文件，使用字节流可以复制任意文件</p>
+<pre><code class="java">public static void main(String[] args) throws Exception&#123;
+        // 1. 创建
+        FileReader fr = new FileReader(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        FileWriter fw = new FileWriter(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\fff.txt&quot;);
+        // 2. 读写
+        int data = 0;
+        while((data = fr.read()) != -1)&#123;
+            fw.write(data);
+            fw.flush();
+        &#125;
+        // 3. 关闭
+        fw.close();
+        fr.close();
+    &#125;
+</code></pre>
+<h4 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h4><p><code>BufferedReader / BufferedWriter</code></p>
+<p>高效读写、支持输入换行符、可一次写一行读一行;</p>
+<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+        // 创建缓冲流
+        FileReader fr = new FileReader(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\aaa.txt&quot;);
+        BufferedReader br = new BufferedReader(fr);
+        // 读取
+        // 1. 第一种方式
+        char[] buf = new char[1024];
+        int count = 0;
+        while((count = br.read(buf)) != -1)&#123;
+            System.out.println(new String(buf, 0, count));
+        &#125;
+        // 2. 第二种方式 一行一行读取
+        String line = null;
+        while((line = br.readLine()) != null)&#123;
+            System.out.println(line);
+        &#125;
+
+        // 关闭
+        br.close();
+    &#125;
+</code></pre>
+<h4 id="PrintWriter"><a href="#PrintWriter" class="headerlink" title="PrintWriter"></a>PrintWriter</h4><ol>
+<li>向文件中写入内容；</li>
+<li>封装了<code>print() / println()</code> 方法 支持写入后换行；</li>
+<li>支持数据原样打印；</li>
+</ol>
+<pre><code class="java">public static void main(String[] args) throws FileNotFoundException &#123;
+        // 1 创建打印流
+        PrintWriter pw = new PrintWriter(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\fff.txt&quot;);
+        // 2 打印
+        pw.println(12);
+        pw.println(true);
+        pw.println(3.14);
+        pw.println(&#39;a&#39;);
+        // 3 关闭
+        pw.close();
+    &#125;
+</code></pre>
+<h4 id="转换流"><a href="#转换流" class="headerlink" title="转换流"></a>转换流</h4><ol>
+<li>桥转换流 <code>InputStreamReader / OutputStreamWriter</code></li>
+<li>可将字节流转换为字符流</li>
+<li>可设置字符的编码方式</li>
+</ol>
+<pre><code class="java">public static void main(String[] args) throws Exception &#123;
+        // 1 创建InputStreamReader对象
+        FileInputStream fis = new FileInputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\fff.txt&quot;);
+        InputStreamReader isr = new InputStreamReader(fis, &quot;utf-8&quot;);
+        // 2 读取文件
+        int data = 0;
+        while((data = isr.read()) != -1)&#123;
+            System.out.print((char)data);
+        &#125;
+        // 3 关闭
+        isr.close();
+    &#125;
+</code></pre>
+<pre><code class="java"> public static void main(String[] args) throws Exception &#123;
+        // 1 创建OutputStreamReader对象
+        FileOutputStream fos = new FileOutputStream(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\fff.txt&quot;);
+        OutputStreamWriter osw = new OutputStreamWriter(fos, &quot;utf-8&quot;);
+        // 2 写入
+        for (int i = 0; i &lt; 10; i++) &#123;
+            osw.write(&quot;写入内容\n&quot;);
+            osw.flush();
+        &#125;
+        // 3 关闭
+        osw.close();
+
+    &#125;
+</code></pre>
+<h2 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h2><p>概念：代表物理盘符中的一个文件或者文件夹</p>
+<h3 id="分隔符"><a href="#分隔符" class="headerlink" title="分隔符"></a>分隔符</h3><pre><code class="java">    //分隔符
+    public static void separator() &#123;
+        System.out.println(&quot;路径分隔符&quot; + File.pathSeparator);
+        System.out.println(&quot;名称分隔符&quot; + File.separator);
+    &#125;
+</code></pre>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><pre><code class="java">//文件操作
+    public static void fileOpen() throws Exception &#123;
+        //创建文件
+        File file = new File(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\com\\file\\file.txt&quot;);
+        if (!file.exists()) &#123;
+            boolean b = file.createNewFile();
+            System.out.println(&quot;创建结果&quot; + b);
+        &#125;else &#123;
+            System.out.println(&quot;文件已存在&quot;);
+        &#125;
+
+        //删除文件-直接删除
+//           System.out.println(file.delete());
+        //删除文件 jvm退出时删除
+//           file.deleteOnExit();
+//           Thread.sleep(5000);
+
+
+        //获取文件绝对路径
+        System.out.println(&quot;文件绝对路径:&quot; + file.getAbsolutePath());
+        //获取写的路径
+        System.out.println(file.getPath());
+        //获取文件名称
+        System.out.println(file.getName());
+        //获取父目录
+        System.out.println(file.getParent());
+        //获取文件长度
+        System.out.println(file.length());
+        //获取文件创建时间
+        System.out.println(new Date(file.lastModified()).toLocaleString());
+
+        //判断
+        //是否可写
+        //System.out.println(file.canWrite());  //linux支持
+        //是否可读
+        System.out.println(file.canRead());
+        //是否是文件
+        System.out.println(file.isFile());
+        //是否隐藏
+        System.out.println(file.isHidden());
+
+    &#125;
+</code></pre>
+<h3 id="文件夹操作"><a href="#文件夹操作" class="headerlink" title="文件夹操作"></a>文件夹操作</h3><pre><code class="java">//文件夹操作
+public static void directoryOpe() throws Exception&#123;
+        File dir = new File(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\com\\file\\aaa\\bbb\\ccc&quot;);
+        System.out.println(dir.toString());
+        if (!dir.exists()) &#123;
+            //创建单级目录
+//            dir.mkdir();
+            //创建多级目录
+            System.out.println(&quot;创建结果&quot; + dir.mkdirs());
+        &#125;
+
+        //删除文件
+        //直接删除
+//        System.out.println(dir.delete()); //只能删除空目录
+        //使用jvm删除
+//        dir.deleteOnExit();
+//        Thread.sleep(3000);
+
+        //获取文件夹信息
+        //获取绝对路径
+        System.out.println(dir.getAbsolutePath());
+        //获取路径
+        System.out.println(dir.getPath());
+        //获取名称
+        System.out.println(dir.getName());
+        //获取父目录
+        System.out.println(dir.getParent());
+        //获取创建时间
+        System.out.println(new Date(dir.lastModified()).toLocaleString());
+
+        //判断
+        //是否是文件夹
+        System.out.println(dir.isDirectory());
+        //是否隐藏
+        System.out.println(dir.isHidden());
+
+        //遍历文件夹
+        File dir2 = new File(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\com\\file&quot;);
+        String[] dirs = dir2.list();
+        //File[] dirs2 = dir2.listFiles();
+        for (String s : dirs) &#123;
+            System.out.println(s);
+        &#125;
+</code></pre>
+<h3 id="FileFilter"><a href="#FileFilter" class="headerlink" title="FileFilter"></a>FileFilter</h3><pre><code class="java">// fileFilter接口使用，定制方法遍历
+public static void main(String[] args) &#123;
+        File dir = new File(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\com\\file\\aaa\\bbb\\ccc&quot;);
+
+
+        File[] files = dir.listFiles(new FileFilter() &#123;
+            @Override
+            public boolean accept(File pathname) &#123;
+                if (pathname.getName().endsWith(&quot;.bin&quot;))&#123;
+                    return true;
+                &#125;
+                return false;
+            &#125;
+        &#125;);
+
+        for (File file : files) &#123;
+            System.out.println(file.getName());
+        &#125;
+
+    &#125;
+</code></pre>
+<h3 id="递归遍历文件夹"><a href="#递归遍历文件夹" class="headerlink" title="递归遍历文件夹"></a>递归遍历文件夹</h3><p>遍历多级文件夹下的文件</p>
+<pre><code class="java">public static void main(String[] args) &#123;
+        File dir = new File(&quot;D:\\workspace\\IDEA-workspace\\kuangshen_java\\IO流\\src\\com\\file\\aaa&quot;);
+        listDir(dir);
+    &#125;
+public static void listDir(File dir) &#123;
+
+        File[] files = dir.listFiles();
+        if (files != null &amp;&amp; files.length&gt;0) &#123;
+            for (File file : files) &#123;
+                if (file.isDirectory())&#123;
+                    listDir(file);
+                &#125;else &#123;
+                    System.out.println(file.getAbsolutePath());
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+<h3 id="递归删除文件夹"><a href="#递归删除文件夹" class="headerlink" title="递归删除文件夹"></a>递归删除文件夹</h3><p>删除多级文件夹下的文件</p>
+<pre><code class="java">public static void delDir(File dir) &#123;
+
+        File[] files = dir.listFiles();
+        if (files != null &amp;&amp; files.length&gt;0) &#123;
+            for (File file : files) &#123;
+                if (file.isDirectory())&#123;
+                    delDir(file);
+                &#125;else &#123;
+                    System.out.println(file.getAbsolutePath() + &quot;删除文件&quot; + file.delete());
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+</code></pre>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/09/c6fe409c993d/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;09&#x2F;c6fe409c993d&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;09&#x2F;c6fe409c993d&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924004"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-注解和反射 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="注解和反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-注解和反射">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="注解和反射">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414143319605.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414150428147.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414153626283.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414170751285.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414173909852.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414173959254.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414184512856.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414201814306.png">
+<meta property="article:published_time" content="2021-04-17T16:50:44.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.753Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta property="article:tag" content="狂神说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/04/18/c82a438b4928/img/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414143319605.png">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924000">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84"><span class="toc-number">1.</span> <span class="toc-text">注解和反射</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-java-annotation"><span class="toc-number">1.1.</span> <span class="toc-text">注解 java.annotation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text">什么是注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%AE%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">内置注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text">元注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">自定义注解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6"><span class="toc-number">1.6.</span> <span class="toc-text">反射机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80"><span class="toc-number">1.6.1.</span> <span class="toc-text">静态|动态语言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80"><span class="toc-number">1.6.1.1.</span> <span class="toc-text">动态语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%AF%AD%E8%A8%80"><span class="toc-number">1.6.1.2.</span> <span class="toc-text">静态语言</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-%E7%B1%BB"><span class="toc-number">1.7.</span> <span class="toc-text">Class 类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90"><span class="toc-number">1.8.</span> <span class="toc-text">类加载内存分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E7%9A%84%E5%8A%A0%E8%BD%BD%E4%B8%8E-ClassLoader-%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.8.1.</span> <span class="toc-text">类的加载与 ClassLoader 的理解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.9.</span> <span class="toc-text">类初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.10.</span> <span class="toc-text">类加载器的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%BE%97%E8%BF%90%E8%A1%8C%E6%97%B6%E7%B1%BB%E7%9A%84%E5%AE%8C%E6%95%B4%E7%BB%93%E6%9E%84"><span class="toc-number">1.11.</span> <span class="toc-text">获得运行时类的完整结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95"><span class="toc-number">1.12.</span> <span class="toc-text">动态创建对象执行方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SetAccessible"><span class="toc-number">1.13.</span> <span class="toc-text">SetAccessible</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%93%8D%E4%BD%9C%E6%B3%9B%E5%9E%8B"><span class="toc-number">1.14.</span> <span class="toc-text">反射操作泛型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%93%8D%E4%BD%9C%E6%B3%A8%E8%A7%A3%EF%BC%9A%E7%BB%83%E4%B9%A0-ORM"><span class="toc-number">1.15.</span> <span class="toc-text">反射操作注解：练习 ORM</span></a></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-注解和反射" class="lazyload">
+            <h1>JAVA-注解和反射</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月18日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.7k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 22 分钟</a>
+</div>
+
+    <h1 id="注解和反射"><a href="#注解和反射" class="headerlink" title="注解和反射"></a>注解和反射</h1><span id="more"></span>
+
+<p>重中之重，很多主流框架的实现都使用了注解和反射原理</p>
+<h2 id="注解-java-annotation"><a href="#注解-java-annotation" class="headerlink" title="注解 java.annotation"></a>注解 <code>java.annotation</code></h2><h2 id="什么是注解"><a href="#什么是注解" class="headerlink" title="什么是注解"></a>什么是注解</h2><p>Annotation 是从 JDK1.5 开始引入的新技术；</p>
+<p>Annotation 的作用：</p>
+<ul>
+<li>不是程序本身，可以对程序作出解释（这一点和注释 comment 没什么区别）；</li>
+<li>可以被其他程序（比如：编译器等）读取；</li>
+</ul>
+<p>Annotation 的格式：</p>
+<ul>
+<li><p>注解是以 “@注释名” 在代码中存在的，还可以添加一些参数值，例如：</p>
+</li>
+<li><p>@SuppressWarnings(value=”unchecked”)；</p>
+</li>
+</ul>
+<p>Annotation 在哪里使用？</p>
+<ul>
+<li>可以附加在 package，class，method，field 上面，相当于添加额外的辅助信息，可以通过反射机制编程实现对这些元数据的访问；</li>
+</ul>
+<h2 id="内置注解"><a href="#内置注解" class="headerlink" title="内置注解"></a>内置注解</h2><ul>
+<li><code>@Override</code> 定义在<code>java.lang.Override</code> 中，此注释只适用于修辞手法，表示一个方法声明打算重写超类中的另一个方法声明</li>
+<li><code>@Deprecated</code> 定义在<code>java.lang.Deprecated</code> 中，此注释可以用于修饰方法、属性、类，表示不鼓励程序员使用这样的元素，通常是因为它很危险或者存在更好的选择</li>
+<li><code>@SuppressWarnings</code> 定义在 <code>java.lang.SuppressWarnings</code> 中，用来抑制编译时的警告信息，与前两个有所不同的是需要添加一个参数才能正常使用，这些参数都是定义好的</li>
+</ul>
+<pre><code class="java">@SuppressWarnings(&quot;all&quot;)
+@SuppressWarnings(&quot;unchecked&quot;)
+@SuppressWarnings(value = &#123;&quot;unchecked&quot;, &quot;deprecation&quot;&#125;)
+...
+</code></pre>
+<h2 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h2><p>元注解的作用就是负责注解其他注解，java 定义了 4 个标准的 meta-annotation 类型，他们被用来提供对其他 annotation 类型作说明</p>
+<pre><code>☆ @Target //用于描述注解的适用范围
+☆ @Retention //表示在什么级别保存该注释信息，用于描述注解的生命周期(source &lt; class  &lt; RUNTIME)
+@Document // 说明该注解将被包含在javadoc中
+@Inherited // 说明子类可以继承父类中的该注解
+</code></pre>
+<h2 id="自定义注解"><a href="#自定义注解" class="headerlink" title="自定义注解"></a>自定义注解</h2><p>使用@interface 自定义注解时，自动继承了 java.lang.annotation.Annotation 接口</p>
+<p>分析：</p>
+<ol>
+<li>@interface 用来声明一个注解，格式 <code>public @inteface 注解名 &#123; content &#125;</code></li>
+<li>其中的每一个方法实际上是声明了一个配置参数</li>
+<li>方法的名称就是参数的名称</li>
+<li>返回值类型就是参数的类型（返回值只能是基本类型 class、String、 enum）</li>
+<li>可以通过 default 来声明参数的默认值</li>
+<li>如果只有一个参数成员，一般参数名为 value</li>
+<li>注解元素必须要有值，我们定义注解元素时，经常使用空字符串、0 作为默认值</li>
+</ol>
+<pre><code class="java">//测试元注解
+public class Test02 &#123;
+    // 注解可以显示赋值 如果没有默认值，就必须给注解赋值
+    @MyAnnotation(name = &quot;shan&quot;, age = 24)
+    public void test()&#123;
+    &#125;
+&#125;
+//定义一个注解
+//Target表示我们的注解可以用在哪些地方
+@Target(value = &#123;ElementType.METHOD, ElementType.TYPE&#125;)
+//Retention 表示我们的注解在什么地方还有效
+//Runtime &gt; class &gt; source
+@Retention(RetentionPolicy.RUNTIME)
+//@Documented 表示是否将我们的注解生成在JAVADoc中
+@Documented
+//@Inherited 子类可以继承父类的注解
+@Inherited
+@interface MyAnnotation &#123;
+
+&#125;
+</code></pre>
+<h2 id="反射机制"><a href="#反射机制" class="headerlink" title="反射机制"></a>反射机制</h2><h3 id="静态-动态语言"><a href="#静态-动态语言" class="headerlink" title="静态|动态语言"></a>静态|动态语言</h3><h4 id="动态语言"><a href="#动态语言" class="headerlink" title="动态语言"></a>动态语言</h4><p>是一类在运动时可以改变其结构的语言：例如新的函数、对象、甚至代码可以被引进，已有的函数可以被删除或是其他结构上的变化。通俗点说就是在运行时代码可以根据某些条件改变自身结构。</p>
+<h4 id="静态语言"><a href="#静态语言" class="headerlink" title="静态语言"></a>静态语言</h4><p>与动态语言相对应的，运行时结构不可变的语言就是静态语言，如 java、c、c++；</p>
+<p>java 不是动态语言，但 java 可以称之为“准动态语言”。即 java 有一定的动态性，我们可以利用反射机制获得类似动态语言的特性。java 的动态性让编程的时候更加灵活。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414143319605.png" alt="image-20210414143319605" class="lazyload"></p>
+<p><strong>优点</strong>：</p>
+<p>​ 可以动态实现创建对象和编译，体现出很大的灵活性；</p>
+<p><strong>缺点</strong>：</p>
+<p>​ 对性能有影响，使用反射基本上是一种解释操作。我们可以告诉 JVM，我们希望做什么并且他满足我们的要求，这类操作总是慢于直接执行相同的操作。</p>
+<p>一个类在内存中只有一个 Class 对象；</p>
+<p>一个类加载后，类的整个结构都会被封装在 class 对象中；</p>
+<pre><code class="java">public class Test02 &#123;
+    public static void main(String[] args) throws ClassNotFoundException &#123;
+        Class c1 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+        System.out.println(c1);
+
+        Class c2 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+        System.out.println(c2.hashCode());
+        Class c3 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+        System.out.println(c3.hashCode());
+        Class c4 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+        System.out.println(c4.hashCode());
+
+    &#125;
+&#125;
+
+class User &#123;
+    private String name;
+    private int id;
+    private int age;
+
+    public User() &#123;
+    &#125;
+
+    public User(String name, int id, int age) &#123;
+        this.name = name;
+        this.id = id;
+        this.age = age;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;User&#123;&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, id=&quot; + id +
+                &quot;, age=&quot; + age +
+                &#39;&#125;&#39;;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    public int getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(int id) &#123;
+        this.id = id;
+    &#125;
+
+    public int getAge() &#123;
+        return age;
+    &#125;
+
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+&#125;
+
+//运行结果
+class com.annotation.reflection.User
+460141958
+460141958
+460141958
+</code></pre>
+<h2 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414150428147.png" alt="image-20210414150428147" class="lazyload"></p>
+<p><strong>对象照镜子可以得到的信息</strong>：</p>
+<p>某个类的属性、方法和构造器、某个类到底实现了哪些接口。对于每个类而言，JRE 都为其保留一个不变的 Class 类型的对象。一个 Class 对象包含了特定某个结构（Class/interface/enum/annotation/primitive type/void[]) 的有关信息。</p>
+<ul>
+<li>Class 本身也是一个类；</li>
+<li>Class 对象只能由系统建立对象；</li>
+<li>一个加载的类在 JVM 中只会有一个 Class 实例；</li>
+<li>一个 Class 对象对应的是一个加载到 JVM 中的一个.class 文件；</li>
+<li>每个类的实例都会记得自己是由哪个 Class 实例所生成；</li>
+<li>通过 Class 可以完整的得到一个类中的所有被加持的结构；</li>
+<li>Class 类是 Reflection 的根源，针对任何你想动态加载，运行的类，唯有先获得相应的 Class 对象；</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414153626283.png" alt="image-20210414153626283" class="lazyload"></p>
+<p><strong>获取 Class 类的实例</strong></p>
+<ul>
+<li>若已知具体的类，通过类的 class 属性获取，该方法最为安全可靠，程序性能最高。<ul>
+<li>Class cl = Person.class；</li>
+</ul>
+</li>
+<li>已知某个类的实例，调用该实例的 getClass() 方法获取 Class 对象<ul>
+<li>Class cl = person。getClass()；</li>
+</ul>
+</li>
+<li>已知一个类的全类名，且该类在类路径下，可通过 Class 类的静态方法 forName()获取，可能抛出 ClassFoundException<ul>
+<li>Class cl = Class。forName(“demo01.Student”);</li>
+</ul>
+</li>
+<li>内置基本数据类型可以直接用类名.Type；</li>
+<li>还可以利用 ClassLoader，之后讲</li>
+</ul>
+<p>演示：</p>
+<pre><code class="java">//测试class 类的创建方式有哪些
+public class Test03 &#123;
+    public static void main(String[] args) throws ClassNotFoundException &#123;
+        Person person = new Student();
+        System.out.println(&quot;这个人是：&quot; + person.name);
+
+        // 方式一 ： 通过对象获得
+        Class c1 = person.getClass();
+        System.out.println(c1.hashCode());
+
+        // 方式二 ： forname 获得
+        Class c2 = Class.forName(&quot;com.annotation.reflection.Student&quot;);
+        System.out.println(c2.hashCode());
+
+        //方式三 ： 通过类名.class 获得
+        Class&lt;Student&gt; c3 = Student.class;
+        System.out.println(c3.hashCode());
+
+        //方式四 ： 内置基本数据类型可以直接用类名.Type；
+        Class&lt;Integer&gt; type = Integer.TYPE;
+        System.out.println(type.hashCode());
+
+        //获得父类类型
+        Class c5 = c1.getSuperclass();
+        System.out.println(c5);
+    &#125;
+&#125;
+
+class Person &#123;
+    String name;
+    public Person() &#123;&#125;
+    public Person(String name) &#123;
+        this.name = name;
+    &#125;
+    public String getName() &#123;
+        return name;
+    &#125;
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+&#125;
+class Student extends Person &#123;
+    public Student() &#123;
+        this.name = &quot;学生&quot;;
+    &#125;
+&#125;
+class Teacher extends Person&#123;
+    public Teacher()&#123;
+        this.name = &quot;Teac&quot;;
+    &#125;
+&#125;
+
+//结果
+这个人是：学生
+460141958
+460141958
+460141958
+1163157884
+class com.annotation.reflection.Person
+</code></pre>
+<h2 id="类加载内存分析"><a href="#类加载内存分析" class="headerlink" title="类加载内存分析"></a>类加载内存分析</h2><h3 id="类的加载与-ClassLoader-的理解"><a href="#类的加载与-ClassLoader-的理解" class="headerlink" title="类的加载与 ClassLoader 的理解"></a>类的加载与 ClassLoader 的理解</h3><ul>
+<li><p>加载：将 class 文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后生成一个代表这个类的 java.lang.Class 对象。</p>
+</li>
+<li><p>链接：将 java 类的二进制代码合并到 JVM 的运行状态之中的过程。</p>
+<ul>
+<li>验证：确保加载的类信息符合 JVM 规范，没有安全方面的问题；</li>
+<li>准备：正式为类变量（static）分配内存并设置类变量默认初始值的阶段，这些内存都将在方法去中进行分配；</li>
+<li>解析：虚拟机常量池的符号引用（常量名）替换为直接引用（地址）的过程；</li>
+</ul>
+</li>
+<li><p>初始化：</p>
+<ul>
+<li>执行类构造器 <clinit>() 方法的过程。类构造器<clinit>() 方法是由编译期自动收集类中所有变量的赋值动作和静态代码块中的语句合并产生的。（类构造器是构造类信息的，不是构造该类对象的构造器）。</li>
+<li>当初始化一个类的时候，如果发现其父类还没有进行初始化，则需要先触发其父类的初始化。</li>
+<li>虚拟机会保证一个类的<clinit>() 方法在多线程环境中被正确加锁和同步。</li>
+</ul>
+</li>
+</ul>
+<h2 id="类初始化"><a href="#类初始化" class="headerlink" title="类初始化"></a>类初始化</h2><ul>
+<li><strong>类的主动引用（一定会发生类的初始化）</strong><ul>
+<li>当虚拟机启动，先初始化 main 方法所在的类；</li>
+<li>new 一个类的对象；</li>
+<li>调用类的静态成员（除了 final 常量）和静态方法；</li>
+<li>使用<code>java.lang.reflect</code>包的方法对类进行反射调用；</li>
+<li>当初始化一个类，如果其父类没有被初始化，则先会初始化它的父类；</li>
+</ul>
+</li>
+<li><strong>类的被动引用（不会发生类的初始化）</strong><ul>
+<li>当访问一个静态域时，只有真正声明这个域的类才会被初始化，如：当通过子类引用父类的静态变量，不会导致自类初始化；</li>
+<li>通过数组定义类引用，不会触发此类的初始化；</li>
+<li>引用常量不会触发此类的初始化（常量在链接阶段就存入调用类的常量池中了）</li>
+</ul>
+</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414170751285.png" alt="image-20210414170751285" class="lazyload"></p>
+<pre><code class="java">public class Test05 &#123;
+    static &#123;
+        System.out.println(&quot;Main 被加载&quot;);
+    &#125;
+    public static void main(String[] args) &#123;
+        // 1. 主动引用
+        Son son = new Son();
+        // 2. 反射也会产生主动引用
+        try &#123;
+            Class.forName(&quot;com.annotation.reflection.Son&quot;);
+        &#125; catch (ClassNotFoundException e) &#123;
+            e.printStackTrace();
+        &#125;
+        // 不会产生类的引用方法
+        System.out.println(Son.b);
+        Son[] array = new Son[100];
+    &#125;
+&#125;
+class Father &#123;
+    static int b = 2;
+    static &#123;
+        System.out.println(&quot;父类被加载&quot;);
+    &#125;
+&#125;
+class Son extends Father &#123;
+    static &#123;
+        System.out.println(&quot;子类被加载&quot;);
+        m = 300;
+    &#125;
+    static int m = 100;
+    static final int M = 1;
+&#125;
+</code></pre>
+<h2 id="类加载器的作用"><a href="#类加载器的作用" class="headerlink" title="类加载器的作用"></a>类加载器的作用</h2><ul>
+<li><p>类加载的作用：将 class 文件字节码内容加载到内存中，并将这些静态数据转换成方法区的运行时数据结构，然后在堆中生成一个代表这个类的<code>java.lang.Class</code>对象，作为方法区中类数据的访问入口。</p>
+</li>
+<li><p>类缓存：标准的 javaSE 类加载器可以按要求查找类，但一旦某个类被加载到类加载器中，它将维持加载（缓存）一段时间。不过 JVM 垃圾回收机制可以回收这些 Class 对象。</p>
+</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414173909852.png" alt="image-20210414173909852" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414173959254.png" alt="image-20210414173959254" class="lazyload"></p>
+<h2 id="获得运行时类的完整结构"><a href="#获得运行时类的完整结构" class="headerlink" title="获得运行时类的完整结构"></a>获得运行时类的完整结构</h2><pre><code class="java">import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+// 获取类的信息
+public class Test07 &#123;
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, NoSuchMethodException &#123;
+        Class c1 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+
+        // 获得类的名字
+        System.out.println(c1.getName()); // 获得包名 + 类名
+        System.out.println(c1.getSimpleName());
+
+        // 获得类的属性
+        System.out.println(&quot;------------&quot;);
+        Field[] fields = c1.getFields(); // 只能找到public属性
+
+        fields = c1.getDeclaredFields(); // 找到全部的属性
+
+        for (Field field : fields)&#123;
+            System.out.println(field);
+        &#125;
+
+        // 获得指定属性的值
+        Field name = c1.getDeclaredField(&quot;name&quot;);
+        System.out.println(name);
+
+        // 获得类的方法
+        System.out.println(&quot;------------&quot;);
+        Method[] methods = c1.getMethods();// 获得本类及其父类的全部public方法
+        for (Method method : methods)&#123;
+            System.out.println(&quot;正常的：&quot; + method);
+        &#125;
+        methods = c1.getDeclaredMethods(); // 获得本类的全部方法
+        for (Method method : methods)&#123;
+            System.out.println(&quot;getDeclaredMethods：&quot; + method);
+        &#125;
+
+        // 获得指定方法
+        // 重载
+        Method getName = c1.getMethod(&quot;getName&quot;, null);
+        Method setName = c1.getMethod(&quot;setName&quot;, String.class);
+        System.out.println(getName);
+        System.out.println(setName);
+
+        // 获得指定的构造器
+        System.out.println(&quot;--------------&quot;);
+        Constructor[] constructors = c1.getConstructors();
+        for (Constructor constructor : constructors)&#123;
+            System.out.println(constructor);
+        &#125;
+        constructors  = c1.getDeclaredConstructors();
+        for (Constructor constructor : constructors)&#123;
+            System.out.println(constructor);
+        &#125;
+
+        // 获得指定的构造器
+        Constructor declaredConstructor = c1.getDeclaredConstructor(String.class, int.class, int.class);
+        System.out.println(&quot;指定的：&quot; + declaredConstructor);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="动态创建对象执行方法"><a href="#动态创建对象执行方法" class="headerlink" title="动态创建对象执行方法"></a>动态创建对象执行方法</h2><p>有了 Class 对象，能做什么？</p>
+<ul>
+<li>创建类的对象：调用 Class 对象的 newInstance()方法<ul>
+<li>类必须有一个无参构造器。</li>
+<li>类的构造器的访问权限需要足够。</li>
+</ul>
+</li>
+<li><strong>思考：难道没有无参的构造器就不能创建对象了吗？</strong><ul>
+<li>只要在操作的时候明确的调用类中的构造器，并将参数传递进去后，才可以实例化操作</li>
+<li>步骤如下：<ul>
+<li>通过 Class1 类的<code>getDeclaredConstructor(Class ... parameterTypes) </code>取得本类的指定形参类型的构造器；</li>
+<li>向构造器的形参中传递一个对象数组进去，里面包含了构造器中所需的各个参数；</li>
+<li>通过 Constructor 实例化对象；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>调用指定方法：</strong></p>
+<ul>
+<li><p>通过反射，调用类中的方法，通过 Method 类完成；</p>
+<ul>
+<li>通过 Class 类的<code>getMethod(String name, Class ... parameterTypes)</code>方法取得一个 Method 对象，并设置此方法操作时所需要的参数类型；</li>
+<li>之后使用<code>Object invoke(Object obj, Object[] args)</code> 进行调用，并向方法中传递要设置的 obj 对象的参数信息；</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414184512856.png" alt="image-20210414184512856" class="lazyload"></p>
+</li>
+</ul>
+<pre><code class="java">import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+//通过反射动态创建对象
+public class Test08 &#123;
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException, NoSuchFieldException &#123;
+        //获得Class对象
+        Class&lt;?&gt; c1 = Class.forName(&quot;com.annotation.reflection.User&quot;);
+
+        //构造一个对象
+        User user = (User)c1.newInstance(); //本质是调用了类的无参构造器
+        System.out.println(user);
+
+        //通过构造器创建对象
+        Constructor constructor = c1.getDeclaredConstructor(String.class, int.class, int.class);
+        User user2 = (User)constructor.newInstance(&quot;shan&quot;, 001, 18);
+        System.out.println(user2);
+
+        //通过反射调用普通方法
+        User user3 = (User)c1.newInstance();
+        //通过反射获取一个方法
+        Method setName = c1.getDeclaredMethod(&quot;setName&quot;, String.class);
+        //invoke 激活
+        //invoke（对象， “方法的值”）
+        setName.invoke(user3,&quot;shanx&quot;);
+        System.out.println(user3.getName());
+
+        //通过反射操作属性
+        User user4 = (User)c1.newInstance();
+        Field name = c1.getDeclaredField(&quot;name&quot;);
+        //默认状态下不能直接操作私有属性，我们需要关闭程序的安全检测，属性或者方法的setAccessible(true); 此处true为关
+        // 会降低程序效率
+        name.setAccessible(true);
+        name.set(user4, &quot;shanx-2&quot;);
+        System.out.println(user4.getName());
+
+    &#125;
+&#125;
+</code></pre>
+<h2 id="SetAccessible"><a href="#SetAccessible" class="headerlink" title="SetAccessible"></a>SetAccessible</h2><ul>
+<li>Method 和 Field、Constructor 对象都有 setAccessible() 方法。</li>
+<li>SetAccessible 作用是启动和禁用访问安全检查的开关。</li>
+<li>参数值为 true 则指示反射的对象在使用时应该取消 java 语言访问检查。<ul>
+<li>提高反射的效率。如果代码中必须用反射，而该句代码中需要频繁的被调用，那么请设置为 true。</li>
+<li>使得原本无法访问的私有成员也可以访问。</li>
+</ul>
+</li>
+<li>参数值为 false 则指示反射的对象应该实施 java 语言访问检查。</li>
+</ul>
+<pre><code class="java">import java.lang.reflect.Method;
+
+public class Test09 &#123;
+    public static void test01() &#123;
+        User user = new User();
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i &lt; 1000000000; i++) &#123;
+            user.getName();
+        &#125;
+        long endTime = System.currentTimeMillis();
+        System.out.println(&quot;普通方法执行10亿次：&quot; + (endTime-startTime) + &quot;ms&quot;);
+    &#125;
+
+    //反射方式调用
+    public static void test02() throws NoSuchMethodException &#123;
+        User user = new User();
+        Class c1 = user.getClass();
+        Method getName = c1.getDeclaredMethod(&quot;getName&quot;, null);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i &lt; 1000000000; i++) &#123;
+            getName.getName();
+        &#125;
+        long endTime = System.currentTimeMillis();
+        System.out.println(&quot;反射方式调用执行10亿次：&quot; + (endTime-startTime) + &quot;ms&quot;);
+    &#125;
+
+    //反射方式调用,关闭检测
+    public static void test03() throws NoSuchMethodException &#123;
+        User user = new User();
+        Class c1 = user.getClass();
+        Method getName = c1.getDeclaredMethod(&quot;getName&quot;, null);
+        getName.setAccessible(true);
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i &lt; 1000000000; i++) &#123;
+            getName.getName();
+        &#125;
+        long endTime = System.currentTimeMillis();
+        System.out.println(&quot;反射方式调用,关闭检测执行10亿次：&quot; + (endTime-startTime) + &quot;ms&quot;);
+    &#125;
+
+    public static void main(String[] args) throws NoSuchMethodException &#123;
+        test01();
+        test02();
+        test03();
+    &#125;
+&#125;
+</code></pre>
+<h2 id="反射操作泛型"><a href="#反射操作泛型" class="headerlink" title="反射操作泛型"></a>反射操作泛型</h2><ul>
+<li>java 采用泛型擦除的机制来引入泛型，java 中的泛型仅仅是给编译器 javac 使用的，确保数据的安全性和免去强制类型转换问题，但是，一旦编译完成，所有的泛型有关的类型全部擦除；</li>
+<li>为了通过反射操作这些类型，java 新增了 ParameterizedType, GenericArrayType，TypeVariable 和 WildcardType 几种类型来代表不能被归一到 Class 类中的类型但是又和原始类型齐名的类型；<ul>
+<li>ParameterizedType：表示一种参数化类型，比如 Collection<String>；</li>
+<li>GenericArrayType：表示一种元阿苏类型是参数化类型或者类型变量的数组模型；</li>
+<li>TypeVariable ：是各种类型变量的公共父接口；</li>
+<li>WildcardType ：代表一种通配符类型表达式；</li>
+</ul>
+</li>
+</ul>
+<pre><code class="java">import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Map;
+
+public class Test10 &#123;
+    public void test01(Map&lt;String,User&gt; map, List&lt;User&gt; list) &#123;
+        System.out.println(&quot;test01&quot;);
+    &#125;
+
+    public Map&lt;String, User&gt; test02() &#123;
+        System.out.println(&quot;test02&quot;);
+        return null;
+    &#125;
+
+    public static void main(String[] args) throws NoSuchMethodException &#123;
+        Method method = Test10.class.getMethod(&quot;test01&quot;, Map.class, List.class);
+        Type[] genericParameterTypes = method.getGenericParameterTypes();
+        for (Type genericParameterType : genericParameterTypes) &#123;
+            System.out.println(&quot;#&quot;+genericParameterTypes);
+            if (genericParameterType instanceof ParameterizedType) &#123;
+                Type[] actualTypeArguments = ((ParameterizedType) genericParameterType).getActualTypeArguments();
+                for (Type actualTypeArgument : actualTypeArguments) &#123;
+                    System.out.println(actualTypeArgument);
+                &#125;
+            &#125;
+        &#125;
+
+        method = Test10.class.getMethod(&quot;test02&quot;,null);
+        Type genericReturnType = method.getGenericReturnType();
+        if (genericReturnType instanceof ParameterizedType) &#123;
+            Type[] actualTypeArguments = ((ParameterizedType) genericReturnType).getActualTypeArguments();
+            for (Type actualTypeArgument : actualTypeArguments) &#123;
+                System.out.println(actualTypeArgument);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="反射操作注解：练习-ORM"><a href="#反射操作注解：练习-ORM" class="headerlink" title="反射操作注解：练习 ORM"></a>反射操作注解：练习 ORM</h2><p>什么是 ORM？</p>
+<ul>
+<li>Object relationship Mapping –&gt; 对象关系映射</li>
+</ul>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84-20210418/image-20210414201814306.png" alt="image-20210414201814306" class="lazyload"></p>
+<ul>
+<li>类和表结构对应</li>
+<li>属性和字段对应</li>
+<li>对象和记录对应</li>
+</ul>
+<p>要求：利用注解和反射完成类和表结构的映射关系。</p>
+<pre><code class="java">//orm
+
+public class Test11 &#123;
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException &#123;
+        Class c1 = Class.forName(&quot;com.annotation.reflection.Stu&quot;);
+
+        // 通过反射获得注解
+        Annotation[] annotations = c1.getAnnotations();
+        for (Annotation annotation : annotations) &#123;
+            System.out.println(annotation);
+        &#125;
+
+        // 获得注解的value的值
+        TableStu tableStu = (TableStu)c1.getAnnotation(TableStu.class);
+        String value = tableStu.value();
+        System.out.println(value);
+
+
+        // 获得类指定注解
+        Field f = c1.getDeclaredField(&quot;name&quot;);
+        FieldStu annotation = f.getAnnotation(FieldStu.class);
+        System.out.println(annotation.columnName());
+        System.out.println(annotation.length());
+        System.out.println(annotation.type());
+    &#125;
+&#125;
+
+@TableStu(&quot;db_stu&quot;)
+class Stu&#123;
+    @FieldStu(columnName = &quot;db_id&quot;, type = &quot;int&quot;, length = 10)
+    private int id;
+    @FieldStu(columnName = &quot;db_age&quot;, type = &quot;int&quot;, length = 10)
+    private int age;
+    @FieldStu(columnName = &quot;db_name&quot;, type = &quot;varchar&quot;, length = 3)
+    private String name;
+
+    public Stu() &#123;
+    &#125;
+
+    public Stu(int id, int age, String name) &#123;
+        this.id = id;
+        this.age = age;
+        this.name = name;
+    &#125;
+
+    public int getId() &#123;
+        return id;
+    &#125;
+
+    public void setId(int id) &#123;
+        this.id = id;
+    &#125;
+
+    public int getAge() &#123;
+        return age;
+    &#125;
+
+    public void setAge(int age) &#123;
+        this.age = age;
+    &#125;
+
+    public String getName() &#123;
+        return name;
+    &#125;
+
+    public void setName(String name) &#123;
+        this.name = name;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return &quot;Stu&#123;&quot; +
+                &quot;id=&quot; + id +
+                &quot;, age=&quot; + age +
+                &quot;, name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &#39;&#125;&#39;;
+    &#125;
+&#125;
+
+// 类名的注解
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@interface TableStu&#123;
+    String value();
+&#125;
+
+// 属性的注解
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+@interface FieldStu&#123;
+    String columnName();
+    String type();
+    int length();
+&#125;
+</code></pre>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/18/c82a438b4928/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;18&#x2F;c82a438b4928&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;18&#x2F;c82a438b4928&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" rel="tag">狂神说</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924001"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

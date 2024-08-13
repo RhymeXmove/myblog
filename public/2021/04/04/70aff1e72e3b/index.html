@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-基础 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="视频地址：https:&#x2F;&#x2F;www.kuangstudy.com&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-基础">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/04/70aff1e72e3b/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="视频地址：https:&#x2F;&#x2F;www.kuangstudy.com&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-04T10:57:41.000Z">
+<meta property="article:modified_time" content="2022-04-07T17:25:27.691Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta property="article:tag" content="狂神说">
+<meta name="twitter:card" content="summary">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924004">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#a-a%E2%80%93-%E5%85%88%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%86%8D%E8%87%AA%E5%A2%9E-%E5%87%8F"><span class="toc-number">1.</span> <span class="toc-text">a++ a– 先执行程序，再自增&#x2F;减</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Math%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">Math类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97-%E4%B8%8E-amp-amp-%E3%80%81-%E6%88%96-%E3%80%81-%E9%9D%9E%EF%BC%81"><span class="toc-number">3.</span> <span class="toc-text">逻辑计算 与 &amp;&amp;、 或 ||、 非！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97-A-amp-amp-B-A%E4%B8%BAfalse%E6%97%B6%EF%BC%8CB%E4%B8%8D%E6%89%A7%E8%A1%8C"><span class="toc-number">4.</span> <span class="toc-text">短路运算:  A&amp;&amp;B, A为false时，B不执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97-%E4%B8%8E-%E6%88%96-%E5%8F%96%E5%8F%8D-%E5%BC%82%E6%88%96-amp-%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BF%90%E7%AE%97-%EF%BC%8C%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91"><span class="toc-number">5.</span> <span class="toc-text">位运算 与 或 取反  异或   &amp;   |   ~   ^ 二进制运算  ，数字逻辑</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#a-b-%E5%90%8C-a-a-b-a-b-%E5%90%8C-a-a-b"><span class="toc-number">6.</span> <span class="toc-text">a+&#x3D;b  同  a&#x3D;a+b ,  a-&#x3D;b  同 a&#x3D;a-b</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5%E7%AC%A6"><span class="toc-number">7.</span> <span class="toc-text">字符串连接符 +</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">8.</span> <span class="toc-text">三元运算符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%85%E6%9C%BA%E5%88%B6"><span class="toc-number">9.</span> <span class="toc-text">包机制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javadoc"><span class="toc-number">10.</span> <span class="toc-text">javadoc</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-number">11.</span> <span class="toc-text">java可变参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Arrays%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="toc-number">12.</span> <span class="toc-text">Arrays常用类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%B0%B1%E6%98%AF%EF%BC%9A%E4%BB%A5%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95%E7%BB%84%E7%BB%87%E4%BB%A3%E7%A0%81%EF%BC%8C%E4%BB%A5%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%E7%BB%84%E7%BB%87%EF%BC%88%E5%B0%81%E8%A3%85%EF%BC%89%E6%95%B0%E6%8D%AE"><span class="toc-number">13.</span> <span class="toc-text">面向对象的本质就是：以类的方法组织代码，以对象的方法组织（封装）数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E3%80%81%E9%9D%9E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">14.</span> <span class="toc-text">静态方法、非静态方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE%E5%BA%94%E8%AF%A5%E5%8F%AA%E5%AD%98%E5%9C%A8%E4%B8%80%E4%B8%AAmain%E6%96%B9%E6%B3%95%EF%BC%8CApplication"><span class="toc-number">15.</span> <span class="toc-text">一个项目应该只存在一个main方法，Application</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">16.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81"><span class="toc-number">17.</span> <span class="toc-text">封装 继承 多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E8%AF%8D"><span class="toc-number">18.</span> <span class="toc-text">修饰词</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#A-instanceof-B%EF%BC%8C%E5%88%A4%E6%96%ADA-B%E4%B9%8B%E9%97%B4%E6%98%AF%E5%90%A6%E6%9C%89%E7%88%B6%E5%AD%90%E5%85%B3%E7%B3%BB"><span class="toc-number">19.</span> <span class="toc-text">A instanceof B，判断A,B之间是否有父子关系</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">20.</span> <span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">21.</span> <span class="toc-text">抽象类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BB%A7%E6%89%BF%EF%BC%89"><span class="toc-number">22.</span> <span class="toc-text">接口（可以实现多继承）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">23.</span> <span class="toc-text">内部类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8-Exception-%E5%92%8C-Error"><span class="toc-number">24.</span> <span class="toc-text">异常 Exception 和 Error</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%9C%BA%E5%88%B6"><span class="toc-number">25.</span> <span class="toc-text">异常处理机制</span></a></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-基础" class="lazyload">
+            <h1>JAVA-基础</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月04日</a>
+    <a><i class="nexmoefont icon-areachart"></i>2.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 12 分钟</a>
+</div>
+
+    <p>视频地址：<a target="_blank" rel="noopener" href="https://www.kuangstudy.com/">https://www.kuangstudy.com/</a></p>
+<span id="more"></span>
+
+<h1 id="a-a–-先执行程序，再自增-减"><a href="#a-a–-先执行程序，再自增-减" class="headerlink" title="a++ a– 先执行程序，再自增/减"></a>a++ a– 先执行程序，再自增/减</h1><p>​       ++a –a 先自增/减，再执行程序</p>
+<h1 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h1><p>幂运算 2^3， double pow = Math.pow(3, 2);</p>
+<h1 id="逻辑计算-与-amp-amp-、-或-、-非！"><a href="#逻辑计算-与-amp-amp-、-或-、-非！" class="headerlink" title="逻辑计算 与 &amp;&amp;、 或 ||、 非！"></a>逻辑计算 与 &amp;&amp;、 或 ||、 非！</h1><h1 id="短路运算-A-amp-amp-B-A为false时，B不执行"><a href="#短路运算-A-amp-amp-B-A为false时，B不执行" class="headerlink" title="短路运算:  A&amp;&amp;B, A为false时，B不执行"></a>短路运算:  A&amp;&amp;B, A为false时，B不执行</h1><h1 id="位运算-与-或-取反-异或-amp-二进制运算-，数字逻辑"><a href="#位运算-与-或-取反-异或-amp-二进制运算-，数字逻辑" class="headerlink" title="位运算 与 或 取反  异或   &amp;   |   ~   ^ 二进制运算  ，数字逻辑"></a>位运算 与 或 取反  异或   &amp;   |   ~   ^ 二进制运算  ，数字逻辑</h1><p>A= 0011 1100  B= 0000 1101</p>
+<p>A&amp;B= 0000 1100   </p>
+<p> A|B= 0011 1101</p>
+<p>A^B= 0011 0011  </p>
+<p>~B= 1111 0010</p>
+<p>&lt;&lt;左移 等价于乘2   &gt;&gt;右移 等价于除2    </p>
+<p>  eg: 2x8 = 2x2x2x2 = 2&lt;&lt;3=16 </p>
+<p>&gt;&gt;&gt;  正负取反</p>
+<h1 id="a-b-同-a-a-b-a-b-同-a-a-b"><a href="#a-b-同-a-a-b-a-b-同-a-a-b" class="headerlink" title="a+=b  同  a=a+b ,  a-=b  同 a=a-b"></a>a+=b  同  a=a+b ,  a-=b  同 a=a-b</h1><h1 id="字符串连接符"><a href="#字符串连接符" class="headerlink" title="字符串连接符 +"></a>字符串连接符 +</h1><p>a = 10 b=20 </p>
+<p>println(“”+a+b);   </p>
+<p>结果：1020</p>
+<p>println(a+b+””)</p>
+<p>结果：30</p>
+<h1 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h1><p>x ? y : z</p>
+<p>如果 x==true ,结果为 y，否则结果为 z</p>
+<p>eg: int sc = 58;</p>
+<p>String type = sc &lt; 60 ? “不及格” : “及格”；</p>
+<h1 id="包机制"><a href="#包机制" class="headerlink" title="包机制"></a>包机制</h1><p>com.rhyme.shanxin </p>
+<p>一般为域名倒置</p>
+<p>import a.b.c.d;  不要用 【.*】，找方法时浪费资源</p>
+<p>《JAVA开发手册》 阿里</p>
+<h1 id="javadoc"><a href="#javadoc" class="headerlink" title="javadoc"></a>javadoc</h1><pre><code class="java">代码中
+
+/**
+* @author shanxin
+* @param name
+* @return
+* @throws Exception
+*/
+public class abc throw excpetion&#123;
+    
+&#125;
+javadoc  -encoding UTF-8 -charset UTF-8 demo.java
+</code></pre>
+<h1 id="java可变参数"><a href="#java可变参数" class="headerlink" title="java可变参数"></a>java可变参数</h1><p>1、在方法声明中，在指定类型后加一个省略号（int… a）。<br>2、一个方法中只能指定一个可变参数，他必须是方法的最后一个参数，任何普通参数必须在它之前声明。<br>3、可变参数的本事还是一个数组</p>
+<pre><code class="java">public class Demo04 &#123;
+    //    可变参数
+    public static void main(String[] args) &#123;
+        Demo04 demo04 = new Demo04();
+        demo04.test(1,2,3,4,5,6);
+    &#125;
+
+    public void test(int... i)&#123;
+        System.out.println(i[0]);
+        System.out.println(i[1]);
+        System.out.println(i[2]);
+        System.out.println(i[3]);
+        System.out.println(i[4]);
+        System.out.println(i[5]);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="Arrays常用类"><a href="#Arrays常用类" class="headerlink" title="Arrays常用类"></a>Arrays常用类</h1><p>数组string输出</p>
+<pre><code class="java">int[] arr；
+Arrays.tostring(arr); 
+</code></pre>
+<p>快速排序</p>
+<pre><code class="java">Arrays.sort(arr);
+</code></pre>
+<h1 id="面向对象的本质就是：以类的方法组织代码，以对象的方法组织（封装）数据"><a href="#面向对象的本质就是：以类的方法组织代码，以对象的方法组织（封装）数据" class="headerlink" title="面向对象的本质就是：以类的方法组织代码，以对象的方法组织（封装）数据"></a>面向对象的本质就是：以类的方法组织代码，以对象的方法组织（封装）数据</h1><h1 id="静态方法、非静态方法"><a href="#静态方法、非静态方法" class="headerlink" title="静态方法、非静态方法"></a>静态方法、非静态方法</h1><pre><code class="java">//静态方法，可直接调用
+public static void say()&#123;
+    System.out.println();
+&#125;
+
+//非静态方法，通过new一个对象调用
+public void shout()&#123;
+
+&#125;
+</code></pre>
+<p>两个都是静态方法，可以直接调用</p>
+<p>两个都是非静态方法，可以直接调用</p>
+<p>静态方法不能直接调用非静态方法，因为静态方法是和类一起加载的，时间线特别早，而非静态方法是new之后才存在的。</p>
+<h1 id="一个项目应该只存在一个main方法，Application"><a href="#一个项目应该只存在一个main方法，Application" class="headerlink" title="一个项目应该只存在一个main方法，Application"></a>一个项目应该只存在一个main方法，Application</h1><h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><p>1.和类名相同</p>
+<p>2.没有返回值</p>
+<p>作用：</p>
+<ol>
+<li>new 本质在调用构造方法;</li>
+<li>初始化对象的值;</li>
+</ol>
+<p><strong>注意点</strong>：</p>
+<ol>
+<li>定义有参构造之后，如果想使用无参构造，现实的定义是一个无参的构造</li>
+</ol>
+<h1 id="封装-继承-多态"><a href="#封装-继承-多态" class="headerlink" title="封装 继承 多态"></a>封装 继承 多态</h1><ol>
+<li><p>封装：高内聚，低耦合；高内聚，内部数据操作自己完成，不允许外部干涉；低耦合，仅暴露少量方法给外部使用。</p>
+<p>数据的隐藏：通常，应禁止直接访问一个对象中的实际表示，而应该通过操作接口来访问； 属性私有，get/set  set方法内可以进行安全性控制，防止非法输入；</p>
+</li>
+<li><p>继承：（extends）java中只有单继承，没有多继承；</p>
+<ol>
+<li><p>继承是类和类之间的一种关系，除此之外类和类之间的关系还有依赖，组合，聚合等；</p>
+</li>
+<li><p>继承关系的两个类，一个为子类（派生类），一个为父类（基类）。子类继承父类，使用关键字extends来表示；</p>
+</li>
+<li><p>子类和父类之间，从意义上讲应该具有is a关系；</p>
+</li>
+<li><p>object类 ：所有类的父类，包括自己写的类；祖宗类~</p>
+</li>
+<li><p>super：子类通过super来访问父类的属性；无参构造方法有一个隐藏的super();</p>
+<p>有参构造需要自己写super();</p>
+</li>
+<li><p>方法重写：</p>
+<ol>
+<li>前提，需要有继承关系，子类重写父类的方法；<ol>
+<li>方法名必须相同；</li>
+<li>参数列表必须相同；</li>
+<li>修饰符，范围可以扩大但不能缩小：public&gt;protected&gt;default&gt;private;</li>
+<li>抛出异常：范围可以缩小但不能扩大：ClassNotFoundException–&gt;Exception(大)</li>
+</ol>
+</li>
+<li>子类的方法和父类必须一致，方法体不同；</li>
+<li>为什么要重写：<ol>
+<li>父类的功能，子类不一定需要，或者不一定满足。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>多态：即同一方法可以根据发送对象的不同而采用多种不同的行为方式；</p>
+<p>一个对象的实际类型是确定的，但可以指向对象的引用的类型有很多（父类，有关系的类）；</p>
+<ol>
+<li><p>多态是方法的多态，属性没有多态；</p>
+</li>
+<li><p>父类和子类，有联系，类型转换异常！ClassCastException！</p>
+</li>
+<li><p>存在条件：继承关系，方法需要重写；父类引用指向子类对象！father f1 = new son()；</p>
+</li>
+<li><p>父类引用指向子类的对象；</p>
+</li>
+<li><p>把子类转为父类，向上转型；</p>
+</li>
+<li><p>把父类转换为子类，向下转型；强制转换（Person）student</p>
+</li>
+<li><p>方便方法的调用，减少重复代码！简洁</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="修饰词"><a href="#修饰词" class="headerlink" title="修饰词"></a>修饰词</h1><table>
+<thead>
+<tr>
+<th>修饰词</th>
+<th>本类</th>
+<th>同一个包的类</th>
+<th>继承类</th>
+<th>其他类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>无（默认）default</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<h1 id="A-instanceof-B，判断A-B之间是否有父子关系"><a href="#A-instanceof-B，判断A-B之间是否有父子关系" class="headerlink" title="A instanceof B，判断A,B之间是否有父子关系"></a>A instanceof B，判断A,B之间是否有父子关系</h1><h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><ol>
+<li>static 静态修饰，程序第一次加载时就会运行，之后不会再次运行；</li>
+</ol>
+<pre><code class="java">package com.shanxin.oop.demo06;
+
+public class Person &#123;
+    &#123;
+        System.out.println(&quot;匿名代码块&quot;);
+    &#125;
+
+    static &#123;
+        System.out.println(&quot;静态代码块&quot;);
+    &#125;
+
+    public Person() &#123;
+        System.out.println(&quot;构造方法&quot;);
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Person person1 = new Person();
+        System.out.println(&quot;=======================&quot;);
+        Person person2 = new Person();
+    &#125;
+&#125;
+</code></pre>
+<p>静态导入包</p>
+<pre><code class="java">package com.shanxin.oop.demo06;
+//静态导入包
+import static java.lang.Math.random;
+import static java.lang.Math.PI;
+
+public class test &#123;
+    public static void main(String[] args) &#123;
+//        System.out.println(Math.random());
+//        System.out.println(Math.PI);
+
+        System.out.println(random());
+        System.out.println(PI);
+    &#125;
+&#125;
+</code></pre>
+<ol start="2">
+<li><p>final  修饰常量 final a = 5; 常量表示不能改变的值；</p>
+<p>修饰的类不能被继承</p>
+</li>
+</ol>
+<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><ol>
+<li>abstract修饰符可以用来修饰方法也可以用来修饰类，如果修饰方法，那么方法就是抽象方法；如果修饰类，那么方法就是就是抽象类；</li>
+<li>抽象类中可以没有抽象方法，但是有抽象方法的类一定要声明为抽象类。</li>
+<li>抽象类，不能使用new关键字来创建对象，它是用来让子类继承的；</li>
+<li>抽象方法，只有方法的声明，没有方法的实现，它是用来让子类实现的；</li>
+<li>子类继承抽象类，那么就必须要实现抽象类没有实现的抽象方法，否则该子类也要声明为抽象类；</li>
+</ol>
+<h1 id="接口（可以实现多继承）"><a href="#接口（可以实现多继承）" class="headerlink" title="接口（可以实现多继承）"></a>接口（可以实现多继承）</h1><ol>
+<li>普通类：只有具体实现；</li>
+<li>抽象类：具体实现和规范（抽象方法）都有!</li>
+<li>接口：只有规范！自己无法写方法<del>专业的约束！约束和实现分离：面向接口编程</del></li>
+<li>借口就是规范，定义的是一组规则，体现了现实世界中的“如果你是。。。则必须能。。。”的思想，如果你是天使，则必须能飞，如果你是汽车，则必须能跑。如果你是好人，则必须干掉坏人。</li>
+<li>接口的本质是契约，就像我们人间的法律一样，制定好后大家都遵守。</li>
+<li>OO的精髓，是对对象的抽象，最能体现这一点的就是接口，为什么我们讨论设计模式都只针对具备了抽象能力的语言，就是因为设计模式所研究的，实际上就是如何合理地去抽象。</li>
+<li>声明接口的关键字是class，声明扣扣的关键字是interface</li>
+</ol>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><pre><code class="java">package com.shanxin.oop.demo09;
+
+//成员内部类
+public class Outer &#123;
+
+    private int id = 10;
+
+    public void out() &#123;
+        System.out.println(&quot;这是外部类的方法&quot;);
+    &#125;
+
+    //成员内部类
+    class Inner &#123;
+        public void in() &#123;
+            System.out.println(&quot;这是成员内部类的方法&quot;);
+        &#125;
+
+        //获得外部类的私有属性~
+        public void getID() &#123;
+            System.out.println(id);
+        &#125;
+    &#125;
+
+    //静态内部类
+    public static void B() &#123;
+
+    &#125;
+
+    //局部内部类
+    public void method() &#123;
+        class Inner &#123;
+            public void in() &#123;
+                System.out.println(&quot;这是局部内部类的方法&quot;);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+//一个java类中可以有多个class类，但是只能有一个public class
+//可以在此写测试
+//多的一个类
+class A &#123;
+
+&#125;
+
+=====================================================================
+
+package com.shanxin.oop.demo09;
+
+public class Application &#123;
+    public static void main(String[] args) &#123;
+        Outer outer = new Outer();
+        //通过外部类实现内部类
+        outer.new Inner();
+
+        Outer.Inner inner = outer.new Inner();
+        inner.getID();
+
+
+        //没有名字初始化类，不用将示例保存到变量中~
+        //使用场景个，监听器，无限套娃~
+        new Apple().eat();
+    &#125;
+&#125;
+
+class Apple&#123;
+    public void eat() &#123;
+        System.out.println(&quot;1&quot;);
+    &#125;
+&#125;
+
+interface UserService&#123;
+
+&#125;
+</code></pre>
+<h1 id="异常-Exception-和-Error"><a href="#异常-Exception-和-Error" class="headerlink" title="异常 Exception 和 Error"></a>异常 Exception 和 Error</h1><p>主要存在三种异常：</p>
+<ol>
+<li><p>检查性异常 CheckedException：用户错误或问题引起的异常，例如打开不存在的文件，在编译时不能不简单的忽略。</p>
+</li>
+<li><p>运行时异常 RuntimeException:运行时异常是可能被程序员避免的异常，与检查性异常相反，运行时异常可以在编译时被忽略。</p>
+</li>
+<li><p>错误 Error: 脱离程序员控制的问题，错误在代码中通常被忽略。例如。当栈溢出时，一个错误就发生了，他们在编译时也检查不到。</p>
+</li>
+<li><p>异常处理框架：java把异常当做对象来处理，并定义了一个基类java.lang.Throwable作为所有异常的超类。javaAPI中已经定义了许多的异常类。这些异常分为两大类，错误Error和异常Exception。</p>
+</li>
+</ol>
+<p>Error: </p>
+<ol>
+<li>Error类对象由java虚拟机生成并抛出，大多数错误代码与代码编写者所执行的操作无关；</li>
+<li>java虚拟机运行错误，当JVM不再有继续执行操作所需的内存资源时，将出现OutOfMemoryError,这些异常发生时，java虚拟机（JVM）一般会选择线程终止；</li>
+<li>还有发生在虚拟机试图执行应用时，如类定义错误（NoClassDefFoundError）、链接错误（LinkedError)。这些错误是不可查的，因为它们在应用程序的控制和处理能力之外，而且绝大多数是程序运行时不允许出现的状况。</li>
+</ol>
+<p>Exception：</p>
+<ol>
+<li><p>在Exception分支中有一个重要的子类RuntimeException(运行时异常)</p>
+<ol>
+<li>ArrayIndexOutOfBoundsException  运行时异常</li>
+<li>NullPointerException 空指针异常</li>
+<li>ArithmeticException 算数异常</li>
+<li>MissingResourceException 丢失资源</li>
+<li>ClassNotFoundException 找不到类等异常，这些通常都是不检查异常，程序中可以选择捕获处理，也可以不处理。</li>
+</ol>
+<p>这些异常一般由程序逻辑错误引起的，程序应该从逻辑角度尽可能避免这类异常的发生</p>
+</li>
+</ol>
+<p>Error 和 Exception的区别：Error通常是灾难性的致命错误，是程序无法控制和处理的，当出现这些异常时，java虚拟机（JVM）一般会选择终止线程；Exception 通常情况下是可以被程序处理的，并且在程序中应该尽可能的去处理这些异常。</p>
+<h1 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h1><p>抛出异常：throw ,throws</p>
+<p>捕获异常：try{}catch{}finally{}</p>
+<p>异常处理五个关键字</p>
+<p>​    try, catch, finally, throw, throws</p>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/04/70aff1e72e3b/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;04&#x2F;70aff1e72e3b&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;04&#x2F;70aff1e72e3b&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" rel="tag">狂神说</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924005"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>

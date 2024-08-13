@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+
+<html lang="
+zh-CN"
+    >
+
+        <head>
+            
+                <title>
+                    
+                        JAVA-线程 -
+                            
+                                shanX&#39;s Blog
+                </title>
+                <meta charset="UTF-8">
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+                
+                    
+
+                        <link rel="shortcut icon" href="/image/author.png" type="image/png" />
+                        <meta name="description" content="线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-线程">
+<meta property="og:url" content="https://rhymexmove.github.io/2021/04/12/1d5c91f96393/index.html">
+<meta property="og:site_name" content="shanX&#39;s Blog">
+<meta property="og:description" content="线程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/12/1d5c91f96393/img/article/JAVA-%E7%BA%BF%E7%A8%8B-20210418/image-20210411183018803.png">
+<meta property="og:image" content="https://rhymexmove.github.io/2021/04/12/1d5c91f96393/img/article/JAVA-%E7%BA%BF%E7%A8%8B-20210418/image-20210411183039107.png">
+<meta property="article:published_time" content="2021-04-11T16:02:31.000Z">
+<meta property="article:modified_time" content="2022-06-14T04:09:00.349Z">
+<meta property="article:author" content="shanX">
+<meta property="article:tag" content="java基础">
+<meta property="article:tag" content="狂神说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rhymexmove.github.io/2021/04/12/1d5c91f96393/img/article/JAVA-%E7%BA%BF%E7%A8%8B-20210418/image-20210411183018803.png">
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,gh/theme-nexmoe/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233"
+                                crossorigin>
+                            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css">
+                            <!--适用于 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPad-->
+                            <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            <!--适用于非 Retina 屏的 iPhone-->
+                            <link rel="apple-touch-icon-precomposed" href="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png">
+                            
+                                <link rel="stylesheet" href="//at.alicdn.com/t/font_2490857_fmjyoao96km.css">
+                                
+                                    <link rel="stylesheet" href="/css/style.css?v=1723559924002">
+        <meta name="generator" content="Hexo 5.4.0"></head>
+
+        <body class="mdui-drawer-body-left">
+            
+                <div id="nexmoe-background">
+                    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/5887c2f1-b191-4890-aab5-2ce62d9955df.jpg)"></div>
+                    <div class="mdui-appbar mdui-shadow-0">
+                        <div class="mdui-toolbar">
+                            <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                            <div class="mdui-toolbar-spacer"></div>
+                            <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                            <a href="/" title="shanX" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="nexmoe-header">
+                    <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="shanX">
+            <img src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/author.png" alt="shanX" alt="shanX">
+        </a>
+    </div>
+    <div class="nexmoe-count nexmoe-widget-wrap">
+        <div><span>文章</span>31</div>
+        <div><span>标签</span>17</div>
+        <div><span>分类</span>9</div>
+    </div>
+    <div class="nexmoe-list mdui-list nexmoe-widget-wrap" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-test/index.html" title="Cesium">
+            <i class="mdui-list-item-icon nexmoefont icon-Cesium-copy"></i>
+            <div class="mdui-list-item-content">
+                Cesium
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/cesium-covid/index.html" title="全球疫情">
+            <i class="mdui-list-item-icon nexmoefont icon-areachart"></i>
+            <div class="mdui-list-item-content">
+                全球疫情
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=rhymexmove.github.io" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20666214" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/RhymeXmove/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="https://gitee.com/shanxin123/" target="_blank" mdui-tooltip="{content: 'Gitee'}" style="color: rgb(220,20,60);background-color: rgba(220,20,60, .15);">
+            <i class="nexmoefont icon-gitee"></i>
+        </a>
+    </div>
+</div>
+  
+  
+    <div class="nexmoe-widget-wrap">
+        <h3 class="nexmoe-widget-title">
+            文章分类
+        </h3>
+        <div class="nexmoe-widget">
+
+            <ul class="category-list">
+
+                
+
+
+                    
+
+                        
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/mysql/">
+                                    -mysql
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Cesium/">
+                                    Cesium
+                                </a>
+                                <span class="category-list-count">3</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/DB/">
+                                    DB
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Leetcode/">
+                                    Leetcode
+                                </a>
+                                <span class="category-list-count">4</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/Vue/">
+                                    Vue
+                                </a>
+                                <span class="category-list-count">2</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/blog搭建/">
+                                    blog搭建
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/java/">
+                                    java
+                                </a>
+                                <span class="category-list-count">12</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/无人驾驶/">
+                                    无人驾驶
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+
+                            <li class="category-list-item">
+                                <a class="category-list-link" href="/categories/资源/">
+                                    资源
+                                </a>
+                                <span class="category-list-count">1</span>
+                            </li>
+
+                            
+            </ul>
+
+        </div>
+    </div>
+    
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DB/" style="font-size: 10px;">-DB</a> <a href="/tags/Cesium/" style="font-size: 12.5px;">Cesium</a> <a href="/tags/GIS/" style="font-size: 10px;">GIS</a> <a href="/tags/Leetcode/" style="font-size: 15px;">Leetcode</a> <a href="/tags/Vue/" style="font-size: 12.5px;">Vue</a> <a href="/tags/blog%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">blog搭建</a> <a href="/tags/echart/" style="font-size: 10px;">echart</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java%E5%9F%BA%E7%A1%80/" style="font-size: 20px;">java基础</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E6%89%B9%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">批处理工具</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%97%A0%E4%BA%BA%E9%A9%BE%E9%A9%B6/" style="font-size: 10px;">无人驾驶</a> <a href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" style="font-size: 17.5px;">狂神说</a> <a href="/tags/%E8%B5%84%E6%BA%90/" style="font-size: 10px;">资源</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">29</span></li></ul>
+    </div>
+  </div>
+
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/13/6abe7b71ef31/">无人驾驶</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/13/7533e8f3cb4c/">mysql查询数据库内全部表名；查询表内全部字段名</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/26/ee931b51117c/">什么是计算机图形学？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/08/9adeea845004/">中国城市坐标(包含市辖区)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/31/7ba201dda6cb/">Cesium billboard贴地形表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2024 shanX
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+                </div>
+                <div id="nexmoe-content">
+                    <div class="nexmoe-primary">
+                        <div class="nexmoe-post">
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                
+                
+                  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-number">1.1.</span> <span class="toc-text">线程创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread"><span class="toc-number">1.2.</span> <span class="toc-text">Thread</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87-commons-io"><span class="toc-number">1.2.1.</span> <span class="toc-text">实现多线程同步下载图片(commons-io)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-Runable-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">实现 Runable 接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Runable-%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87-commons-io"><span class="toc-number">1.3.1.</span> <span class="toc-text">Runable-实现多线程同步下载图片(commons-io)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread-%E4%B8%8E-Runable-%E6%AF%94%E8%BE%83"><span class="toc-number">1.4.</span> <span class="toc-text">Thread 与 Runable 比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%B0%E7%81%AB%E8%BD%A6%E7%A5%A8%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.5.</span> <span class="toc-text">买火车票的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E9%BE%9F%E5%85%94%E8%B5%9B%E8%B7%91"><span class="toc-number">1.6.</span> <span class="toc-text">模拟龟兔赛跑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0-Callable-%E6%8E%A5%E5%8F%A3%EF%BC%88%E4%BB%85%E4%BA%86%E8%A7%A3%EF%BC%89-%E6%89%A9%E5%85%85"><span class="toc-number">1.7.</span> <span class="toc-text">实现 Callable 接口（仅了解） 扩充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E2%80%93%E4%B8%AA%E4%BA%BA%E7%BB%93%E5%A9%9A%E4%B8%8E%E5%A9%9A%E5%BA%86%E5%85%AC%E5%8F%B8%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.8.</span> <span class="toc-text">静态代理–个人结婚与婚庆公司的例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.9.</span> <span class="toc-text">Lambda 表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-number">1.10.</span> <span class="toc-text">线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%81%9C%E6%AD%A2%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.10.1.</span> <span class="toc-text">停止线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0"><span class="toc-number">1.10.2.</span> <span class="toc-text">线程休眠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%A4%BC%E8%AE%A9"><span class="toc-number">1.10.3.</span> <span class="toc-text">线程礼让</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.10.4.</span> <span class="toc-text">合并线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B"><span class="toc-number">1.10.5.</span> <span class="toc-text">线程状态观测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.10.6.</span> <span class="toc-text">多线程优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%88%E6%8A%A4%EF%BC%88daemon%EF%BC%89%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.10.7.</span> <span class="toc-text">守护（daemon）线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">1.11.</span> <span class="toc-text">线程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E4%B8%8D%E5%AE%89%E5%85%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.11.1.</span> <span class="toc-text">三个不安全案例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E4%B9%B0%E7%A5%A8"><span class="toc-number">1.11.1.1.</span> <span class="toc-text">不安全买票</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E5%8F%96%E9%92%B1"><span class="toc-number">1.11.1.2.</span> <span class="toc-text">不安全取钱</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E9%9B%86%E5%90%88"><span class="toc-number">1.11.1.3.</span> <span class="toc-text">不安全集合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95-synchronized"><span class="toc-number">1.12.</span> <span class="toc-text">同步方法 - synchronized</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JUC-%E5%AE%89%E5%85%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9B%86%E5%90%88-CopyOnWriteArrayList"><span class="toc-number">1.13.</span> <span class="toc-text">JUC 安全类型的集合-CopyOnWriteArrayList</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-number">1.14.</span> <span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lock-%E9%94%81-%E5%8F%AF%E9%87%8D%E5%85%A5%E9%94%81"><span class="toc-number">1.15.</span> <span class="toc-text">Lock 锁 - 可重入锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#synchronized-%E4%B8%8E-lock-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.16.</span> <span class="toc-text">synchronized 与 lock 的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%8D%8F%E4%BD%9C-%E7%94%9F%E4%BA%A7%E8%80%85%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">1.17.</span> <span class="toc-text">线程协作 - 生产者消费者问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E7%A8%8B%E6%B3%95"><span class="toc-number">1.17.1.</span> <span class="toc-text">管程法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E7%81%AF%E6%B3%95"><span class="toc-number">1.17.2.</span> <span class="toc-text">信号灯法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.18.</span> <span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">1.19.</span> <span class="toc-text">使用线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.20.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+                
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    
+        <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+            <img data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/cover/JAVA.png" data-sizes="auto" alt="JAVA-线程" class="lazyload">
+            <h1>JAVA-线程</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta nexmoe-rainbow-fill" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年04月12日</a>
+    <a><i class="nexmoefont icon-areachart"></i>8.6k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 43 分钟</a>
+</div>
+
+    <h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h1><span id="more"></span>
+
+<h2 id="线程创建"><a href="#线程创建" class="headerlink" title="线程创建"></a>线程创建</h2><p>Thread、Runnable、Callable</p>
+<p><strong>继承 Thread 类</strong>和 <strong>实现 Runnable 接口</strong> 为重点，实现 Callable 接口仅作了解</p>
+<h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><ol>
+<li>自定义线程类继承 Thread 类</li>
+<li>重写 run()方法，编写线程执行体</li>
+<li>创建线程对象，调用 start()方法启动线程</li>
+</ol>
+<pre><code class="java">// 创建线程的方式：继承Thread类 、重写run（）方法、 调用start开启线程
+
+// 总结：线程开启不一定立即执行，由cpu进行调度执行
+
+public class TestThread01 extends Thread &#123;
+    @Override
+    public void run() &#123;
+        // run方法线程体
+        for (int i = 0; i &lt; 200; i++) &#123;
+            System.out.println(&quot;正在执行线程----&quot; + i);
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        // main主线程
+        // 创建一个线程对象
+        TestThread01 testThread01 = new TestThread01();
+        //调用start（）方法开启线程
+        testThread01.start();
+
+        for (int i = 0; i &lt; 2000; i++) &#123;
+            System.out.println(&quot;正在执行主方法******&quot; + i);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="实现多线程同步下载图片-commons-io"><a href="#实现多线程同步下载图片-commons-io" class="headerlink" title="实现多线程同步下载图片(commons-io)"></a>实现多线程同步下载图片(commons-io)</h3><pre><code class="java">/**
+ * 实现多线程同步下载图片
+ */
+public class TestThread2 extends Thread &#123;
+    private String url;
+    private String name;
+
+    public TestThread2(String url, String name) &#123;
+        this.url = url;
+        this.name = name;
+    &#125;
+    @Override
+    public void run() &#123;
+        WebDownLoader webDownLoader = new WebDownLoader();
+        webDownLoader.downloader(url,name);
+        System.out.println(&quot;下载文件名为:&quot; + name);
+
+    &#125;
+    public static void main(String[] args) &#123;
+        TestThread2 t1 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t1.jpg&quot;);
+        TestThread2 t2 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t2.jpg&quot;);
+        TestThread2 t3 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t3.jpg&quot;);
+        t1.start();
+        t2.start();
+        t3.start();
+    &#125;
+&#125;
+
+//下载器
+class WebDownLoader &#123;
+    //下载方法
+    public void downloader(String url, String name) &#123;
+        try &#123;
+            FileUtils.copyURLToFile(new URL(url),new File(name));
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+            System.out.println(&quot;io异常，downloader方法出现问题&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="实现-Runable-接口"><a href="#实现-Runable-接口" class="headerlink" title="实现 Runable 接口"></a>实现 Runable 接口</h2><ol>
+<li>定义 MyRunnable 类实现 Runnable 接口</li>
+<li>实现 run()方法，编写线程执行体</li>
+<li>创建线程对象，调用 start()方法启动线程</li>
+</ol>
+<pre><code class="java">public class TestRunable01 implements Runnable &#123;
+    //run方法线程体
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 200; i++) &#123;
+            System.out.println(&quot;我在看代码--&quot; + i);
+        &#125;
+    &#125;
+
+    //执行下面代码
+    public static void main(String[] args) &#123;
+        //main线程，主线程
+        //创建一个Runable接口的实现对象
+        TestRunable01 testRunable01 = new TestRunable01();
+
+        //创建线程对象，通过线程对象来开启线程，这种方式叫做代理
+        new Thread(testRunable01).start();
+
+        for (int i = 0; i &lt; 20000; i++) &#123;
+            System.out.println(&quot;我在学习多线程--&quot;  + i);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="Runable-实现多线程同步下载图片-commons-io"><a href="#Runable-实现多线程同步下载图片-commons-io" class="headerlink" title="Runable-实现多线程同步下载图片(commons-io)"></a>Runable-实现多线程同步下载图片(commons-io)</h3><pre><code class="java">package com.thread.demo01;
+
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+/**
+ * 实现多线程同步下载图片
+ */
+public class TestRunable02 extends Thread &#123;
+    private String url;
+    private String name;
+
+    public TestRunable02(String url, String name) &#123;
+        this.url = url;
+        this.name = name;
+    &#125;
+
+
+    @Override
+    public void run() &#123;
+        WebDownLoader2 webDownLoader = new WebDownLoader2();
+        webDownLoader.downloader(url,name);
+        System.out.println(&quot;下载文件名为:&quot; + name);
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        TestThread2 t1 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t1.jpg&quot;);
+        TestThread2 t2 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t2.jpg&quot;);
+        TestThread2 t3 = new TestThread2
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t3.jpg&quot;);
+        new Thread(t1).start();
+        new Thread(t2).start();
+        new Thread(t3).start();
+    &#125;
+
+&#125;
+
+//下载器
+class WebDownLoader2 &#123;
+    //下载方法
+    public void downloader(String url, String name) &#123;
+        try &#123;
+            FileUtils.copyURLToFile(new URL(url),new File(name));
+        &#125; catch (IOException e) &#123;
+            e.printStackTrace();
+            System.out.println(&quot;io异常，downloader方法出现问题&quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Thread-与-Runable-比较"><a href="#Thread-与-Runable-比较" class="headerlink" title="Thread 与 Runable 比较"></a>Thread 与 Runable 比较</h2><table>
+<thead>
+<tr>
+<th align="center">继承 Thread 类</th>
+<th align="center">实现 Runnable 接口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">子类继承 Thread 类具备多线程能力</td>
+<td align="center">实现接口 Runnable 具有多线程能力</td>
+</tr>
+<tr>
+<td align="center">启动线程：子类对象.start();</td>
+<td align="center">启动线程：传入目标对象+Thread 对象.start();</td>
+</tr>
+<tr>
+<td align="center">不建议使用：避免 OOP 单继承局限性</td>
+<td align="center">推荐使用：避免单继承局限性，灵活方便，方便同一个对象被多个线程使用</td>
+</tr>
+</tbody></table>
+<h2 id="买火车票的例子"><a href="#买火车票的例子" class="headerlink" title="买火车票的例子"></a>买火车票的例子</h2><p>存在并发问题，会出现多个不同用户抢到同一张票的问题；</p>
+<pre><code class="java">package com.thread.demo01;
+
+/**
+ * 多个县城同时操作一个对象
+ * 买火车票的例子
+ */
+public class TestThread03 implements Runnable &#123;
+    //票数
+    private static int ticketNum = 10;
+
+    @Override
+    public void run() &#123;
+        while (true) &#123;
+            if (ticketNum&lt;=0)&#123;
+                break;
+            &#125;
+            try &#123;
+                Thread.sleep(1000);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+            System.out.println(Thread.currentThread().getName() + &quot;------拿到了第&quot; + ticketNum-- + &quot;张票------&quot;);
+        &#125;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        TestThread03 ticket = new TestThread03();
+
+        new Thread(ticket, &quot;小明&quot;).start();
+        new Thread(ticket, &quot;小二&quot;).start();
+        new Thread(ticket, &quot;阿黄&quot;).start();
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">小明------拿到了第10张票------
+阿黄------拿到了第9张票------
+小二------拿到了第8张票------
+小明------拿到了第7张票------
+小二------拿到了第7张票------
+阿黄------拿到了第7张票------
+阿黄------拿到了第6张票------
+小二------拿到了第6张票------
+小明------拿到了第5张票------
+小明------拿到了第3张票------
+小二------拿到了第4张票------
+阿黄------拿到了第4张票------
+阿黄------拿到了第2张票------
+小二------拿到了第2张票------
+小明------拿到了第2张票------
+阿黄------拿到了第0张票------
+小二------拿到了第-1张票------
+小明------拿到了第1张票------
+</code></pre>
+<h2 id="模拟龟兔赛跑"><a href="#模拟龟兔赛跑" class="headerlink" title="模拟龟兔赛跑"></a>模拟龟兔赛跑</h2><pre><code class="java">/**
+ * 模拟龟兔赛跑
+ */
+public class Race implements Runnable &#123;
+    private static String winner;
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt;= 100; i++) &#123;
+
+            // 模拟兔子休息
+            if (Thread.currentThread().getName().equals(&quot;兔子&quot;) &amp;&amp; i%10 == 0)&#123;
+                try &#123;
+                    Thread.sleep(1);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+
+            //判断比赛是否结束
+            boolean flag = gameOver(i);
+            //出现winner，跳出
+            if (flag) &#123;
+                break;
+            &#125;
+
+            System.out.println(Thread.currentThread().getName() + &quot;--&gt;跑了&quot; + i + &quot;米&quot;);
+        &#125;
+    &#125;
+
+    //判断是否完成比赛
+    public boolean gameOver(int steps) &#123;
+        if (winner != null) &#123;//已经存在
+            return true;
+        &#125;else &#123;
+            if (steps == 100) &#123;
+                winner = Thread.currentThread().getName();
+                System.out.println(&quot;winner is&quot; + winner);
+                return true;
+            &#125;
+        &#125;
+        return false;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Race race = new Race();
+
+        new Thread(race, &quot;兔子&quot;).start();
+        new Thread(race, &quot;乌龟&quot;).start();
+
+    &#125;
+&#125;
+</code></pre>
+<h2 id="实现-Callable-接口（仅了解）-扩充"><a href="#实现-Callable-接口（仅了解）-扩充" class="headerlink" title="实现 Callable 接口（仅了解） 扩充"></a>实现 Callable 接口（仅了解） 扩充</h2><ol>
+<li>实现 Callable 接口，需要返回值类型</li>
+<li>重写 call 方法，需要抛出异常</li>
+<li>创建目标对象</li>
+<li>（1）创建执行服务 <code>ExecutorService ser=Executors.newFixedThreadPool(3);</code> //线程池，并发数</li>
+<li>（2）提交执行 <code>Future&lt;Boolean&gt; result = ser.submit(t1);</code></li>
+<li>（3）获取结果 <code>boolean r1 = result.get();</code></li>
+<li>（4）关闭服务 <code>ser.shutdownNow();</code></li>
+</ol>
+<p>示例代码如下：</p>
+<pre><code class="java">import java.util.concurrent.*;
+
+public class TestCallable implements Callable &#123;
+    private String url;
+    private String name;
+
+    public TestCallable(String url, String name) &#123;
+        this.url = url;
+        this.name = name;
+    &#125;
+
+    @Override
+    public Object call() throws Exception &#123;
+        WebDownLoader wd = new WebDownLoader();
+        wd.downloader(url,name);
+        System.out.println(&quot;下载文件，名为---&quot; + name);
+        return true;
+    &#125;
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException &#123;
+        TestCallable t1 = new TestCallable
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t1.jpg&quot;);
+        TestCallable t2 = new TestCallable
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t2.jpg&quot;);
+        TestCallable t3 = new TestCallable
+                (&quot;https://pics2.baidu.com/feed/902397dda144ad348afc39466dd25efc30ad852d.jpeg?token=4f48564797f3e5ddda4bb40071f78be5&quot;, &quot;t3.jpg&quot;);
+
+        //1.创建执行服务
+        ExecutorService serv = Executors.newFixedThreadPool(3); //线程池，并发数
+
+        //2.提交执行
+        Future&lt;Boolean&gt; r1 = serv.submit(t1);
+        Future&lt;Boolean&gt; r2 = serv.submit(t2);
+        Future&lt;Boolean&gt; r3 = serv.submit(t3);
+        //3.获取结果
+        boolean rs1 = r1.get();
+        boolean rs2 = r2.get();
+        boolean rs3 = r3.get();
+
+        System.out.println(rs1);
+        System.out.println(rs2);
+        System.out.println(rs3);
+
+        //4.关闭服务
+        serv.shutdownNow();
+    &#125;
+&#125;
+</code></pre>
+<h2 id="静态代理–个人结婚与婚庆公司的例子"><a href="#静态代理–个人结婚与婚庆公司的例子" class="headerlink" title="静态代理–个人结婚与婚庆公司的例子"></a>静态代理–个人结婚与婚庆公司的例子</h2><pre><code class="java">package com.thread.demo01;
+// 静态代理模式：
+// 真实对象和代理对象都要实现同一个接口
+// 代理对象要代理真实角色
+
+// 好处 ：
+// 1. 代理对象可以做很多真实对象做不了的事情
+// 2. 真实对象专注做自己的事情
+
+public class StaticProxy &#123;
+
+    public static void main(String[] args) &#123;
+
+        You you = new You(); // 真实对象
+        new Thread(() -&gt; System.out.println(&quot;i love you&quot;)).start(); // lambda表达式
+
+//        //传统调用方式
+//        You you = new You();
+//        you.HappyMarry();
+
+        new WeddingCompany(new You()).HappyMarry();
+        //代理调用
+//        WeddingCompany weddingCompany = new WeddingCompany(new You());
+//        weddingCompany.HappyMarry();
+
+    &#125;
+&#125;
+
+interface Marry &#123;
+    void HappyMarry();
+&#125;
+
+
+//真实角色，你去结婚
+class You implements Marry &#123;
+    @Override
+    public void HappyMarry() &#123;
+        System.out.println(&quot;结婚，超开心(^_^)&quot;); //no-qinjiang
+    &#125;
+&#125;
+
+//代理角色，帮助你结婚, 起到帮助作用
+class WeddingCompany implements Marry &#123;
+    //代理谁 --&gt; 真实目标角色
+    private Marry target;
+    public WeddingCompany(Marry target) &#123;
+        this.target = target;
+    &#125;
+    @Override
+    public void HappyMarry() &#123;
+        before();
+        this.target.HappyMarry();
+        after();
+    &#125;
+
+    private void before() &#123;
+        System.out.println(&quot;布置婚礼现场&quot;);
+    &#125;
+
+    private void after() &#123;
+        System.out.println(&quot;还债结尾款&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h2><p>为什么要使用 lambda 表达式</p>
+<ol>
+<li><p>避免匿名内部类定义过多</p>
+</li>
+<li><p>可以让代码看起来更简洁</p>
+</li>
+<li><p>去掉无意义代码，留下核心逻辑</p>
+<p>注：只有一行代码的情况下才能简化成一行；前提是接口为函数式接口</p>
+</li>
+</ol>
+<p>理解函数式接口（Functional Interface）是学习 java8 lambda 表达式的关键所在</p>
+<p>函数式接口的定义：</p>
+<p>任何接口，如果只包含一个抽象方法，那么他就是一个函数式接口。</p>
+<p>eg:</p>
+<pre><code class="java">public interface Runable &#123;
+    public abstract void run();
+&#125;
+</code></pre>
+<p>对于函数式接口，我们可以通过 Lambda 表达式来创建该接口的对象。</p>
+<p>简化至 lambda 的步骤如下：</p>
+<pre><code class="java">//外部类，接口
+public class TestLove &#123;
+    public static void main(String[] args) &#123;
+        ILove iLove = new Love();
+        iLove.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+
+class Love implements ILove &#123;
+    @Override
+    public void love(String a) &#123;
+        System.out.println(&quot;I love --&quot; + a);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">//静态内部类
+
+public class TestLove &#123;
+    static class Love implements ILove &#123;
+        @Override
+        public void love(String a) &#123;
+            System.out.println(&quot;I love --&quot; + a);
+        &#125;
+    &#125;
+    public static void main(String[] args) &#123;
+        ILove iLove = new Love();
+        iLove.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+
+</code></pre>
+<pre><code class="java">public class TestLove &#123;
+
+    public static void main(String[] args) &#123;
+        class Love implements ILove &#123;
+            @Override
+            public void love(String a) &#123;
+                System.out.println(&quot;I love --&quot; + a);
+            &#125;
+        &#125;
+
+        ILove iLove = new Love();
+        iLove.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<pre><code class="java">//匿名内部类
+
+public class TestLove &#123;
+
+    public static void main(String[] args) &#123;
+
+        ILove iLove = new ILove() &#123;
+            @Override
+            public void love(String a) &#123;
+                System.out.println(&quot;I love --&quot; + a);
+            &#125;
+        &#125;;
+        iLove.love(&quot;zzz&quot;);
+    &#125;
+&#125;
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<pre><code class="java">//lambda表达式
+ublic class TestLove &#123;
+    public static void main(String[] args) &#123;
+
+        ILove love = (String a)-&gt; &#123;
+            System.out.println(&quot;I love --&quot; + a);
+        &#125;;
+        love.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<pre><code class="java">//简化，去掉参数类型
+
+public class TestLove &#123;
+
+    public static void main(String[] args) &#123;
+
+        ILove love = (a)-&gt; &#123;
+            System.out.println(&quot;I love --&quot; + a);
+        &#125;;
+
+        love.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<pre><code class="java">//简化括号
+public class TestLove &#123;
+
+    public static void main(String[] args) &#123;
+
+        ILove love = a-&gt; &#123;
+            System.out.println(&quot;I love --&quot; + a);
+        &#125;;
+
+        love.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<pre><code class="java">//简化花括号，因为代码只有一行，有多行不可简化花括号
+public class TestLove &#123;
+
+    public static void main(String[] args) &#123;
+
+        ILove love = a-&gt; System.out.println(&quot;I love --&quot; + a);
+        love.love(&quot;zzz&quot;);
+
+    &#125;
+&#125;
+
+interface ILove &#123; void love(String a);&#125;
+</code></pre>
+<p>总结：</p>
+<ol>
+<li>lambda 表达式代码只有一行的情况下才能简化为一行，有多行时必须用花括号包裹；</li>
+<li>前提示接口为函数式接口（只包含一个方法）；</li>
+<li>多个参数也可以去掉参数类型，留就都留，去就都去，必须加上括号；</li>
+</ol>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E7%BA%BF%E7%A8%8B-20210418/image-20210411183018803.png" alt="image-20210411183018803" class="lazyload"></p>
+<p><strong>线程的方法</strong></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://cdn.jsdelivr.net/gh/RhymeXmove/blogimg@latest/article/JAVA-%E7%BA%BF%E7%A8%8B-20210418/image-20210411183039107.png" alt="image-20210411183039107" class="lazyload"></p>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><ol>
+<li>不推荐使用 JDK 提供的<code>stop(); destroy();</code>方法；</li>
+<li>推荐线程自己停止；</li>
+<li>建议使用一个标志位进行终止变量；</li>
+</ol>
+<pre><code class="java">/**
+ * 测试stop
+ * 1. 建议线程正常停止---&gt;利用次数；不建议死循环
+ * 2. 建议使用标志位---&gt;设置一个标志位
+ * 3. 不要使用stop或者destory等过时或JDK不建议使用的方法
+ */
+public class TestStop implements Runnable &#123;
+    //1. 设置一个标志位
+    private boolean flag = true;
+
+    @Override
+    public void run() &#123;
+        int i = 0;
+        while (flag) &#123;
+            System.out.println(&quot;run thread ----&quot; + i++);
+        &#125;
+    &#125;
+
+    //设置一个公开的方法停止线程，转换标志位
+    public void stop() &#123;
+        this.flag = false;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        TestStop testStop = new TestStop();
+        new Thread(testStop).start();
+
+        for (int i = 0; i &lt; 1000; i++) &#123;
+            System.out.println(&quot;main&quot; + i);
+            if (i==900) &#123;
+                //调用stop方法切换标志为
+                testStop.stop();
+                System.out.println(&quot;该线程停止了&quot;);
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="线程休眠"><a href="#线程休眠" class="headerlink" title="线程休眠"></a>线程休眠</h3><ol>
+<li>sleep(时间) 指定当前线程阻塞的毫秒数；</li>
+<li>sleep 存在异常 InterruptException；</li>
+<li>sleep 时间达到后线程进入就绪状态；</li>
+<li>sleep 可以模拟网络延时，倒计时等；</li>
+<li>每一个对象都有一个锁，sleep 不会释放锁；</li>
+</ol>
+<pre><code class="java">//模拟倒计时 10s
+public class TestSleep2 &#123;
+    public static void main(String[] args) throws InterruptedException &#123;
+        tenDown();
+    &#125;
+
+    public static void tenDown() throws InterruptedException &#123;
+        int num = 10;
+        while (true) &#123;
+            Thread.sleep(1000);
+            System.out.println(num--);
+            if (num &lt;= 0) &#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">//获取当前系统时间
+public class TestSleep2 &#123;
+    public static void main(String[] args) throws InterruptedException &#123;
+        Date startTime = new Date(System.currentTimeMillis());
+        while (true) &#123;
+            Thread.sleep(1000);
+            System.out.println(new SimpleDateFormat(&quot;HH:mm:ss&quot;).format(startTime));
+            startTime = new Date(System.currentTimeMillis());
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="线程礼让"><a href="#线程礼让" class="headerlink" title="线程礼让"></a>线程礼让</h3><ol>
+<li>礼让线程，让当前正在执行的线程暂停，但不阻塞；</li>
+<li>将线程从运行状态转为就绪状态；</li>
+<li><strong>让 cpu 重新调度，礼让不一定成功！看 CPU 心情；</strong></li>
+</ol>
+<pre><code class="java">/**
+ * 测试礼让程序
+ * 礼让不一定成功，看CPU心情
+ */
+public class TestYield implements Runnable &#123;
+    public static void main(String[] args) &#123;
+        TestYield testYield =  new TestYield();
+
+        new Thread(testYield, &quot;a&quot;).start();
+        new Thread(testYield, &quot;b&quot;).start();
+    &#125;
+
+    @Override
+    public void run() &#123;
+        System.out.println(Thread.currentThread().getName() + &quot;线程开始执行&quot;);
+        Thread.yield();
+        System.out.println(Thread.currentThread().getName() + &quot;线程停止执行&quot;);
+    &#125;
+&#125;
+
+//每次结果 都！不！一！样！ ？？？？？？？？？  -_-|||
+</code></pre>
+<h3 id="合并线程"><a href="#合并线程" class="headerlink" title="合并线程"></a>合并线程</h3><ol>
+<li>join 合并线程，待此线程执行完成后再执行其他线程，其他线程阻塞；</li>
+<li>可以想象成插队；</li>
+<li>join 前是交替执行；并不是不执行！！！</li>
+</ol>
+<pre><code class="java">public class TestJoin implements Runnable &#123;
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 500; i++) &#123;
+            System.out.println(&quot;★ VIP Thread ☆&quot; + i);
+        &#125;
+    &#125;
+
+    public static void main(String[] args) throws InterruptedException &#123;
+        TestJoin testJoin = new TestJoin();
+        Thread thread = new Thread(testJoin);
+        thread.start();
+
+        // 主线程
+        for (int i = 0; i &lt; 500; i++) &#123;
+            if(i == 200)&#123;
+                thread.join(); // 插队
+            &#125;
+            System.out.println(&quot;main&quot; + i);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="线程状态观测"><a href="#线程状态观测" class="headerlink" title="线程状态观测"></a>线程状态观测</h3><p><strong>Thread.state</strong></p>
+<pre><code class="java">/**
+ * 观察测试线程的状态
+ */
+public class TestState &#123;
+    public static void main(String[] args) &#123;
+        Thread thread = new Thread(() -&gt; &#123;
+                for (int i = 0; i &lt; 5; i++) &#123;
+            try &#123;
+                Thread.sleep(1000);
+            &#125;catch (Exception e)&#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+        &#125;);
+
+        System.out.println(&quot;---------------&quot;);
+
+        //观察状态
+        Thread.State state = thread.getState();
+        System.out.println(state); //NEW
+
+        //观察启动后
+        thread.start();
+        state = thread.getState();
+        System.out.println(state); //RUN
+
+        while (state != Thread.State.TERMINATED) &#123; //只要线程不终止，就一直输出状态
+            try &#123;
+                Thread.sleep(100);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+            state = thread.getState();  //更新线程状态
+            System.out.println(state);
+        &#125;
+
+        thread.start();  //死亡的线程不能再启动，必须再new一个
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="多线程优先级"><a href="#多线程优先级" class="headerlink" title="多线程优先级"></a>多线程优先级</h3><ol>
+<li>java 提供一个线程调度器来监控程序中启动后进入就绪状态的所有线程，调度器按照优先级决定应该调度哪个线程来执行；</li>
+<li>线程的优先级用数字表示，范围从 1~10 ；<ol>
+<li><code>Thread.MAX_PRIORITY = 10;</code></li>
+<li><code>Thread.MIN_PRIORITY = 1;</code></li>
+<li><code>Thread.NORM_PRIORITY = 5;</code></li>
+</ol>
+</li>
+<li>使用以下方式改变或获取优先级 <code>getPriority().setPriority(int xxx);</code></li>
+</ol>
+<p>优先级低只是意味着获得调度的概率低，并不是高优先级必然先调用 （性能倒置问题）；</p>
+<pre><code class="java">public class TestPriority &#123;
+    public static void main(String[] args) &#123;
+        //主线程默认优先级
+        System.out.println(Thread.currentThread().getName() + &quot;---main----&gt;&quot; + Thread.currentThread().getPriority());
+        MyPriority myPriority = new MyPriority();
+        Thread t1 = new Thread(myPriority);
+        Thread t2 = new Thread(myPriority);
+        Thread t3 = new Thread(myPriority);
+        Thread t4 = new Thread(myPriority);
+        Thread t5 = new Thread(myPriority);
+        Thread t6 = new Thread(myPriority);
+
+        t1.start();
+
+        t2.setPriority(1);
+        t2.start();
+
+        t3.setPriority(4);
+        t3.start();
+
+        t4.setPriority(Thread.MAX_PRIORITY);  //MAX_PRIORITY=10
+        t4.start();
+
+        t5.setPriority(Thread.MIN_PRIORITY); // min 为最小 1
+        t5.start();
+    &#125;
+&#125;
+
+class MyPriority implements Runnable &#123;
+    @Override
+    public void run() &#123;
+        System.out.println(Thread.currentThread().getName() + &quot;---MyPriority----&gt;&quot; + Thread.currentThread().getPriority());
+    &#125;
+&#125;
+</code></pre>
+<h3 id="守护（daemon）线程"><a href="#守护（daemon）线程" class="headerlink" title="守护（daemon）线程"></a>守护（daemon）线程</h3><ol>
+<li>线程分为用户线程和守护线程；</li>
+<li>虚拟机必须确保用户线程执行完毕；</li>
+<li>虚拟机不用等待守护线程执行完毕；</li>
+<li>如，后台记录操作日志，监控内存，垃圾回收等待；</li>
+</ol>
+<pre><code class="java">//测试守护线程
+public class TestDaemon &#123;
+    public static void main(String[] args) &#123;
+        God god = new God();
+        Human human = new Human();
+
+        Thread thread = new Thread(god);
+        thread.setDaemon(true);  //默认是false表示用户线程，正常的线程都是用户线程
+
+        thread.start();  // 用户线程启动
+        new Thread(human).start();  //人类，用户线程启动
+
+    &#125;
+
+&#125;
+
+// 上帝
+class God implements Runnable&#123;
+
+    @Override
+    public void run() &#123;
+        while(true)&#123; // 按理来说不会结束 但作为守护线程在用户线程结束后 随之结束（可能会伴随虚拟机关闭的一点点延迟）
+            System.out.println(&quot;legends never die！&quot;);
+        &#125;
+    &#125;
+&#125;
+
+// 人类
+class Human implements Runnable&#123;
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 365; i++) &#123;
+            System.out.println(&quot;happy live！&quot;);
+        &#125;
+        System.out.println(&quot;Byebye, the worllllllllld!&quot;);  //nope!!!!!!!!!!
+    &#125;
+&#125;
+</code></pre>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>并发：同一个对象被多个线程同时操作；</p>
+<p>处理多线程问题时，多线程访问一个对象，并且某些线程还想修改这个对象，这时候就需要线程同步。线程同步是一种等待机制，多个需要同时访问此对象的线程进入这个对象的<strong>等待池</strong>形成队列，等待前面线程使用完毕再让下一个线程使用</p>
+<h3 id="三个不安全案例"><a href="#三个不安全案例" class="headerlink" title="三个不安全案例"></a>三个不安全案例</h3><h4 id="不安全买票"><a href="#不安全买票" class="headerlink" title="不安全买票"></a>不安全买票</h4><pre><code class="java">//不安全买票
+// 线程不安全，有负数
+public class UnsafeBuyTicket &#123;
+    public static void main(String[] args) &#123;
+        BuyTicket station = new BuyTicket();
+
+        new Thread(station, &quot;牡丹&quot;).start();
+        new Thread(station, &quot;井盖&quot;).start();
+        new Thread(station, &quot;肥鯮 &quot;).start();
+    &#125;
+&#125;
+
+class BuyTicket implements Runnable&#123;
+    // 票
+    private int ticketNum = 10;
+    boolean flag = true; // 外部停止方式
+    @Override
+    public void run() &#123;
+        // 买票
+        while(true)&#123;
+            try &#123;
+                buy();
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+
+    private void buy() throws InterruptedException &#123;
+        // 判断是否有票
+        if(ticketNum &lt;= 0)&#123;
+            flag = false;
+            return;
+        &#125;
+
+        //模拟延时
+        Thread.sleep(100);
+
+        // 买票
+        System.out.println(Thread.currentThread().getName() + &quot;买到了&quot; + ticketNum--);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="不安全取钱"><a href="#不安全取钱" class="headerlink" title="不安全取钱"></a>不安全取钱</h4><pre><code class="java">// 不安全取钱
+// 两个人去取钱
+public class UnsafeBank &#123;
+    public static void main(String[] args) &#123;
+        // 账户
+        Account account = new Account(100, &quot;存款金额&quot;);
+        Drawing you = new Drawing(account, 50, &quot;你&quot;);
+        Drawing gf = new Drawing(account, 100, &quot;对方&quot;);
+        you.start();
+        gf.start();
+    &#125;
+&#125;
+
+// 账户
+class Account&#123;
+    int money; // 余额
+    String name; // 卡名
+
+    public Account(int money, String name) &#123;
+        this.money = money;
+        this.name = name;
+    &#125;
+&#125;
+// 银行 模拟取款
+class Drawing extends Thread&#123;
+    Account account; // 账户
+    int drawingMoney; // 取了多少钱
+    int nowMoney; // 还剩多少钱
+
+    public Drawing(Account account, int drawingMoney, String name)&#123;
+        super(name);
+        this.account = account;
+        this.drawingMoney = drawingMoney;
+    &#125;
+
+    //取钱操作
+    @Override
+    public void run() &#123;
+        // 判断有没有钱
+        if(account.money - drawingMoney &lt; 0)&#123;
+            System.out.println(Thread.currentThread().getName() + &quot;钱不够，取不了咯！&quot;);
+            return;
+        &#125;
+
+        try &#123;
+            Thread.sleep(1000);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        // 卡内余额 = 余额 - 你取的钱
+        account.money = account.money - drawingMoney;
+        // 你手里的钱
+        nowMoney = nowMoney + drawingMoney;
+
+        System.out.println(account.name + &quot;余额为：&quot; + account.money);
+        // 此时 Thread.currentThread().getName() = this.getName()
+        System.out.println(this.getName() + &quot;手里的钱：&quot; + nowMoney);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="不安全集合"><a href="#不安全集合" class="headerlink" title="不安全集合"></a>不安全集合</h4><pre><code class="java">public class UnSafeList &#123;
+    public static void main(String[] args) throws InterruptedException &#123;
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 10000; i++) &#123;
+            new Thread(() -&gt; &#123;
+                list.add(Thread.currentThread().getName());
+            &#125;).start();
+        &#125;
+        try &#123;
+            Thread.sleep(300);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+        System.out.println(list.size());
+    &#125;
+&#125;
+</code></pre>
+<h2 id="同步方法-synchronized"><a href="#同步方法-synchronized" class="headerlink" title="同步方法 - synchronized"></a>同步方法 - synchronized</h2><ol>
+<li><p>由于我们可以通过 private 关键字来保证数据对象只能被方法访问，所以我们只需要针对方法提出一套机制，这套机制就是 <em>synchronized</em> 关键字，它包括两种用法：<code>synchronized</code> 方法和 <code>synchronized</code> 块；</p>
+<p>同步方法 <code>public synchronized void method(int args)&#123; &#125;</code>；</p>
+</li>
+<li><p>synchronized 方法控制对“对象”的访问，每个对象对应一把锁，每个 synchronized 方法都必须获得调用该方法的对象的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，直到该方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行；</p>
+</li>
+</ol>
+<pre><code class="java">//买票
+public class UnsafeBuyTicket &#123;
+    public static void main(String[] args) &#123;
+        BuyTicket station = new BuyTicket();
+
+        new Thread(station, &quot;牡丹&quot;).start();
+        new Thread(station, &quot;井盖&quot;).start();
+        new Thread(station, &quot;肥鯮 &quot;).start();
+    &#125;
+&#125;
+
+class BuyTicket implements Runnable&#123;
+    // 票
+    private int ticketNum = 10;
+    boolean flag = true; // 外部停止方式
+    @Override
+    public void run() &#123;
+        // 买票
+        while(true)&#123;
+            try &#123;
+                buy();
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+//synchronized
+    private synchronized void buy() throws InterruptedException &#123;
+        // 判断是否有票
+        if(ticketNum &lt;= 0)&#123;
+            flag = false;
+            return;
+        &#125;
+
+        //模拟延时
+        Thread.sleep(100);
+
+        // 买票
+        System.out.println(Thread.currentThread().getName() + &quot;买到了&quot; + ticketNum--);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>同步块</strong></p>
+<p>同步块：synchronized(Obj) {}</p>
+<p>Obj 称为同步监视器</p>
+<ol>
+<li>Obj 可以是任何对象，但是推荐使用共享资源作为同步监视器；</li>
+<li>同步方法中无需指定同步监视器，因为同步方法的同步监视器就是 this，就是这个对象本身，或者是 class【反射中讲解】</li>
+</ol>
+<p>同步监视器的执行过程：</p>
+<ol>
+<li>第一个线程访问，锁定同步监视器，执行其中代码；</li>
+<li>第二个线程访问，发现同步监视器被锁定，无法访问；</li>
+<li>第一个线程访问完毕，解锁同步监视器；</li>
+<li>第二个线程访问，发现同步监视器没有锁，然后锁定并反问；</li>
+</ol>
+<p><strong>synchronized () {}</strong></p>
+<pre><code class="java">// 两个人去取钱
+public class UnsafeBank &#123;
+    public static void main(String[] args) &#123;
+        // 账户
+        Account account = new Account(10000, &quot;存款金额&quot;);
+        Drawing you = new Drawing(account, 50, &quot;你&quot;);
+        Drawing gf = new Drawing(account, 100, &quot;对方&quot;);
+        you.start();
+        gf.start();
+    &#125;
+&#125;
+
+// 账户
+class Account&#123;
+    int money; // 余额
+    String name; // 卡名
+
+    public Account(int money, String name) &#123;
+        this.money = money;
+        this.name = name;
+    &#125;
+&#125;
+// 银行 模拟取款
+class Drawing extends Thread &#123;
+    Account account; // 账户
+    int drawingMoney; // 取了多少钱
+    int nowMoney; // 还剩多少钱
+
+    public Drawing(Account account, int drawingMoney, String name) &#123;
+        super(name);
+        this.account = account;
+        this.drawingMoney = drawingMoney;
+    &#125;
+
+    //取钱操作
+    @Override
+    public void run() &#123;
+         //锁的对象必须是变化的量
+        synchronized (account) &#123;
+        // 判断有没有钱
+        if (account.money - drawingMoney &lt; 0) &#123;
+            System.out.println(Thread.currentThread().getName() + &quot;钱不够，取不了咯！&quot;);
+            return;
+        &#125;
+
+        try &#123;
+            Thread.sleep(1000);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+
+        // 卡内余额 = 余额 - 你取的钱
+        account.money = account.money - drawingMoney;
+        // 你手里的钱
+        nowMoney = nowMoney + drawingMoney;
+
+        System.out.println(account.name + &quot;余额为：&quot; + account.money);
+        // 此时 Thread.currentThread().getName() = this.getName()
+        System.out.println(this.getName() + &quot;手里的钱：&quot; + nowMoney);
+    &#125;
+&#125;
+&#125;
+</code></pre>
+<pre><code class="java">public class UnSafeList &#123;
+    public static void main(String[] args) throws InterruptedException &#123;
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 10000; i++) &#123;
+            new Thread(() -&gt; &#123;
+                synchronized (list) &#123;
+                    list.add(Thread.currentThread().getName());
+                &#125;&#125;).start();
+
+        &#125;
+        try &#123;
+            Thread.sleep(300);
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+        System.out.println(list.size());
+    &#125;
+&#125;
+</code></pre>
+<h2 id="JUC-安全类型的集合-CopyOnWriteArrayList"><a href="#JUC-安全类型的集合-CopyOnWriteArrayList" class="headerlink" title="JUC 安全类型的集合-CopyOnWriteArrayList"></a>JUC 安全类型的集合-CopyOnWriteArrayList</h2><pre><code class="java">public class TestJUC &#123;
+    public static void main(String[] args) &#123;
+        CopyOnWriteArrayList&lt;String&gt; list = new CopyOnWriteArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 100; i++) &#123;
+            new Thread( () -&gt;&#123;
+                list.add(Thread.currentThread().getName());
+            &#125; ).start();
+
+            try &#123;
+                Thread.sleep(30);
+            &#125;catch (InterruptedException e)&#123;
+                e.printStackTrace();
+            &#125;
+            System.out.println(list.size());
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>多个线程各自占用一些共享资源，并且互相等待其他线程占有的资源才能运行，而导致两个或多个线程都在等待对方释放资源，都停止执行的情况，某一个同步块同时拥有<strong>两个以上对象的锁</strong>时，就可能会发生”死锁“的问题。</p>
+<p>产生死锁的四个<strong>必要</strong>条件：</p>
+<ol>
+<li>互斥：一个资源每次只能被一个进程使用</li>
+<li>请求与保持：一个进程因请求资源而阻塞时，对已获得的资源保持不放</li>
+<li>不剥夺：进程已获得的资源，在未用完之前，不能强行剥夺</li>
+<li>循环等待：若干进程之间形成一种头尾相接的循环等待资源关系</li>
+</ol>
+<p>上面四者只要想办法打破其中任意一个或者多个就可以避免死锁发生。</p>
+<pre><code class="java">// 死锁：多个线程互相拥有对方需要的资源，形成僵持
+public class DeadLock  &#123;
+    public static void main(String[] args) &#123;
+        Makeup moore = new Makeup(0, &quot;Moore&quot;);
+        Makeup dove = new Makeup(1, &quot;Dove&quot;);
+        moore.start();
+        dove.start();
+    &#125;
+
+&#125;
+
+class Lipstick&#123;
+&#125;
+class Mirror&#123;
+&#125;
+
+class Makeup extends Thread&#123;
+
+    // 需要的资源只有一份，用static来保证只有一份
+    static Lipstick lipstick = new Lipstick();
+    static Mirror mirror = new Mirror();
+
+    int choice; // 选择
+    String girlName; // 使用化妆品的人
+
+    Makeup(int choice, String girlName)&#123;
+        this.choice = choice;
+        this.girlName = girlName;
+    &#125;
+    @Override
+    public void run() &#123;
+        // 化妆
+        try &#123;
+            Makeup();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    // 化妆 互相持有对方的锁，就是需要拿到对方的资源
+    private void Makeup() throws InterruptedException &#123;
+        if(choice == 0)&#123;
+            synchronized (lipstick)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+                Thread.sleep(1000);
+                synchronized (mirror)&#123;
+                    // 获得镜子的锁
+                    System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+                &#125;
+            &#125;
+
+        &#125;else&#123;
+            synchronized (mirror)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+                Thread.sleep(2000);
+                synchronized (lipstick)&#123;
+                    // 获得镜子的锁
+                    System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+                &#125;
+            &#125;
+
+
+
+        &#125;
+    &#125;
+&#125;// 死锁：多个线程互相拥有对方需要的资源，形成僵持
+public class DeadLock  &#123;
+    public static void main(String[] args) &#123;
+        Makeup moore = new Makeup(0, &quot;Moore&quot;);
+        Makeup dove = new Makeup(0, &quot;Dove&quot;);
+        moore.start();
+        dove.start();
+    &#125;
+&#125;
+class Lipstick&#123;
+&#125;
+class Mirror&#123;
+&#125;
+class Makeup extends Thread&#123;
+    // 需要的资源只有一份，用static来保证只有一份
+    static Lipstick lipstick = new Lipstick();
+    static Mirror mirror = new Mirror();
+
+    int choice; // 选择
+    String girlName; // 使用化妆品的人
+
+    Makeup(int choice, String girlName)&#123;
+        this.choice = choice;
+        this.girlName = girlName;
+    &#125;
+    @Override
+    public void run() &#123;
+        // 化妆
+        try &#123;
+            Makeup();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    // 化妆 互相持有对方的锁，就是需要拿到对方的资源
+    private void Makeup() throws InterruptedException &#123;
+        if(choice == 0)&#123;
+            synchronized (lipstick)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+                Thread.sleep(1000);
+                synchronized (mirror)&#123;
+                    // 获得镜子的锁
+                    System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+                &#125;
+            &#125;
+        &#125;else&#123;
+            synchronized (mirror)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+                Thread.sleep(2000);
+                synchronized (lipstick)&#123;
+                    // 获得镜子的锁
+                    System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+&#125;&#125;&#125;&#125;&#125;
+</code></pre>
+<pre><code class="java">//代码块拿出来，不让互相抱死
+public class DeadLock  &#123;
+    public static void main(String[] args) &#123;
+        Makeup moore = new Makeup(0, &quot;Moore&quot;);
+        Makeup dove = new Makeup(1, &quot;Dove&quot;);
+        moore.start();
+        dove.start();
+    &#125;
+
+&#125;
+
+class Lipstick&#123;
+&#125;
+class Mirror&#123;
+&#125;
+
+class Makeup extends Thread&#123;
+
+    // 需要的资源只有一份，用static来保证只有一份
+    static Lipstick lipstick = new Lipstick();
+    static Mirror mirror = new Mirror();
+
+    int choice; // 选择
+    String girlName; // 使用化妆品的人
+
+    Makeup(int choice, String girlName)&#123;
+        this.choice = choice;
+        this.girlName = girlName;
+    &#125;
+    @Override
+    public void run() &#123;
+        // 化妆
+        try &#123;
+            Makeup();
+        &#125; catch (InterruptedException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+    // 化妆 互相持有对方的锁，就是需要拿到对方的资源
+    private void Makeup() throws InterruptedException &#123;
+        if(choice == 0)&#123;
+            synchronized (lipstick)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+                Thread.sleep(1000);
+            &#125;
+            synchronized (mirror)&#123;
+                // 获得镜子的锁
+                System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+            &#125;
+
+        &#125;else&#123;
+            synchronized (mirror)&#123;
+                // 获得口红的锁
+                System.out.println(this.girlName + &quot;获得镜子的锁&quot;);
+                Thread.sleep(2000);
+
+            &#125;
+
+            synchronized (lipstick)&#123;
+                // 获得镜子的锁
+                System.out.println(this.girlName + &quot;获得口红的锁&quot;);
+            &#125;
+
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="Lock-锁-可重入锁"><a href="#Lock-锁-可重入锁" class="headerlink" title="Lock 锁 - 可重入锁"></a>Lock 锁 - 可重入锁</h2><pre><code class="java">//不安全
+public class TestLock &#123;
+    public static void main(String[] args) &#123;
+        TestLock2 ticket = new TestLock2();
+
+        new Thread(ticket, &quot;小明&quot;).start();
+        new Thread(ticket, &quot;小二&quot;).start();
+        new Thread(ticket, &quot;阿黄&quot;).start();
+    &#125;
+&#125;
+
+class TestLock2 implements Runnable &#123;
+    //票数
+    int ticketNum = 10;
+
+
+    @Override
+    public void run() &#123;
+        while (true) &#123;
+            if (ticketNum &gt; 0) &#123;
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                System.out.println(Thread.currentThread().getName() + &quot;------拿到了第&quot; + ticketNum-- + &quot;张票------&quot;);
+            &#125; else &#123;
+                break;
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">//加锁.sleep不会释放锁对象，所以sleep请加到lock前面。
+public class TestLock &#123;
+    public static void main(String[] args) &#123;
+        TestLock2 ticket = new TestLock2();
+
+        new Thread(ticket, &quot;小明&quot;).start();
+        new Thread(ticket, &quot;小二&quot;).start();
+        new Thread(ticket, &quot;阿黄&quot;).start();
+    &#125;
+&#125;
+
+class TestLock2 implements Runnable &#123;
+    //票数
+    int ticketNum = 10;
+
+    //定义Lock锁
+    private final ReentrantLock lock = new ReentrantLock();
+
+    @Override
+    public void run() &#123;
+        while (true) &#123;
+            try &#123;
+                try &#123;
+                    Thread.sleep(1000);
+                &#125; catch (InterruptedException e) &#123;
+                    e.printStackTrace();
+                &#125;
+                lock.lock();
+                if (ticketNum &gt; 0) &#123;
+                    System.out.println(Thread.currentThread().getName() + &quot;------拿到了第&quot; + ticketNum-- + &quot;张票------&quot;);
+                &#125;
+
+                else &#123;
+                    break;
+                &#125;
+            &#125;finally &#123;
+                lock.unlock();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">class A&#123;
+  private final ReentrantLock lock = new ReenTrantLock();
+  public void m()&#123;
+    lock.lock();
+    try&#123;
+      // 保证线程安全的代码
+    &#125;
+    finally&#123;
+            lock.unlock();
+      // 如果同步代码有异常，要将unlock()写入finally语句块
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<h2 id="synchronized-与-lock-的对比"><a href="#synchronized-与-lock-的对比" class="headerlink" title="synchronized 与 lock 的对比"></a>synchronized 与 lock 的对比</h2><ol>
+<li>Lock 是显示锁，需要手动开启和关闭，synchronized 为隐式锁，出了作用域自动释放</li>
+<li>lock 只有代码块锁，synchronized 有代码块锁和方法锁</li>
+<li>使用 lock 锁，jvm 将花费较少的时间来调度线程，性能更好。并且具有更好的扩展性</li>
+<li>优先使用顺序<ul>
+<li>Lock &gt; 同步代码块（已经进入方法体，分配了相应资源）&gt; 同步方法(在方法体之外)</li>
+</ul>
+</li>
+</ol>
+<h2 id="线程协作-生产者消费者问题"><a href="#线程协作-生产者消费者问题" class="headerlink" title="线程协作 - 生产者消费者问题"></a>线程协作 - 生产者消费者问题</h2><p>线程同步问题，生产者和消费者共享同一个资源，并且生产者和消费者之间相互依赖，互为条件</p>
+<ol>
+<li>对于生产者，没有生产产品之前，要通知消费者等待，而生产了产品之后，有需要马上通知消费者消费</li>
+<li>对于消费者，在消费之后，要通知生产者已经结束消费，需要生产新的产品以供消费</li>
+<li>在生产者消费者问题中，仅有 synchronized 是不够的<ol>
+<li>synchronized 可组织并发更新同一个共享资源，实现了同步</li>
+<li>synchronized 不能用来实现不同线程之间的消息传递（通信）</li>
+</ol>
+</li>
+</ol>
+<p>Java 提供了几个方法解决线程之间的通信问题</p>
+<table>
+<thead>
+<tr>
+<th align="left">方法名</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">wait()</td>
+<td align="left">表示线程一直等待，直到其他线程通知，与 sleep（）不同，会释放锁</td>
+</tr>
+<tr>
+<td align="left">wait(long timeout)</td>
+<td align="left">指定等待的毫秒数</td>
+</tr>
+<tr>
+<td align="left">notify()</td>
+<td align="left">唤醒一个处于等待状态的线程</td>
+</tr>
+<tr>
+<td align="left">notifyAll()</td>
+<td align="left">唤醒同一个对象上所有调用 wait（）方法的线程，优先级别高的线程优先调度</td>
+</tr>
+</tbody></table>
+<p><strong>注意：</strong> 均是 Object 类的方法，都只能在同步方法或者同步代码快中使用，否则会抛出异常 <code>IllegalMonitorStateException</code></p>
+<h3 id="管程法"><a href="#管程法" class="headerlink" title="管程法"></a>管程法</h3><ol>
+<li><p>生产者：负责生产数据的模块（可能是方法、对象、线程、进程）</p>
+</li>
+<li><p>消费者：负责处理数据的模块（可能是方法、对象、线程、进程）</p>
+</li>
+<li><p>缓冲区：消费者不能直接使用生产者的数据，利用中间“缓冲区”</p>
+<p>生产者将生产好的数据放入缓冲区，消费者从缓冲区拿出数据</p>
+</li>
+</ol>
+<pre><code class="java">// 测试 生产者消费者模型 --&gt; 利用缓冲区解决：管程法
+// 有问题，会出现先消费后生产，要用队列实现
+public class TestPC &#123;
+    public static void main(String[] args) &#123;
+        SynBuffer synBuffer = new SynBuffer();
+
+        new Producer(synBuffer).start();
+        new Consumer(synBuffer).start();
+    &#125;
+&#125;
+
+// 生产者
+class Producer extends Thread&#123;
+    SynBuffer buffer;
+    public Producer(SynBuffer buffer)&#123;
+        this.buffer = buffer;
+    &#125;
+    // 生产
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 100; i++) &#123;
+            System.out.println(&quot;生产了&quot; + i +&quot;只鸡&quot;);
+            try &#123;
+                buffer.push(new Chicken(i));
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+// 消费者
+class Consumer extends Thread&#123;
+    SynBuffer buffer;
+    public Consumer(SynBuffer buffer)&#123;
+        this.buffer = buffer;
+    &#125;
+
+    // 消费
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 100; i++) &#123;
+            try &#123;
+                System.out.println(&quot;消费了--&gt;&quot; + buffer.pop().id +&quot;只鸡&quot;);
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+// 产品
+class Chicken&#123;
+    int id; // 产品编号
+
+    public Chicken(int id) &#123;
+        this.id = id;
+    &#125;
+&#125;
+
+// 缓冲区
+class SynBuffer&#123;
+
+    //容器大小
+    Chicken[] chickens = new Chicken[10];
+    // 容器计数器
+    int count = 0;
+
+    // 生产者放入产品
+    public synchronized void push(Chicken chicken) throws InterruptedException &#123;
+        // 如果容器满了，需要等待消费者消费
+        if(count == chickens.length)&#123;
+            // 通知消费者消费，生产等待
+            this.wait();
+        &#125;
+        // 如果没有满，需要丢入产品
+        chickens[count] = chicken;
+        count ++;
+        // 可以通知消费者消费了
+        this.notifyAll();
+    &#125;
+
+    // 消费者消费产品
+    public synchronized Chicken pop() throws InterruptedException &#123;
+        // 判断能否消费
+        if(count == 0)&#123;
+            /// 等待生产者生产，消费者等待
+            this.wait();
+        &#125;
+        // 如果可以消费
+        count --;
+        Chicken chicken = chickens[count];
+        // 吃完了，通知生产者生产
+        this.notifyAll();
+
+        return chicken;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="信号灯法"><a href="#信号灯法" class="headerlink" title="信号灯法"></a>信号灯法</h3><pre><code class="java">public class TestPC2 &#123;
+    public static void main(String[] args) &#123;
+        TV tv = new TV();
+        new Player(tv).start();
+        new Watcher(tv).start();
+    &#125;
+&#125;
+
+// 生产者 --&gt; 演员
+class Player extends Thread&#123;
+    TV tv;
+    public Player(TV tv)&#123;
+        this.tv = tv;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 20; i++) &#123;
+            if (i % 2 == 0)&#123;
+                this.tv.play(&quot;节目一：新闻联播&quot;);
+            &#125;else&#123;
+                this.tv.play(&quot;节目二：法治在线&quot;);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+// 消费者 --&gt; 观众
+class Watcher extends Thread&#123;
+    TV tv;
+    public Watcher(TV tv)&#123;
+        this.tv = tv;
+    &#125;
+
+    @Override
+    public void run() &#123;
+        for (int i = 0; i &lt; 20; i++) &#123;
+            tv.watch();
+        &#125;
+    &#125;
+&#125;
+
+// 产品 --&gt; 节目
+class TV&#123;
+    // 演员表演，观众等待 T
+    // 观众观看，演员等待 F
+    String voice; // 表演的节目
+    boolean flag = true;
+    // 表演
+    public synchronized void play(String voice)&#123;
+
+        if (!flag)&#123;
+            try &#123;
+                this.wait();
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+
+        System.out.println(&quot;演员表演了:&quot; + voice);
+        // 通知观众观看
+        this.notifyAll(); // 通知唤醒
+        this.voice = voice;
+        this.flag = !this.flag;
+    &#125;
+    // 观看
+    public synchronized void watch()&#123;
+        if (flag)&#123;
+            try &#123;
+                this.wait();
+            &#125; catch (InterruptedException e) &#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+        System.out.println(&quot;观看了：&quot; + voice);
+        // 通知演员表演
+        this.notifyAll();
+        this.flag = !this.flag;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>背景：经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大。</p>
+<p>思路：提前创建好多个线程，放入线程池中，使用时直接获取，使用完放回池中。可以避免频繁创建销毁、实现重复利用。类似生活中的交通工具。</p>
+<p>好处：</p>
+<pre><code>1. 提高响应速度（减少创建新线程的时间）
+</code></pre>
+<ol start="2">
+<li>降低资源消耗（重复利用线程池中的线程，不需要每次都创建） 3. 便于线程管理 1. corePoolSize：最大线程数； 2. maxmumPoolSize：最大线程数； 3. keepAliveTime：线程没有任务时最多保持多长时间后会终止；</li>
+</ol>
+<h2 id="使用线程池"><a href="#使用线程池" class="headerlink" title="使用线程池"></a>使用线程池</h2><ol>
+<li>jdk5.0 线程池相关 API ：ExecutorService 和 Executors；</li>
+<li>ExecutorService ：真正的线程池接口。常见子类 ThreadPoolExecutor；<ol>
+<li>void execute(Runnable command) : 执行任务/命令，没有返回值，一般用来执行 Runnable；</li>
+<li><T>Future<T> submit(Callable<T> task): 执行任务，有返回值，一般用来执行 Callable；</li>
+<li>void shutdown(): 关闭连接池；</li>
+</ol>
+</li>
+<li>Executors: 工具类、线程池的工厂类，用于创建并返回不同类型的线程池；</li>
+</ol>
+<pre><code class="java">import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class TestPool &#123;
+    public static void main(String[] args) &#123;
+        // 1. 创建服务，创建线程池
+        // newFixedThreadPool 参数为线程池大小
+        ExecutorService service = Executors.newFixedThreadPool(10);
+        // 执行
+        service.execute(new MyThread());
+        service.execute(new MyThread());
+        service.execute(new MyThread());
+        service.execute(new MyThread());
+        service.execute(new MyThread());
+        // 2. 关闭连接
+        service.shutdown();
+    &#125;
+&#125;
+
+class   MyThread implements Runnable&#123;
+
+    @Override
+    public void run() &#123;
+            System.out.println(Thread.currentThread().getName());
+    &#125;
+&#125;
+</code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><pre><code class="java">import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
+public class summary &#123;
+    public static void main(String[] args) throws ExecutionException, InterruptedException &#123;
+        new MyThread1().start();
+
+        new Thread(new MyThread2()).start();
+
+        FutureTask&lt;Integer&gt; futureTask = new FutureTask&lt;Integer&gt;(new MyThread3());
+        new Thread(futureTask).start();
+        Integer integer = futureTask.get();
+        System.out.println(integer);
+    &#125;
+&#125;
+
+// 1. 继承Thread类
+class MyThread1 extends Thread&#123;
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;My Thread1&quot;);
+    &#125;
+&#125;
+// 2. 实现Runnable接口
+class MyThread2 implements Runnable&#123;
+    @Override
+    public void run() &#123;
+        System.out.println(&quot;My Thread2&quot;);
+    &#125;
+&#125;
+// 3. 实现Callable接口
+class MyThread3 implements Callable&lt;Integer&gt;&#123;
+    @Override
+    public Integer call() throws Exception &#123;
+        System.out.println(&quot;My Thread3&quot;);
+        return 100;
+    &#125;
+&#125;
+</code></pre>
+
+  </article>
+
+  
+    
+  <div class="nexmoe-post-copyright">
+    <strong>本文作者：</strong>shanX<br>
+    <strong>本文链接：</strong><a href="https://rhymexmove.github.io/2021/04/12/1d5c91f96393/" title="https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;12&#x2F;1d5c91f96393&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;rhymexmove.github.io&#x2F;2021&#x2F;04&#x2F;12&#x2F;1d5c91f96393&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/java/">java</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/java%E5%9F%BA%E7%A1%80/" rel="tag">java基础</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%8B%82%E7%A5%9E%E8%AF%B4/" rel="tag">狂神说</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'a2d666d91d6af126f538',
+        clientSecret: '9c79e44494cd9fae312629457ae9b534e01a963e',
+        id: decodeURI(window.location.pathname),
+        repo: 'RhymeXmove.github.io',
+        owner: 'RhymeXmove',
+        admin: 'RhymeXmove'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+                            <div class="nexmoe-post-right">
+                                <div class="nexmoe-fixed">
+                                    <div class="nexmoe-tool">
+                                        <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script>
+	hljs.initHighlightingOnLoad();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+ 
+
+<script src="/js/app.js?v=1723559924002"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+                    
+
+
+
+
+
+        </body>
+
+</html>
